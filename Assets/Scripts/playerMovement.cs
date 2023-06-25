@@ -14,11 +14,12 @@ public class playerMovement : MonoBehaviour
     void Update()
     {
         // Andar para direita
-        if(Input.GetKeyDown(KeyCode.D)) {
+        if(Input.GetKey(KeyCode.D)) {
             myRigidbody.velocity = Vector2.right * walkSpeed;
         }
+        
         // Andar para esquerda
-        if(Input.GetKeyDown(KeyCode.A)) {
+        if(Input.GetKey(KeyCode.A)) {
             myRigidbody.velocity = Vector2.left * walkSpeed;
         }
     }
