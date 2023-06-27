@@ -10,7 +10,6 @@ public class Flecha : MonoBehaviour
     void Start()
     {
         rb.velocity = transform.right * speed;
-
     }
 
 }
