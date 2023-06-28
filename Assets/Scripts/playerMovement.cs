@@ -15,13 +15,13 @@ public class playerMovement : MonoBehaviour
     {
         // Andar para direita
         if(Input.GetKey(KeyCode.D)) {
-            myRigidbody.velocity = Vector2.right * walkSpeed;
+            myRigidbody.velocity += Vector2.right * walkSpeed *Time.deltaTime;
             
         }
         
         // Andar para esquerda
         if(Input.GetKey(KeyCode.A)) {
-            myRigidbody.velocity = Vector2.left * walkSpeed;
+            myRigidbody.velocity += Vector2.left * walkSpeed *Time.deltaTime;
             
         }
 

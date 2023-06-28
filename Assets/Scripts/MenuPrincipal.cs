@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class menuprincipal : MonoBehaviour {
+public class MenuPrincipal : MonoBehaviour {
     public void sair (){
         Debug.Log("sair");
         Application.Quit();

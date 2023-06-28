@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Flecha : MonoBehaviour
 {
-    public float speed = 20f;
+    public float forca = 20f;
     public Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
-        rb.velocity = transform.right * speed;
+        rb.AddForce(transform.right * forca);
     }
 
 }
