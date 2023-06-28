@@ -16,11 +16,17 @@ public class playerMovement : MonoBehaviour
         // Andar para direita
         if(Input.GetKey(KeyCode.D)) {
             myRigidbody.velocity = Vector2.right * walkSpeed;
+            
         }
         
         // Andar para esquerda
         if(Input.GetKey(KeyCode.A)) {
             myRigidbody.velocity = Vector2.left * walkSpeed;
+            
         }
+
+
     }
+
+
 }
