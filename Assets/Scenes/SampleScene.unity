@@ -775,5 +775,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   acceleration: 20
-  jumpPower: 15
+  jumpPower: 14
   velMax: 4.5

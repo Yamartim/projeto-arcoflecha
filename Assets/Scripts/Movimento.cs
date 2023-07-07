@@ -6,6 +6,7 @@ public class Movimento : MonoBehaviour
 {
     Rigidbody2D rb;
     BoxCollider2D bc;
+    PhysicsMaterial2D mat;
     public Transform groundCheck;
     public LayerMask groundLayer;
     public float acceleration;
@@ -17,9 +18,9 @@ public class Movimento : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
 
-        // PhysicsMaterial2D mat = new PhysicsMaterial2D("Material");
-        // mat.friction = 0;
-        // bc.sharedMaterial = mat;
+        mat = new PhysicsMaterial2D("Material");
+        mat.friction = 0.4f;
+        bc.sharedMaterial = mat;
     }
 
     void Update()
@@ -27,20 +28,29 @@ public class Movimento : MonoBehaviour
         // Andar para direita
         if(Input.GetKey(KeyCode.D) && rb.velocity.x < velMax) {
             rb.velocity += Vector2.right * acceleration * Time.deltaTime;
-        }
+            mat.friction = 0f;
+            bc.sharedMaterial = mat;
+        } 
         
         // Andar para esquerda
         if(Input.GetKey(KeyCode.A) && rb.velocity.x > -velMax) {
             rb.velocity += Vector2.left * acceleration * Time.deltaTime;
+            mat.friction = 0f;
+            bc.sharedMaterial = mat;
         }
 
-        // Pulo
+        // Pular
         isGrounded = Physics2D.OverlapCapsule(groundCheck.position, 
             new Vector2(1.8f, 0.3f), CapsuleDirection2D.Horizontal, 
             0, groundLayer);
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
+        if(Input.GetButtonDown("Jump") && isGrounded) {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+        }
+
+        // Se não estiver andando, adicionar atrito
+        if(!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) {
+            mat.friction = 0.4f;
+            bc.sharedMaterial = mat;
         }
     }
 }
