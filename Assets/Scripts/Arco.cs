@@ -20,6 +20,12 @@ public class Arco : MonoBehaviour
         FlechasAtual = TotalFlecha;
     }
 
+    void OnTriggerEnter2D(Collider2D other){
+            if(other.gameObject.CompareTag("AumentarFlecha")){
+                TotalFlecha++;
+            }
+        } 
+
     void Update()
     {
         //calculo da direção da flecha;
@@ -58,5 +64,7 @@ public class Arco : MonoBehaviour
 
             IsReloading = false;
         }
+
+
     }
 }
