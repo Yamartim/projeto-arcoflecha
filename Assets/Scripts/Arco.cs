@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Arco : MonoBehaviour
 {
+    public Collider2D playercoll;
     public Transform  FirePoint;
     public GameObject FlechaPreFab;
     public int TotalFlecha = 5;
@@ -18,13 +19,8 @@ public class Arco : MonoBehaviour
     void Start(){
 
         FlechasAtual = TotalFlecha;
+        playercoll = GetComponentInParent<Collider2D>();
     }
-
-    void OnTriggerEnter2D(Collider2D other){
-            if(other.gameObject.CompareTag("AumentarFlecha")){
-                TotalFlecha++;
-            }
-        } 
 
     void Update()
     {
@@ -49,12 +45,6 @@ public class Arco : MonoBehaviour
             Shoot();
         }
 
-        void Shoot(){
-            //logica do tiro
-            FlechasAtual--;
-            Instantiate(FlechaPreFab, FirePoint.position, FirePoint.rotation);
-        }
-
         IEnumerator Reload(){
             IsReloading = true;
 
@@ -65,6 +55,16 @@ public class Arco : MonoBehaviour
             IsReloading = false;
         }
 
+    }
 
+    void Shoot(){
+        //logica do tiro
+        FlechasAtual--;
+        Instantiate(FlechaPreFab, FirePoint.position, FirePoint.rotation);
+    }
+
+    public void AumentarFlechas()
+    {
+        TotalFlecha++;
     }
 }
