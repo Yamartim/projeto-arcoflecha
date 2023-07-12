@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class reset : MonoBehaviour
+public class Reset : MonoBehaviour
 {
     private Vector3 startPosition;
     public int vidaMaxima = 100; // Valor máximo de vida
@@ -22,6 +22,7 @@ public class reset : MonoBehaviour
         {
             ResetPosition();
         }
+        
     }
 
     void ResetPosition()
@@ -36,5 +37,9 @@ public class reset : MonoBehaviour
         Debug.Log("perdeu vida");
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.gameObject.tag == "espinho"){
+            PerderVida();
+        }
+    }
 }
