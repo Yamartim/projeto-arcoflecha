@@ -60,7 +60,7 @@ public class Arco : MonoBehaviour
     void Shoot(){
         //logica do tiro
         FlechasAtual--;
-        Instantiate(FlechaPreFab, FirePoint.position, FirePoint.rotation);
+        Instantiate(FlechaPreFab, FirePoint.position, transform.rotation);
     }
 
     public void AumentarFlechas()
