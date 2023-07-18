@@ -584,7 +584,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -1171,7 +1171,8 @@ PrefabInstance:
       propertyPath: FlechaHUD
       value: 
       objectReference: {fileID: 267845431}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8459264527622026243, guid: 6dc7b34b0b4cfda44a36fea0b43fe140, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6dc7b34b0b4cfda44a36fea0b43fe140, type: 3}
 --- !u!1001 &9156740268244045136
 PrefabInstance:
@@ -1180,8 +1181,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 534604295, guid: f5de5483052697848a5bda04ccdc64c7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9156740268340209492, guid: f5de5483052697848a5bda04ccdc64c7, type: 3}
       propertyPath: m_Name
+      value: corda
+      objectReference: {fileID: 0}
+    - target: {fileID: 9156740268340209492, guid: f5de5483052697848a5bda04ccdc64c7, type: 3}
+      propertyPath: m_TagString
       value: corda
       objectReference: {fileID: 0}
     - target: {fileID: 9156740268340209493, guid: f5de5483052697848a5bda04ccdc64c7, type: 3}
