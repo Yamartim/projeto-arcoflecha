@@ -74,6 +74,16 @@ public class Movimento : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D other) 
+    {
+        if(other.CompareTag("corda"))
+        {
+            cordaProxima = true;
+            //cordaProxRB = other.gameObject.GetComponent<Rigidbody2D>();
+        }
+    }
+
+
     private void OnTriggerExit2D(Collider2D other) 
     {
         if(other.CompareTag("corda"))
@@ -97,7 +107,10 @@ public class Movimento : MonoBehaviour
         if(escalando)
         {
             rb.gravityScale = 0f;
-            rb.velocity = new Vector2(rb.velocity.x, inputVertical * velEscalada * Time.deltaTime);
+            rb.velocity = new Vector2(rb.velocity.x, inputVertical * velMax);
+            
+            mat.friction = 0.4f;
+            bc.sharedMaterial = mat;
 
         }else{
             rb.gravityScale = 3f;
