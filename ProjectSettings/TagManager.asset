@@ -6,6 +6,7 @@ TagManager:
   tags:
   - AumentarFlecha
   - Arco
+  - corda
   layers:
   - Default
   - TransparentFX
