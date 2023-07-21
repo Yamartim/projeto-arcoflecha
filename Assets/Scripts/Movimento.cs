@@ -48,10 +48,13 @@ public class Movimento : MonoBehaviour
         //     bc.sharedMaterial = mat;
         // } 
 
-        if(inputHorizontal == 1 && rb.velocity.x < velMax) {
-            acelerar(1);
-        } else if(inputHorizontal == -1 && rb.velocity.x > -velMax) {
-            acelerar(-1);
+        bool podeAndarDir = inputHorizontal == 1 && rb.velocity.x < velMax;
+        bool podeAndarEsq = inputHorizontal == -1 && rb.velocity.x > -velMax;
+        bool podeAndar = podeAndarDir || podeAndarEsq;
+        if(inputHorizontal != 0 && podeAndar) {
+            rb.velocity += Vector2.right * inputHorizontal * acceleration * Time.deltaTime;
+            mat.friction = 0f;
+            col.sharedMaterial = mat;
         } else if(inputHorizontal == 0) {
             // Se não estiver andando, adicionar atrito
             mat.friction = 0.4f;
@@ -60,8 +63,9 @@ public class Movimento : MonoBehaviour
         
         // Pular
         isGrounded = Physics2D.OverlapCapsule(groundCheck.position, 
-            new Vector2(1.8f, 0.3f), CapsuleDirection2D.Horizontal, 
+            new Vector2(0, 0.3f), CapsuleDirection2D.Horizontal, 
             0, groundLayer);
+        // Debug.Log("isGrounded = " + isGrounded);
         if(Input.GetButtonDown("Jump") && (isGrounded || escalando)) {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             escalando = false;
@@ -123,12 +127,4 @@ public class Movimento : MonoBehaviour
 
         }
     }
-
-    void acelerar(int direcao) {
-        rb.velocity += Vector2.right * inputHorizontal * acceleration * Time.deltaTime;
-        mat.friction = 0f;
-        col.sharedMaterial = mat;
-    }
-
-
 }
