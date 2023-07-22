@@ -14,9 +14,10 @@ public class anel : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-       if(other.gameObject.CompareTag("Player")){
-        other.gameObject.GetComponentInChildren<Arco>().addTipoFlecha(tipo);
-        Destroy(gameObject);
-       }
+        if(other.gameObject.CompareTag("Player")){
+            other.gameObject.GetComponentInChildren<Arco>().addTipoFlecha(tipo);
+            other.gameObject.GetComponent<efeitosSonoros>().playColetarAnel();
+            Destroy(gameObject);
+        }
     }   
 }

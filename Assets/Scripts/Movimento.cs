@@ -7,6 +7,8 @@ public class Movimento : MonoBehaviour
     Rigidbody2D rb;
     CapsuleCollider2D col;
     PhysicsMaterial2D mat;
+    // public AudioSource src;
+    // public AudioClip pular;
     public Transform groundCheck;
     public LayerMask groundLayer;
     public float acceleration;
@@ -42,12 +44,6 @@ public class Movimento : MonoBehaviour
 
         // Andar
 
-        // if(Mathf.Abs(inputHorizontal) > 0 && Mathf.Abs(rb.velocity.x) < velMax) {
-        //     rb.velocity += Vector2.right * inputHorizontal * acceleration * Time.deltaTime;
-        //     mat.friction = 0f;
-        //     bc.sharedMaterial = mat;
-        // } 
-
         bool podeAndarDir = inputHorizontal == 1 && rb.velocity.x < velMax;
         bool podeAndarEsq = inputHorizontal == -1 && rb.velocity.x > -velMax;
         bool podeAndar = podeAndarDir || podeAndarEsq;
@@ -65,7 +61,6 @@ public class Movimento : MonoBehaviour
         isGrounded = Physics2D.OverlapCapsule(groundCheck.position, 
             new Vector2(0, 0.3f), CapsuleDirection2D.Horizontal, 
             0, groundLayer);
-        // Debug.Log("isGrounded = " + isGrounded);
         if(Input.GetButtonDown("Jump") && (isGrounded || escalando)) {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             escalando = false;
