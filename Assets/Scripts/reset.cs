@@ -33,8 +33,7 @@ public class Reset : MonoBehaviour
 
     public void PerderVida()
     {
-        vidaAtual = vidaAtual - 20;
-        Debug.Log("perdeu vida");
+        vidaAtual = vidaAtual - 10;
     }
     
 
