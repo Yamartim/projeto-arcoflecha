@@ -5,8 +5,10 @@ using UnityEngine;
 public class Movimento : MonoBehaviour
 {
     Rigidbody2D rb;
-    BoxCollider2D bc;
+    CapsuleCollider2D col;
     PhysicsMaterial2D mat;
+    // public AudioSource src;
+    // public AudioClip pular;
     public Transform groundCheck;
     public LayerMask groundLayer;
     public float acceleration;
@@ -26,40 +28,42 @@ public class Movimento : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        bc = GetComponent<BoxCollider2D>();
+        col = GetComponent<CapsuleCollider2D>();
         //hj = GetComponent<HingeJoint2D>();
 
         mat = new PhysicsMaterial2D("Material");
         mat.friction = 0.4f;
-        bc.sharedMaterial = mat;
+        col.sharedMaterial = mat;
     }
 
     void Update()
     {
 
-        inputHorizontal = Input.GetAxis("Horizontal");
-        inputVertical = Input.GetAxis("Vertical");
+        inputHorizontal = Input.GetAxisRaw("Horizontal");
+        inputVertical = Input.GetAxisRaw("Vertical");
 
         // Andar
-        if(Mathf.Abs(inputHorizontal) > 0 && Mathf.Abs(rb.velocity.x) < velMax) {
+
+        bool podeAndarDir = inputHorizontal == 1 && rb.velocity.x < velMax;
+        bool podeAndarEsq = inputHorizontal == -1 && rb.velocity.x > -velMax;
+        bool podeAndar = podeAndarDir || podeAndarEsq;
+        if(inputHorizontal != 0 && podeAndar) {
             rb.velocity += Vector2.right * inputHorizontal * acceleration * Time.deltaTime;
             mat.friction = 0f;
-            bc.sharedMaterial = mat;
-        } 
-
+            col.sharedMaterial = mat;
+        } else if(inputHorizontal == 0) {
+            // Se não estiver andando, adicionar atrito
+            mat.friction = 0.4f;
+            col.sharedMaterial = mat;
+        }
+        
         // Pular
         isGrounded = Physics2D.OverlapCapsule(groundCheck.position, 
-            new Vector2(1.8f, 0.3f), CapsuleDirection2D.Horizontal, 
+            new Vector2(0, 0.3f), CapsuleDirection2D.Horizontal, 
             0, groundLayer);
         if(Input.GetButtonDown("Jump") && (isGrounded || escalando)) {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             escalando = false;
-        }
-
-        // Se não estiver andando, adicionar atrito
-        if(Mathf.Abs(inputHorizontal) == 0) {
-            mat.friction = 0.4f;
-            bc.sharedMaterial = mat;
         }
 
         InputEscalada();
@@ -110,7 +114,7 @@ public class Movimento : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, inputVertical * velMax);
             
             mat.friction = 0.4f;
-            bc.sharedMaterial = mat;
+            col.sharedMaterial = mat;
 
         }else{
             rb.gravityScale = 3f;
@@ -118,6 +122,4 @@ public class Movimento : MonoBehaviour
 
         }
     }
-
-
 }

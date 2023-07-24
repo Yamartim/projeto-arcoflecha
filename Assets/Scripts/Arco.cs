@@ -14,12 +14,14 @@ public class Arco : MonoBehaviour
     private bool IsReloading = false;
     public Text FlechaHUD;
 
+    private List<string> flechasDisponiveis = new List<string>();
+
     // Update is called once per frame
 
     void Start(){
-
         FlechasAtual = TotalFlecha;
         playercoll = GetComponentInParent<Collider2D>();
+        flechasDisponiveis.Add("corda");
     }
 
     void Update()
@@ -59,6 +61,7 @@ public class Arco : MonoBehaviour
 
     void Shoot(){
         //logica do tiro
+        gameObject.GetComponentInParent<efeitosSonoros>().playAtirarFlecha();
         FlechasAtual--;
         Instantiate(FlechaPreFab, FirePoint.position, transform.rotation);
     }
@@ -66,5 +69,9 @@ public class Arco : MonoBehaviour
     public void AumentarFlechas()
     {
         TotalFlecha++;
+    }
+
+    public void addTipoFlecha(string tipo) {
+        flechasDisponiveis.Add(tipo);
     }
 }
