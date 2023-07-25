@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class anel : MonoBehaviour
+public class Anel : MonoBehaviour
 {
     public float amp;
     public float freq;
@@ -16,7 +16,7 @@ public class anel : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Player")){
             other.gameObject.GetComponentInChildren<Arco>().addTipoFlecha(tipo);
-            other.gameObject.GetComponent<efeitosSonoros>().playColetarAnel();
+            other.gameObject.GetComponent<EfeitosSonoros>().playColetarAnel();
             Destroy(gameObject);
         }
     }   
