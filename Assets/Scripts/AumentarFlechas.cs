@@ -11,12 +11,13 @@ public class AumentarFlechas : MonoBehaviour
     {
         transform.position += Vector3.up * amp * freq * Mathf.Cos(freq * Time.time) * Time.deltaTime; 
     }
-   void OnTriggerEnter2D(Collider2D other)
-   {
-        if(other.gameObject.CompareTag("Player")){
-            other.gameObject.GetComponentInChildren<Arco>().AumentarFlechas();
-            other.gameObject.GetComponent<EfeitosSonoros>().playColetarFlecha();
-            Destroy(gameObject);
-        }
-   }   
+    void OnTriggerEnter2D(Collider2D other)
+    {
+            if(other.gameObject.CompareTag("Player")){
+                other.gameObject.GetComponentInChildren<Arco>().AumentarFlechas();
+                other.gameObject.GetComponent<EfeitosSonoros>().playColetarFlecha();
+                Destroy(gameObject);
+            }
+    }
+    
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -73,5 +74,13 @@ public class Arco : MonoBehaviour
 
     public void addTipoFlecha(string tipo) {
         flechasDisponiveis.Add(tipo);
+    }
+
+    public void RecuperarFlecha()
+    {
+        if (FlechasAtual < TotalFlecha)
+        {
+            FlechasAtual++;
+        }
     }
 }
