@@ -5,20 +5,24 @@ using UnityEngine;
 public class Reset : MonoBehaviour
 {
     public Vector3 startPosition;
+    Status player;
+
     public int vidaMaxima = 100; // Valor máximo de vida
     public int vidaAtual; // Valor atual de vida
+
     
     // Start is called before the first frame update
     void Start()
     {
+        player = GetComponent<Status>();
        startPosition = transform.position;
-       vidaAtual = vidaMaxima;
+       player.vidaAtual = player.vidaMaxima;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ( vidaAtual <= 0)
+        if ( player.vidaAtual <= 0)
         {
             ResetPosition();
         }
@@ -33,7 +37,7 @@ public class Reset : MonoBehaviour
 
     public void PerderVida()
     {
-        vidaAtual = vidaAtual - 10;
+        player.vidaAtual = player.vidaAtual - 10;
     }
     
 
