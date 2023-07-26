@@ -11,8 +11,8 @@ public class Movimento : MonoBehaviour
     // public AudioClip pular;
     public Transform groundCheck;
     public LayerMask groundLayer;
-    public float acceleration;
-    public int jumpPower;
+    public float aceleracao;
+    public int forcaPulo;
     public float velMax;
     bool isGrounded;
 
@@ -48,7 +48,7 @@ public class Movimento : MonoBehaviour
         bool podeAndarEsq = inputHorizontal == -1 && rb.velocity.x > -velMax;
         bool podeAndar = podeAndarDir || podeAndarEsq;
         if(inputHorizontal != 0 && podeAndar) {
-            rb.velocity += Vector2.right * inputHorizontal * acceleration * Time.deltaTime;
+            rb.velocity += Vector2.right * inputHorizontal * aceleracao * Time.deltaTime;
             mat.friction = 0f;
             col.sharedMaterial = mat;
         } else if(inputHorizontal == 0) {
@@ -62,7 +62,7 @@ public class Movimento : MonoBehaviour
             new Vector2(0, 0.3f), CapsuleDirection2D.Horizontal, 
             0, groundLayer);
         if(Input.GetButtonDown("Jump") && (isGrounded || escalando)) {
-            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
             escalando = false;
         }
 

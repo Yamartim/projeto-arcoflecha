@@ -6,7 +6,7 @@ public class Anel : MonoBehaviour
 {
     public float amp;
     public float freq;
-    public string tipo;
+    public tipoFlecha tipo;
    
     void Update()
     {

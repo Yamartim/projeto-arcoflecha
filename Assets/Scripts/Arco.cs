@@ -15,14 +15,14 @@ public class Arco : MonoBehaviour
     private bool IsReloading = false;
     public Text FlechaHUD;
 
-    private List<string> flechasDisponiveis = new List<string>();
+    private List<tipoFlecha> flechasDisponiveis = new List<tipoFlecha>();
 
     // Update is called once per frame
 
     void Start(){
         FlechasAtual = TotalFlecha;
         playercoll = GetComponentInParent<Collider2D>();
-        flechasDisponiveis.Add("corda");
+        flechasDisponiveis.Add(tipoFlecha.Corda);
     }
 
     void Update()
@@ -72,7 +72,7 @@ public class Arco : MonoBehaviour
         TotalFlecha++;
     }
 
-    public void addTipoFlecha(string tipo) {
+    public void addTipoFlecha(tipoFlecha tipo) {
         flechasDisponiveis.Add(tipo);
     }
 
