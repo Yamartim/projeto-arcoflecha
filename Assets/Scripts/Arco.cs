@@ -8,7 +8,8 @@ public class Arco : MonoBehaviour
 {
     public Collider2D playercoll;
     public Transform  FirePoint;
-    public GameObject FlechaPreFab;
+    public GameObject[] FlechaPreFab;
+    private int elementoAtual;
     public int TotalFlecha = 5;
     public int FlechasAtual;
     public float TempoRecarga = 1f;
@@ -23,6 +24,8 @@ public class Arco : MonoBehaviour
         FlechasAtual = TotalFlecha;
         playercoll = GetComponentInParent<Collider2D>();
         flechasDisponiveis.Add(tipoFlecha.Corda);
+
+        elementoAtual = 0;
     }
 
     void Update()
@@ -58,13 +61,28 @@ public class Arco : MonoBehaviour
             IsReloading = false;
         }
 
+        //mudança de flecha
+
+        if(Input.GetKeyDown(KeyCode.E)){
+
+            if(elementoAtual < 3){
+                elementoAtual++;
+            }
+        }
+        if(Input.GetKeyDown(KeyCode.Q)){
+
+            if(elementoAtual > 0){
+                elementoAtual--;
+            }
+        }
+
     }
 
     void Shoot(){
         //logica do tiro
-        gameObject.GetComponentInParent<EfeitosSonoros>().playAtirarFlecha();
+        //gameObject.GetComponentInParent<EfeitosSonoros>().playAtirarFlecha();
         FlechasAtual--;
-        Instantiate(FlechaPreFab, FirePoint.position, transform.rotation);
+        Instantiate(FlechaPreFab[elementoAtual], FirePoint.position, transform.rotation);
     }
 
     public void AumentarFlechas()

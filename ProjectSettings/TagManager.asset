@@ -9,6 +9,13 @@ TagManager:
   - espinho
   - corda
   - CheckPoint
+  - flechaNormal
+  - flechaFogo
+  - flechaGelo
+  - flechaLuz
+  - Agua
+  - Madeira
+  - Gelo
   layers:
   - Default
   - TransparentFX
