@@ -14,8 +14,8 @@ public class AumentarFlechas : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
             if(other.gameObject.CompareTag("Player")){
-                other.gameObject.GetComponentInChildren<Arco>().AumentarFlechas();
-                other.gameObject.GetComponent<EfeitosSonoros>().playColetarFlecha();
+                other.gameObject.GetComponentInChildren<Arco>()?.AumentarFlechas();
+               // other.gameObject.GetComponent<EfeitosSonoros>().playColetarFlecha();
                 Destroy(gameObject);
             }
     }

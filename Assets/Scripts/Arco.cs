@@ -9,7 +9,7 @@ public class Arco : MonoBehaviour
     public Collider2D playercoll;
     public Transform  FirePoint;
     public GameObject[] FlechaPreFab;
-    private int elementoAtual;
+    public int elementoAtual;
     public int TotalFlecha = 5;
     public int FlechasAtual;
     public float TempoRecarga = 1f;

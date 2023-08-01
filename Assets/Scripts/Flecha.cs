@@ -32,6 +32,8 @@ public class Flecha : MonoBehaviour
         {
             rb.AddForce(Vector2.MoveTowards(transform.position, arcoref.transform.position, 10f));
         }
+
+        tipo = (tipoFlecha)GetComponentInParent<Arco>().elementoAtual;
     }
 
     // quando a flecha bate e algo algo acontece dependendo do tipo
@@ -53,9 +55,9 @@ public class Flecha : MonoBehaviour
                 break;
             case tipoFlecha.Gelo:
                 if(other.gameObject.CompareTag("agua"))
-                {
-                    //get component script agua
-                    //agua.congela
+                {   
+                    //Vector2 position = other.gameObject.GetComponent(other.gameObject).position;
+                    //aguaCongela(position);
                 }
                 break;
             case tipoFlecha.Luz:
@@ -90,6 +92,8 @@ public class Flecha : MonoBehaviour
 
     }
 
+    //public void aguaCongela(int position)
+
     // se a flecha ta no modo retorno e volta pro player ela se torna colecionavel e volta pro inventario
     private void OnTriggerEnter2D(Collider2D other) {
         if(retornando && other.CompareTag("Player"))
@@ -99,5 +103,7 @@ public class Flecha : MonoBehaviour
             //da push numa pilha de flechas?
         }
     }
+
+
 
 }
