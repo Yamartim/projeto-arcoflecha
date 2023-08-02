@@ -17,7 +17,10 @@ public class Anel : MonoBehaviour
         if(other.gameObject.CompareTag("Player")){
             other.gameObject.GetComponentInChildren<Arco>().addTipoFlecha(tipo);
             //other.gameObject.GetComponent<EfeitosSonoros>().playColetarAnel();
-            Destroy(gameObject);
+            gameObject.GetComponent<AudioSource>().Play();
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            Destroy(gameObject, 4.0f);
         }
     }   
 }
