@@ -1,0 +1,11 @@
+REGRINHAS PRA GENTE SE MANTER ORGANIZADO
+
+- nomes de classes, funcoes e variaveis em PORTUGUES sempre que possivel
+
+- nomes de classes sempre escritos iguais ao nome do arquivo (incluindo letras maiusculas e minusculas, se mudar um muda o outro)
+- nomes de classes e funções: TodaPalavraComLetraMaiuscula
+- nomes de variaveis: primeiraPalavraMinusculaRestoMaiuscula
+
+- sempre que der TAB pra espaçar o codigo confere se usa 4 espaços de cada vez, pra manter o codigo alinhado e n dar conflito estranho no git
+
+- lembre de COMENTAR O CÓDIGO quando for algo que não parecer imediatamente claro, pelo bem dos coleguinhas (e pro seu proprio pq vc vai esquecer o que vc fez)
