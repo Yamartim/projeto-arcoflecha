@@ -18,6 +18,7 @@ public class Flecha : MonoBehaviour
     public Collider2D coll;
     public Arco arcoref;
     public bool retornando;
+    [SerializeField] GameObject geloPreFab;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +34,7 @@ public class Flecha : MonoBehaviour
             rb.AddForce(Vector2.MoveTowards(transform.position, arcoref.transform.position, 10f));
         }
 
-        tipo = (tipoFlecha)GetComponentInParent<Arco>().elementoAtual;
+        tipo = (tipoFlecha)Arco.arco.elementoAtual;
     }
 
     // quando a flecha bate e algo algo acontece dependendo do tipo
@@ -54,10 +55,13 @@ public class Flecha : MonoBehaviour
                 }
                 break;
             case tipoFlecha.Gelo:
-                if(other.gameObject.CompareTag("agua"))
+                if(other.gameObject.CompareTag("Agua"))
                 {   
-                    //Vector2 position = other.gameObject.GetComponent(other.gameObject).position;
-                    //aguaCongela(position);
+                    Vector2 position = other.gameObject.transform.position;
+                    Quaternion rotation = other.gameObject.transform.rotation;
+                    Destroy(other.gameObject);
+                    Instantiate(geloPreFab, position, rotation);
+
                 }
                 break;
             case tipoFlecha.Luz:

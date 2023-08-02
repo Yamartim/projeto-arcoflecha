@@ -15,6 +15,7 @@ public class Arco : MonoBehaviour
     public float TempoRecarga = 1f;
     private bool IsReloading = false;
     public Text FlechaHUD;
+    static public Arco arco;
 
     private List<tipoFlecha> flechasDisponiveis = new List<tipoFlecha>();
 
@@ -26,6 +27,8 @@ public class Arco : MonoBehaviour
         flechasDisponiveis.Add(tipoFlecha.Corda);
 
         elementoAtual = 0;
+
+        arco = this;
     }
 
     void Update()
@@ -35,6 +38,11 @@ public class Arco : MonoBehaviour
         Vector2 posicaoMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direcao = posicaoMouse - posicaoArco;
         transform.right = direcao;
+
+        if(Input.mousePosition.x < Screen.width/2)
+            transform.parent.localScale = new Vector3 (-5, 5, 1);
+        else
+            transform.parent.localScale = new Vector3 (5, 5, 1);
 
         FlechaHUD.text = FlechasAtual.ToString();
         if(IsReloading){
@@ -83,6 +91,7 @@ public class Arco : MonoBehaviour
         //gameObject.GetComponentInParent<EfeitosSonoros>().playAtirarFlecha();
         FlechasAtual--;
         Instantiate(FlechaPreFab[elementoAtual], FirePoint.position, transform.rotation);
+
     }
 
     public void AumentarFlechas()

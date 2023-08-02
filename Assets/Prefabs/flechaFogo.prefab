@@ -105,6 +105,7 @@ MonoBehaviour:
   coll: {fileID: 0}
   arcoref: {fileID: 0}
   retornando: 0
+  geloPreFab: {fileID: 2898497409083320701, guid: 6a2c1d93676210e4eb45314530c1cfd1, type: 3}
 --- !u!50 &3582102895121398432
 Rigidbody2D:
   serializedVersion: 4
