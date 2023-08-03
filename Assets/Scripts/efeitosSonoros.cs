@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class efeitosSonoros : MonoBehaviour
+public class EfeitosSonoros : MonoBehaviour
 {
     public AudioSource src;
     public AudioClip atirarFlecha, coletarFlecha, coletarAnel;
