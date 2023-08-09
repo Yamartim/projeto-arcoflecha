@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Reset : MonoBehaviour
 {
-    public Vector3 startPosition;
+    public Vector2 startPosition;
     Status player;
 
-    public int vidaMaxima = 100; // Valor máximo de vida
+    public int vidaMaxima = 105; // Valor máximo de vida
     public int vidaAtual; // Valor atual de vida
+
+    private Movimento Movimento;
+
+    bool isDead = false;
 
     
     // Start is called before the first frame update
@@ -22,9 +26,17 @@ public class Reset : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ( player.vidaAtual <= 0)
+        if(player.vidaAtual > 0 && isDead == false){
+            
+        }
+
+        if ( player.vidaAtual <= 0 && !isDead)
         {
+            isDead = true;
             ResetPosition();
+            isDead=false;
+            player.vidaAtual = player.vidaMaxima;
+            Debug.Log(vidaAtual);
         }
         
     }
@@ -37,7 +49,7 @@ public class Reset : MonoBehaviour
 
     public void PerderVida()
     {
-        player.vidaAtual = player.vidaAtual - 10;
+        player.vidaAtual = player.vidaAtual - 15;
     }
     
 
@@ -55,6 +67,7 @@ public class Reset : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.tag == "espinho"){
             PerderVida();
+            Debug.Log("perdeu 15 de vida");
         }
 
         if(collision.gameObject.tag == "CheckPoint"){
