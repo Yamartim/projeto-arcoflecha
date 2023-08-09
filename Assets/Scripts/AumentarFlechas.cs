@@ -15,8 +15,11 @@ public class AumentarFlechas : MonoBehaviour
     {
             if(other.gameObject.CompareTag("Player")){
                 other.gameObject.GetComponentInChildren<Arco>()?.AumentarFlechas();
-               // other.gameObject.GetComponent<EfeitosSonoros>().playColetarFlecha();
-                Destroy(gameObject);
+                // other.gameObject.GetComponent<EfeitosSonoros>().playColetarFlecha();
+                gameObject.GetComponent<AudioSource>().Play();
+                gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                Destroy(gameObject, 4.0f);
             }
     }
     
