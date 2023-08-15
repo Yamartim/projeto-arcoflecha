@@ -16,6 +16,7 @@ TagManager:
   - Agua
   - Madeira
   - Gelo
+  - "Corrup\xE7\xE3o"
   layers:
   - Default
   - TransparentFX
