@@ -7,6 +7,7 @@ public class Movimento : MonoBehaviour
     Rigidbody2D rb;
     CapsuleCollider2D col;
     PhysicsMaterial2D mat;
+    public Animator animator;
     // public AudioSource src;
     // public AudioClip pular;
     public Transform groundCheck;
@@ -41,6 +42,7 @@ public class Movimento : MonoBehaviour
 
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
+        animator.SetFloat("velocidade", Mathf.Abs(inputHorizontal));
 
         // Andar
 
