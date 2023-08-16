@@ -22,15 +22,16 @@ public class Flecha : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        coll = GetComponent<Collider2D>();
         rb.AddForce(transform.right * forca);
     }
 
-    private void Update() 
-    {
+    private  void FixedUpdate() {
         // quando a flecha esta no modo "retorno" ela volta pro jogador, esse modo é ativado no arco
         if(retornando)
         {
-            rb.AddForce(Vector2.MoveTowards(transform.position, arcoref.transform.position, 10f));
+            transform.position =  Vector2.MoveTowards(transform.position, arcoref.transform.parent.transform.position, 1f);
+            //rb.AddForce(Vector2.MoveTowards(transform.position, arcoref.transform.position, 10f));
         }
     }
 
@@ -47,10 +48,12 @@ public class Flecha : MonoBehaviour
     // desativa modo estatico da flecha apos a colisão e colocoa ela no modo de retorno pra voltar pro player
     public void RetornarPlayer(){
         //DesfazerFlecha();
+        rb.constraints = RigidbodyConstraints2D.None;
         rb.isKinematic = false;
         rb.gravityScale = 0f;
         coll.isTrigger = true;
         retornando = true;
+
 
     }
 
@@ -59,7 +62,7 @@ public class Flecha : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(retornando && other.CompareTag("Player"))
         {
-            other.gameObject.GetComponentInChildren<Arco>().RecuperarFlecha();
+            other.gameObject.GetComponentInChildren<Arco>().RecuperarFlecha(this);
             Destroy(gameObject);
             //da push numa pilha de flechas?
         }
