@@ -6,11 +6,13 @@ using UnityEngine.UI;
 
 public class Arco : MonoBehaviour
 {
+    //esse total de flechas dps tem q ir pra classe de stats do jogador
+    public int TotalFlecha = 5;
+
     public Collider2D playercoll;
     public Transform  FirePoint;
     public GameObject[] FlechaPreFab;
     public int elementoAtual;
-    public int TotalFlecha = 5;
     public int FlechasAtual;
     public float TempoRecarga = 1f;
     private bool IsReloading = false;
@@ -19,8 +21,9 @@ public class Arco : MonoBehaviour
 
     private List<tipoFlecha> flechasDisponiveis = new List<tipoFlecha>();
 
-    // Update is called once per frame
+    private List<GameObject> flechasAtiradas = new List<GameObject>();
 
+    // Update is called once per frame
     void Start(){
         FlechasAtual = TotalFlecha;
         playercoll = GetComponentInParent<Collider2D>();
@@ -84,13 +87,25 @@ public class Arco : MonoBehaviour
             }
         }
 
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            foreach (GameObject flecha in flechasAtiradas)
+            {
+                flecha.GetComponent<Flecha>().RetornarPlayer();
+            }
+        }
+
     }
 
     void Shoot(){
         //logica do tiro
         //gameObject.GetComponentInParent<EfeitosSonoros>().playAtirarFlecha();
         FlechasAtual--;
-        Instantiate(FlechaPreFab[elementoAtual], FirePoint.position, transform.rotation);
+        GameObject novaFlecha = Instantiate(FlechaPreFab[elementoAtual], FirePoint.position, transform.rotation);
+
+        flechasAtiradas.Add(novaFlecha);
+        novaFlecha.GetComponent<Flecha>().arcoref = this;
+
 
     }
 
@@ -103,11 +118,12 @@ public class Arco : MonoBehaviour
         flechasDisponiveis.Add(tipo);
     }
 
-    public void RecuperarFlecha()
+    public void RecuperarFlecha(Flecha flechaAtirada)
     {
         if (FlechasAtual < TotalFlecha)
         {
             FlechasAtual++;
         }
+        flechasAtiradas.Remove(flechaAtirada.gameObject);
     }
 }
