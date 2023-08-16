@@ -21,6 +21,7 @@ public class Arco : MonoBehaviour
 
     private List<tipoFlecha> flechasDisponiveis = new List<tipoFlecha>();
 
+    // serve pra saber todas as flechas q o player atirou pra ativar a função de puxar elas
     private List<GameObject> flechasAtiradas = new List<GameObject>();
 
     // Update is called once per frame
@@ -87,6 +88,7 @@ public class Arco : MonoBehaviour
             }
         }
 
+        // botao de recarregar q puxa todas as flechas na cena
         if(Input.GetKeyDown(KeyCode.R))
         {
             foreach (GameObject flecha in flechasAtiradas)
@@ -104,7 +106,9 @@ public class Arco : MonoBehaviour
         GameObject novaFlecha = Instantiate(FlechaPreFab[elementoAtual], FirePoint.position, transform.rotation);
 
         flechasAtiradas.Add(novaFlecha);
+        // qnd a flecha é atirada guardamos a referencia na lista pra puxar dps
         novaFlecha.GetComponent<Flecha>().arcoref = this;
+        // da a referencia desse arco pra flecha pra ela saber pra onde voltar ao ser puxada
 
 
     }
