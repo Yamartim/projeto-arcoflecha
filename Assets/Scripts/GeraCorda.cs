@@ -19,6 +19,8 @@ public class GeraCorda : MonoBehaviour
 
     void Gerar()
     {
+        // o prefab vem com o objeto pai e o topo da corda
+        // a partir do topo fazemos um for conectando cada segmento com o gerado na iteração anterior
         Rigidbody2D ultimoSeg = topo;
         for(int i = 0; i < numSegmentos; i++)
         {
