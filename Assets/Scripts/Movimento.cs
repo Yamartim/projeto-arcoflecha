@@ -86,48 +86,82 @@ public class Movimento : MonoBehaviour
     
     void InputEscalada()
     {
-
+        // se ta perto de uma corda e o player aperta pra cima ou pra beixo agarra
         if(cordaProxima && (Mathf.Abs(inputVertical) > 0))
         {
             AgarrarCorda(cordaProxRB);
         }
 
+        // logica da escalada
         if(escalando)
         {
+            //referencia de qual ponta da corda nos estamos agarrando
             SegmentoCorda seg = hj.connectedBody.GetComponent<SegmentoCorda>();
 
             rb.gravityScale = 0f;
+
+            // ao inves de se mover com fisica, vamos alterar nossa posição relativa a corda
             //rb.velocity = new Vector2(rb.velocity.x, inputVertical * velMax);
             hj.connectedAnchor += Vector2.up * inputVertical * Time.deltaTime *velEscalada;
 
+            // se chegamos no fim de um segmento de cords subindo...
             if (hj.connectedAnchor.y > 0f)
             {
+                // se n tiver mais corda em cima soltamos
                 if (seg.EhSegmentoInicial()){
                     SoltarCorda();
-                } else {
+                } else { // senao conectamos no proximo segmento posicionando relativamente
                     Debug.Log("sobe um segmento...");
                     hj.connectedAnchor = new Vector2(0, hj.connectedAnchor.y % -1);
                     hj.connectedBody = seg.conectadoAcima.GetComponent<Rigidbody2D>();
                 }
             }
 
+            // se chegamos no fim de um segmento de cords descendo...
             if (hj.connectedAnchor.y < -1f)
             {
-                if (seg.EhSegmentoFinal()){
+                    // se n tiver mais corda embaixo soltamos
+                    if (seg.EhSegmentoFinal()){
                     SoltarCorda();
-                } else {
+                } else { // senao conectamos no proximo segmento posicionando relativamente
                     Debug.Log("desce um segmento...");
                     hj.connectedAnchor = new Vector2(0, hj.connectedAnchor.y % -1);
                     hj.connectedBody = seg.conectadoAbaixo.GetComponent<Rigidbody2D>();
                 }
             }
             
-        }else{
+        }else{ // se n estamos escalando fisica fica normal
             rb.gravityScale = 3f;
 
         }
     }
 
+    // ativa o bool escalando e td q é necessario pro componente hingejoint
+    void AgarrarCorda(Rigidbody2D corda)
+    {
+        // confere se ja nao estamos escalando ou tentando subir a msm corda
+        if (!escalando && corda.transform.parent != cordaAtual)
+        {
+            escalando = true;
+            hj.enabled = true;
+            hj.connectedBody = corda;
+            cordaAtual = corda.transform.parent.gameObject;
+            Debug.Log("Segurei corda! " + hj.connectedAnchor);
+        }
+            
+    }
+
+    // desativa tudo pra fisica voltar a atuar no player
+    void SoltarCorda()
+    {
+        Debug.Log("Soltei corda! " + hj.connectedAnchor);
+        escalando = false;
+        hj.enabled = false;
+        hj.connectedBody = null;
+        cordaAtual = null;
+    }
+
+    // detectando se chegamos perto ou longe de uma corda
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.CompareTag("corda") && !cordaProxima)
@@ -155,28 +189,6 @@ public class Movimento : MonoBehaviour
             cordaProxima = false;
             cordaProxRB = null;
         }
-    }
-
-    void AgarrarCorda(Rigidbody2D corda)
-    {
-        if (!escalando && corda.transform.parent != cordaAtual)
-        {
-            escalando = true;
-            hj.enabled = true;
-            hj.connectedBody = corda;
-            cordaAtual = corda.transform.parent.gameObject;
-            Debug.Log("Segurei corda! " + hj.connectedAnchor);
-        }
-            
-    }
-
-    void SoltarCorda()
-    {
-        Debug.Log("Soltei corda! " + hj.connectedAnchor);
-        escalando = false;
-        hj.enabled = false;
-        hj.connectedBody = null;
-        cordaAtual = null;
     }
 
 }
