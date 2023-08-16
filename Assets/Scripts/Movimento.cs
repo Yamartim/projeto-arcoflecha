@@ -111,20 +111,19 @@ public class Movimento : MonoBehaviour
                 if (seg.EhSegmentoInicial()){
                     SoltarCorda();
                 } else { // senao conectamos no proximo segmento posicionando relativamente
-                    Debug.Log("sobe um segmento...");
-                    hj.connectedAnchor = new Vector2(0, hj.connectedAnchor.y % -1);
-                    hj.connectedBody = seg.conectadoAcima.GetComponent<Rigidbody2D>();
+                    //Debug.Log("sobe um segmento...");
+                    hj.connectedAnchor = new Vector2(0, (hj.connectedAnchor.y-1) % -1);
+                    hj.connectedBody = seg.conectadoAcima.gameObject.GetComponent<Rigidbody2D>();
                 }
             }
 
             // se chegamos no fim de um segmento de cords descendo...
-            if (hj.connectedAnchor.y < -1f)
-            {
-                    // se n tiver mais corda embaixo soltamos
-                    if (seg.EhSegmentoFinal()){
+            if (hj.connectedAnchor.y < -1f){
+                // se n tiver mais corda embaixo soltamos
+                if (seg.EhSegmentoFinal()){
                     SoltarCorda();
                 } else { // senao conectamos no proximo segmento posicionando relativamente
-                    Debug.Log("desce um segmento...");
+                    //Debug.Log("desce um segmento...");
                     hj.connectedAnchor = new Vector2(0, hj.connectedAnchor.y % -1);
                     hj.connectedBody = seg.conectadoAbaixo.GetComponent<Rigidbody2D>();
                 }
@@ -140,13 +139,14 @@ public class Movimento : MonoBehaviour
     void AgarrarCorda(Rigidbody2D corda)
     {
         // confere se ja nao estamos escalando ou tentando subir a msm corda
-        if (!escalando && corda.transform.parent != cordaAtual)
+        bool acimaPlayer = gameObject.transform.position.y < corda.transform.position.y;
+        if (!escalando && corda.transform.parent != cordaAtual && acimaPlayer)
         {
             escalando = true;
             hj.enabled = true;
             hj.connectedBody = corda;
             cordaAtual = corda.transform.parent.gameObject;
-            Debug.Log("Segurei corda! " + hj.connectedAnchor);
+            //Debug.Log("Segurei corda! " + hj.connectedAnchor);
         }
             
     }
@@ -154,7 +154,7 @@ public class Movimento : MonoBehaviour
     // desativa tudo pra fisica voltar a atuar no player
     void SoltarCorda()
     {
-        Debug.Log("Soltei corda! " + hj.connectedAnchor);
+        //Debug.Log("Soltei corda! " + hj.connectedAnchor);
         escalando = false;
         hj.enabled = false;
         hj.connectedBody = null;
