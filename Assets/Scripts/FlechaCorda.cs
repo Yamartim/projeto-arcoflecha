@@ -15,7 +15,8 @@ public class FlechaCorda : Flecha
             // congela a fisica da flecha e instancia a corda
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             rb.isKinematic = false;
-            Instantiate(corda, transform.position, transform.rotation, transform);
+            coll.enabled = false;
+            Instantiate(corda, transform.position, transform.rotation, parent: transform);
             cordaAtiva = true;
         }
     }
