@@ -51,6 +51,7 @@ public class Flecha : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.None;
         rb.isKinematic = false;
         rb.gravityScale = 0f;
+        coll.enabled = true;
         coll.isTrigger = true;
         retornando = true;
 
