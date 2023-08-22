@@ -19,6 +19,8 @@ public class Arco : MonoBehaviour
     public Text FlechaHUD;
     static public Arco arco;
 
+
+
     private List<tipoFlecha> flechasDisponiveis = new List<tipoFlecha>();
 
     // serve pra saber todas as flechas q o player atirou pra ativar a função de puxar elas
@@ -78,7 +80,10 @@ public class Arco : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E)){
 
             if(elementoAtual < 3){
-                elementoAtual++;
+                if(Status.status.flechasLiberadas[elementoAtual++] == true)
+                    elementoAtual++;
+            }else if(elementoAtual == 3){
+                elementoAtual = 0;
             }
         }
         if(Input.GetKeyDown(KeyCode.Q)){
