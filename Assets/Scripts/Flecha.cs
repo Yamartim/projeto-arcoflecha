@@ -4,8 +4,8 @@ using UnityEngine;
 
 public enum tipoFlecha {
     Corda,
-    Fogo,
     Gelo,
+    Fogo,
     Luz
 }
 

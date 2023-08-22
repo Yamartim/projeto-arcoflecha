@@ -55,51 +55,40 @@ public class Arco : MonoBehaviour
             return;
         }
 
-        if(FlechasAtual <= 0){
-            StartCoroutine(Reload());
-            return;
-        }
-
         if(Input.GetButtonDown("Fire1")){
 
             Shoot();
         }
 
-        IEnumerator Reload(){
-            IsReloading = true;
-
-            Debug.Log("Carregando..");
-            yield return new WaitForSeconds(TempoRecarga);
-            FlechasAtual = TotalFlecha;
-
-            IsReloading = false;
-        }
 
         //mudança de flecha
 
         if(Input.GetKeyDown(KeyCode.E)){
 
             if(elementoAtual < 3){
-                if(Status.status.flechasLiberadas[elementoAtual++] == true)
-                    elementoAtual++;
-            }else if(elementoAtual == 3){
-                elementoAtual = 0;
+                if(Status.status.flechasLiberadas[elementoAtual + 1] == true)
+                elementoAtual++;
             }
         }
         if(Input.GetKeyDown(KeyCode.Q)){
 
             if(elementoAtual > 0){
                 elementoAtual--;
+            }else if((elementoAtual == 0) && Status.status.flechasLiberadas[3] == true){
+                elementoAtual = 3;
             }
         }
 
         // botao de recarregar q puxa todas as flechas na cena
         if(Input.GetKeyDown(KeyCode.R))
         {
+            IsReloading = true;
             foreach (GameObject flecha in flechasAtiradas)
             {
                 flecha.GetComponent<Flecha>().RetornarPlayer();
+                FlechasAtual = TotalFlecha;
             }
+            IsReloading = false;
         }
 
     }
@@ -107,13 +96,17 @@ public class Arco : MonoBehaviour
     void Shoot(){
         //logica do tiro
         //gameObject.GetComponentInParent<EfeitosSonoros>().playAtirarFlecha();
-        FlechasAtual--;
-        GameObject novaFlecha = Instantiate(FlechaPreFab[elementoAtual], FirePoint.position, transform.rotation);
 
-        flechasAtiradas.Add(novaFlecha);
-        // qnd a flecha é atirada guardamos a referencia na lista pra puxar dps
-        novaFlecha.GetComponent<Flecha>().arcoref = this;
-        // da a referencia desse arco pra flecha pra ela saber pra onde voltar ao ser puxada
+        if(FlechasAtual > 0){
+            
+            FlechasAtual--;
+            GameObject novaFlecha = Instantiate(FlechaPreFab[elementoAtual], FirePoint.position, transform.rotation);
+
+            flechasAtiradas.Add(novaFlecha);
+            // qnd a flecha é atirada guardamos a referencia na lista pra puxar dps
+            novaFlecha.GetComponent<Flecha>().arcoref = this;
+            // da a referencia desse arco pra flecha pra ela saber pra onde voltar ao ser puxada
+        }
 
 
     }

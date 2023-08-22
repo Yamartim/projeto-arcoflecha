@@ -42,7 +42,7 @@ public class Movimento : MonoBehaviour
     {
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
-        animator.SetFloat("velocidade", Mathf.Abs(inputHorizontal));
+        //animator.SetFloat("velocidade", Mathf.Abs(inputHorizontal));
 
 
         // Andar
