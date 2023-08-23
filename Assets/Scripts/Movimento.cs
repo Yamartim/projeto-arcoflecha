@@ -7,22 +7,15 @@ public class Movimento : MonoBehaviour
     Rigidbody2D rb;
     CapsuleCollider2D col;
     PhysicsMaterial2D mat;
-    public Animator animator;
-    // public AudioSource src;
-    // public AudioClip pular;
     public Transform groundCheck;
     public LayerMask groundLayer;
     public float aceleracao;
     public int forcaPulo;
     public float velMax;
     bool isGrounded;
-
-
-    float inputHorizontal, inputVertical;
-
+    public float inputHorizontal, inputVertical;
     bool cordaProxima, escalando;
-    public float velEscalada = 1f;
-    
+    public float velEscalada = 1f;    
     HingeJoint2D hj;
     Rigidbody2D cordaProxRB;
     GameObject cordaAtual = null;
@@ -42,8 +35,6 @@ public class Movimento : MonoBehaviour
     {
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
-        //animator.SetFloat("velocidade", Mathf.Abs(inputHorizontal));
-
 
         // Andar
         InputAndar();
