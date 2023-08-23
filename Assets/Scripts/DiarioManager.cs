@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PausaMenu : MonoBehaviour
+public class DiarioManager : MonoBehaviour
 {
-    public static bool Pausa = false;
-    public GameObject PausaMenuCanvas;
+    public static bool Diario = false;
+    public GameObject DiarioManagerCanvas;
 
     void Start()
     {
@@ -15,9 +15,9 @@ public class PausaMenu : MonoBehaviour
     
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Tab))
         {
-            if(Pausa)
+            if(Diario)
             {
                 Play();
             }
@@ -30,21 +30,15 @@ public class PausaMenu : MonoBehaviour
 
     void Stop()
     {
-        PausaMenuCanvas.SetActive(true);
+        DiarioManagerCanvas.SetActive(true);
         Time.timeScale = 0f;
-        Pausa = true;
+        Diario = true;
     }
 
     public void Play()
     {
-        PausaMenuCanvas.SetActive(false);
+        DiarioManagerCanvas.SetActive(false);
         Time.timeScale = 1f;
-        Pausa = false;
+        Diario = false;
     }
-
-    public void MenuPrincipal()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
-    }
-        
 }

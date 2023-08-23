@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuPrincipal : MonoBehaviour {
-    public void sair (){
+    public void Sair (){
         Debug.Log("sair");
         Application.Quit();
     }
 
-    //public void jogar (){
-    //    SceneManagement.LoadScene(1);
-    //}
+    public void Jogar (){
+        SceneManager.LoadScene(1);
+    }
 
 }
