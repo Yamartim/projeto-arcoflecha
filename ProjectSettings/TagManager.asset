@@ -9,6 +9,14 @@ TagManager:
   - espinho
   - corda
   - CheckPoint
+  - flechaNormal
+  - flechaFogo
+  - flechaGelo
+  - flechaLuz
+  - Agua
+  - Madeira
+  - Gelo
+  - "Corrup\xE7\xE3o"
   layers:
   - Default
   - TransparentFX
@@ -46,12 +54,15 @@ TagManager:
   - name: Fundo
     uniqueID: 296456699
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Meio
     uniqueID: 18117447
     locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
   - name: Frente
     uniqueID: 1091963697
+    locked: 0
+  - name: UI
+    uniqueID: 294283685
     locked: 0

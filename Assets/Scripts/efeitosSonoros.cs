@@ -11,14 +11,4 @@ public class EfeitosSonoros : MonoBehaviour
         src.PlayOneShot(atirarFlecha);
     }
 
-    public void playColetarFlecha()
-    {
-        src.PlayOneShot(coletarFlecha);
-    }
-
-    public void playColetarAnel()
-    {
-        src.PlayOneShot(coletarAnel);
-    }
-
 }
