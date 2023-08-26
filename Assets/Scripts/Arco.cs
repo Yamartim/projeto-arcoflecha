@@ -95,10 +95,9 @@ public class Arco : MonoBehaviour
 
     void Shoot(){
         //logica do tiro
-        //gameObject.GetComponentInParent<EfeitosSonoros>().playAtirarFlecha();
 
         if(FlechasAtual > 0){
-            
+            gameObject.GetComponent<AudioSource>().Play();
             FlechasAtual--;
             GameObject novaFlecha = Instantiate(FlechaPreFab[elementoAtual], FirePoint.position, transform.rotation);
 
