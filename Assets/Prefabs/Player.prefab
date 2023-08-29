@@ -367,7 +367,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   aceleracao: 20
-  forcaPulo: 14
+  forcaPulo: 12
   velMax: 4.5
   inputHorizontal: 0
   inputVertical: 0
