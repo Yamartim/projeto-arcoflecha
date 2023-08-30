@@ -80,7 +80,7 @@ public class Arco : MonoBehaviour
         }
 
         // botao de recarregar q puxa todas as flechas na cena
-        if(Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.R) && gameObject.GetComponentInParent<Movimento>().isGrounded)
         {
             IsReloading = true;
             foreach (GameObject flecha in flechasAtiradas)
