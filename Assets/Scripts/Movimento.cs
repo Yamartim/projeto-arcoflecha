@@ -9,18 +9,18 @@ public class Movimento : MonoBehaviour
     Rigidbody2D rb;
     CapsuleCollider2D col;
     PhysicsMaterial2D mat;
-    public Transform groundCheck;
+    public Transform groundCheck, tetoCheck;
     public LayerMask groundLayer;
     public float aceleracao;
     public int forcaPulo;
     public float velMax;
     public bool isGrounded;
     public float inputHorizontal, inputVertical;
-    bool cordaProxima, escalando;
+    bool cordaProxima, escalando, tetoEncima;
     public float velEscalada = 1f;    
     HingeJoint2D hj;
-    Rigidbody2D cordaProxRB;
-    List<Rigidbody2D> cordasProxRB = new List<Rigidbody2D>();
+    // Rigidbody2D cordaProxRB;
+    public List<Rigidbody2D> cordasProxRB = new();
     GameObject cordaAtual = null;
 
     void Start()
@@ -87,26 +87,15 @@ public class Movimento : MonoBehaviour
         } else {
             cordaProxima = true;
         }
+        // Debug.Log(cordasProxRB.Count);
         // se ta perto de uma corda e o player aperta pra cima ou pra beixo agarra
         if(cordaProxima && (inputVertical > 0) && !escalando)
-        {
-            // cordaProxRB = cordasProxRB[0];
-            // foreach (Rigidbody2D item in cordasProxRB)
-            // {
-            //     if(item) {continue;}
-            //     // if(item.transform.position.y - gameObject.transform.position.y > 1f) {
-            //     //     Debug.Log("Segmento muito alto");
-            //     //     continue;
-            //     // }
-            //     if(item.transform.position.y > cordaProxRB.transform.position.y) {
-            //         cordaProxRB = item;
-            //     }
-            // }
-            
-            // Ordenar lista de colisores da maior posição y para a menor
+        {   
+            // ordena lista de segmentos próximos da maior posição y para a menor
             if(cordasProxRB.Count > 1) {
                 cordasProxRB.Sort((i, j) => j.transform.position.y.CompareTo(i.transform.position.y));
             }
+            // agarra no segmento mais alto
             AgarrarCorda(cordasProxRB[0]);
         }
 
@@ -117,9 +106,16 @@ public class Movimento : MonoBehaviour
             SegmentoCorda seg = hj.connectedBody.GetComponent<SegmentoCorda>();
             rb.gravityScale = 0f;
 
-            // ao inves de se mover com fisica, vamos alterar nossa posição relativa a corda
             //rb.velocity = new Vector2(rb.velocity.x, inputVertical * velMax);
-            hj.connectedAnchor += Vector2.up * inputVertical * Time.deltaTime *velEscalada;
+
+            tetoEncima = Physics2D.OverlapCapsule(tetoCheck.position,
+                    new Vector2(0, 0.3f), CapsuleDirection2D.Horizontal,
+                    0, groundLayer);
+            // se o teto não estiver impedindo o movimento ...
+            if((inputVertical < 1) || ((inputVertical == 1) && !tetoEncima)) {
+                // ao inves de se mover com fisica, vamos alterar nossa posição relativa a corda
+                hj.connectedAnchor += Vector2.up * inputVertical * Time.deltaTime *velEscalada;
+            }
 
             // se tocarmos no chão enquanto escalamos...
             if(isGrounded && (inputVertical <= 0)) {

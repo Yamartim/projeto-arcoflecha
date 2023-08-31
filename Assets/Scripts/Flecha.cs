@@ -64,6 +64,7 @@ public class Flecha : MonoBehaviour
         if(retornando && other.CompareTag("Player"))
         {
             other.gameObject.GetComponentInChildren<Arco>().RecuperarFlecha(this);
+            // other.gameObject.GetComponent<Movimento>().cordasProxRB.Clear();
             Destroy(gameObject);
             //da push numa pilha de flechas?
         }
