@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Movimento : MonoBehaviour
@@ -7,24 +9,18 @@ public class Movimento : MonoBehaviour
     Rigidbody2D rb;
     CapsuleCollider2D col;
     PhysicsMaterial2D mat;
-    public Animator animator;
-    // public AudioSource src;
-    // public AudioClip pular;
-    public Transform groundCheck;
+    public Transform groundCheck, tetoCheck;
     public LayerMask groundLayer;
     public float aceleracao;
     public int forcaPulo;
     public float velMax;
-    bool isGrounded;
-
-
-    float inputHorizontal, inputVertical;
-
-    bool cordaProxima, escalando;
-    public float velEscalada = 1f;
-    
+    public bool isGrounded;
+    public float inputHorizontal, inputVertical;
+    bool cordaProxima, escalando, tetoEncima;
+    public float velEscalada = 1f;    
     HingeJoint2D hj;
-    Rigidbody2D cordaProxRB;
+    // Rigidbody2D cordaProxRB;
+    public List<Rigidbody2D> cordasProxRB = new();
     GameObject cordaAtual = null;
 
     void Start()
@@ -42,8 +38,6 @@ public class Movimento : MonoBehaviour
     {
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
-        animator.SetFloat("velocidade", Mathf.Abs(inputHorizontal));
-
 
         // Andar
         InputAndar();
@@ -88,10 +82,21 @@ public class Movimento : MonoBehaviour
     
     void InputEscalada()
     {
+        if(cordasProxRB.Count == 0) {
+            cordaProxima = false;
+        } else {
+            cordaProxima = true;
+        }
+        // Debug.Log(cordasProxRB.Count);
         // se ta perto de uma corda e o player aperta pra cima ou pra beixo agarra
-        if(cordaProxima && (Mathf.Abs(inputVertical) > 0))
-        {
-            AgarrarCorda(cordaProxRB);
+        if(cordaProxima && (inputVertical > 0) && !escalando)
+        {   
+            // ordena lista de segmentos próximos da maior posição y para a menor
+            if(cordasProxRB.Count > 1) {
+                cordasProxRB.Sort((i, j) => j.transform.position.y.CompareTo(i.transform.position.y));
+            }
+            // agarra no segmento mais alto
+            AgarrarCorda(cordasProxRB[0]);
         }
 
         // logica da escalada
@@ -99,12 +104,23 @@ public class Movimento : MonoBehaviour
         {
             //referencia de qual ponta da corda nos estamos agarrando
             SegmentoCorda seg = hj.connectedBody.GetComponent<SegmentoCorda>();
-
             rb.gravityScale = 0f;
 
-            // ao inves de se mover com fisica, vamos alterar nossa posição relativa a corda
             //rb.velocity = new Vector2(rb.velocity.x, inputVertical * velMax);
-            hj.connectedAnchor += Vector2.up * inputVertical * Time.deltaTime *velEscalada;
+
+            tetoEncima = Physics2D.OverlapCapsule(tetoCheck.position,
+                    new Vector2(0, 0.3f), CapsuleDirection2D.Horizontal,
+                    0, groundLayer);
+            // se o teto não estiver impedindo o movimento ...
+            if((inputVertical < 1) || ((inputVertical == 1) && !tetoEncima)) {
+                // ao inves de se mover com fisica, vamos alterar nossa posição relativa a corda
+                hj.connectedAnchor += Vector2.up * inputVertical * Time.deltaTime *velEscalada;
+            }
+
+            // se tocarmos no chão enquanto escalamos...
+            if(isGrounded && (inputVertical <= 0)) {
+                SoltarCorda();
+            }
 
             // se chegamos no fim de um segmento de cords subindo...
             if (hj.connectedAnchor.y > 0f)
@@ -112,7 +128,8 @@ public class Movimento : MonoBehaviour
                 // se n tiver mais corda em cima soltamos
                 if (seg.EhSegmentoInicial()){
                     SoltarCorda();
-                } else { // senao conectamos no proximo segmento posicionando relativamente
+                }
+                else { // senao conectamos no proximo segmento posicionando relativamente
                     //Debug.Log("sobe um segmento...");
                     hj.connectedAnchor = new Vector2(0, (hj.connectedAnchor.y-1) % -1);
                     hj.connectedBody = seg.conectadoAcima.gameObject.GetComponent<Rigidbody2D>();
@@ -122,7 +139,7 @@ public class Movimento : MonoBehaviour
             // se chegamos no fim de um segmento de cords descendo...
             if (hj.connectedAnchor.y < -1f){
                 // se n tiver mais corda embaixo soltamos
-                if (seg.EhSegmentoFinal()){
+                if (seg.EhSegmentoFinal() || isGrounded){
                     SoltarCorda();
                 } else { // senao conectamos no proximo segmento posicionando relativamente
                     //Debug.Log("desce um segmento...");
@@ -142,7 +159,7 @@ public class Movimento : MonoBehaviour
     {
         // confere se ja nao estamos escalando ou tentando subir a msm corda
         bool acimaPlayer = gameObject.transform.position.y < corda.transform.position.y;
-        if (!escalando && corda.transform.parent != cordaAtual && acimaPlayer)
+        if (corda.transform.parent != cordaAtual && acimaPlayer)
         {
             escalando = true;
             hj.enabled = true;
@@ -168,8 +185,12 @@ public class Movimento : MonoBehaviour
     {
         if(other.CompareTag("corda") && !cordaProxima)
         {
-            cordaProxima = true;
-            cordaProxRB = other.gameObject.GetComponent<Rigidbody2D>();
+            // cordaProxima = true;
+            // cordaProxRB = other.gameObject.GetComponent<Rigidbody2D>();
+            Rigidbody2D segmento = other.gameObject.GetComponent<Rigidbody2D>();
+            if(!cordasProxRB.Contains(segmento)) {
+                cordasProxRB.Add(segmento);
+            }
         }
 
     }
@@ -178,8 +199,12 @@ public class Movimento : MonoBehaviour
     {
         if(other.CompareTag("corda"))
         {
-            cordaProxima = true;
-            cordaProxRB = other.gameObject.GetComponent<Rigidbody2D>();
+            // cordaProxima = true;
+            // cordaProxRB = other.gameObject.GetComponent<Rigidbody2D>();
+            Rigidbody2D segmento = other.gameObject.GetComponent<Rigidbody2D>();
+            if(!cordasProxRB.Contains(segmento)) {
+                cordasProxRB.Add(segmento);
+            }
         }
     }
 
@@ -188,8 +213,8 @@ public class Movimento : MonoBehaviour
     {
         if(other.CompareTag("corda"))
         {
-            cordaProxima = false;
-            cordaProxRB = null;
+            // cordaProxRB = null;
+            cordasProxRB.Remove(other.gameObject.GetComponent<Rigidbody2D>());
         }
     }
 

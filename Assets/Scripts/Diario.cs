@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Diario : MonoBehaviour
 {
@@ -10,10 +11,12 @@ public class Diario : MonoBehaviour
     bool rotate = false;
     [SerializeField] GameObject VoltarButton;
     [SerializeField] GameObject ProximoButton;
+    
 
     private void Start()
     {
         InitialState();
+        Time.timeScale = 1f;
     }
 
     public void InitialState()
@@ -91,4 +94,5 @@ public class Diario : MonoBehaviour
             yield return null;
         }
     }
+
 }
