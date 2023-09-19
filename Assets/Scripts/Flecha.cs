@@ -46,7 +46,7 @@ public class Flecha : MonoBehaviour
     }*/
 
     // desativa modo estatico da flecha apos a colisão e colocoa ela no modo de retorno pra voltar pro player
-    public void RetornarPlayer(){
+    public virtual void RetornarPlayer(){
         //DesfazerFlecha();
         rb.constraints = RigidbodyConstraints2D.None;
         rb.isKinematic = false;
