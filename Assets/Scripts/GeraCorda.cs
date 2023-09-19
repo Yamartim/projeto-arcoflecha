@@ -24,6 +24,11 @@ public class GeraCorda : MonoBehaviour
         Rigidbody2D ultimoSeg = topo;
         for(int i = 0; i < numSegmentos; i++)
         {
+
+            if(PertoDoChao(i))
+            {
+                break;
+            }
             //se tivermos multiplos tipos de segmento pra variar visualmente
             //int variacao = Random.Range(0, prefabSegmentos.Length);
             GameObject novoSeg = Instantiate(prefabSegmentos);
@@ -34,8 +39,13 @@ public class GeraCorda : MonoBehaviour
             novoSegHinge.connectedBody = ultimoSeg;
 
             ultimoSeg = novoSeg.GetComponent<Rigidbody2D>();
-
         }
+    }
+
+    bool PertoDoChao(int distancia)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, (float)distancia + 0.5f);
+        return hit.collider != null;
     }
 
 }
