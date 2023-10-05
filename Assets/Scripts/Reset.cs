@@ -18,9 +18,13 @@ public class Reset : MonoBehaviour
 
     //public Color CorPadrao;
 
-    //public Color CorDano1;
+    public Color CorDano1;
 
-    //public Color CorDano2;
+    public Color CorDano2;
+
+    public Color CorDano3;
+
+    public Color CorDano4;
 
 
     
@@ -67,9 +71,21 @@ public class Reset : MonoBehaviour
     {
         player.vidaAtual = (player.vidaAtual - 1);
 
-        if(player.vidaAtual <= 110) {
+        if(player.vidaAtual <= 180) {
             //rend.color = CorDano1;
-            rend.color = Color.red;
+            rend.color = CorDano1;
+        }
+
+        if(player.vidaAtual <= 120){
+            rend.color = CorDano2;
+        }
+
+        if(player.vidaAtual <= 90){
+            rend.color = CorDano3;
+        }
+
+        if(player.vidaAtual <= 500){
+            rend.color = CorDano4;
         }
 
        // if(player.vidaAtual <= 60) {
