@@ -7,12 +7,27 @@ public class Reset : MonoBehaviour
     public Vector2 startPosition;
     Status player;
 
-    public int vidaMaxima = 105; // Valor máximo de vida
+    public int vidaMaxima; // Valor máximo de vida
     public int vidaAtual; // Valor atual de vida
 
     private Movimento Movimento;
 
     bool isDead = false;
+
+    private SpriteRenderer rend;
+
+    //public Color CorPadrao;
+
+    public Color CorDano1;
+
+    public Color CorDano2;
+
+    public Color CorDano3;
+
+    public Color CorDano4;
+
+
+    
 
     
     // Start is called before the first frame update
@@ -21,6 +36,9 @@ public class Reset : MonoBehaviour
         player = GetComponent<Status>();
        startPosition = transform.position;
        player.vidaAtual = player.vidaMaxima;
+
+       rend = GetComponent<SpriteRenderer>();
+       rend.color = rend.color;
     }
 
     // Update is called once per frame
@@ -36,7 +54,7 @@ public class Reset : MonoBehaviour
             ResetPosition();
             isDead=false;
             player.vidaAtual = player.vidaMaxima;
-            Debug.Log(vidaAtual);
+            //Debug.Log(vidaAtual);
         }
         
     }
@@ -45,11 +63,35 @@ public class Reset : MonoBehaviour
     {
         // Redefina a posição para a posição inicial
         transform.position = startPosition;
+        //rend.color = CorPadrao;
+        rend.color = Color.white;
     }
 
     public void PerderVida()
     {
-        player.vidaAtual = player.vidaAtual - 15;
+        player.vidaAtual = (player.vidaAtual - 1);
+
+        if(player.vidaAtual <= 180) {
+            //rend.color = CorDano1;
+            rend.color = CorDano1;
+        }
+
+        if(player.vidaAtual <= 120){
+            rend.color = CorDano2;
+        }
+
+        if(player.vidaAtual <= 90){
+            rend.color = CorDano3;
+        }
+
+        if(player.vidaAtual <= 500){
+            rend.color = CorDano4;
+        }
+
+       // if(player.vidaAtual <= 60) {
+       //     //rend.color = CorDano1;
+       //     rend.color = Color.red;
+       // }        
     }
     
 
@@ -65,15 +107,22 @@ public class Reset : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.gameObject.tag == "espinho"){
-            PerderVida();
-            Debug.Log("perdeu 15 de vida");
-        }
-
+    
         if(collision.gameObject.tag == "CheckPoint"){
             SavePlayerState(collision.gameObject);
             startPosition = transform.position;
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision) {
+
+        if(collision.gameObject.tag == "espinho"){
+            
+            PerderVida();
+            //Debug.Log("perdeu 15 de vida");
+        }
+
+        
     }
 
 }
