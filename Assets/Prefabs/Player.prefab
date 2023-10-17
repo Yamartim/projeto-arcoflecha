@@ -454,6 +454,10 @@ MonoBehaviour:
   startPosition: {x: 0, y: 0}
   vidaMaxima: 100
   vidaAtual: 0
+  CorDano1: {r: 0, g: 0, b: 0, a: 0}
+  CorDano2: {r: 0, g: 0, b: 0, a: 0}
+  CorDano3: {r: 0, g: 0, b: 0, a: 0}
+  CorDano4: {r: 0, g: 0, b: 0, a: 0}
 --- !u!212 &8459264527622026269
 SpriteRenderer:
   m_ObjectHideFlags: 0

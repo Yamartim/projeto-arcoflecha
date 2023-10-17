@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7734337823394296475}
   - component: {fileID: 8861662144575812836}
   - component: {fileID: 6393693708598637159}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: plataforma_pensa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,6 +76,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tolerancia: 0.5
+  dist: 1
+  k: 1.8
 --- !u!1 &3673862748230372954
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,7 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8074527477257838980}
   - component: {fileID: 7552450661985619841}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tile1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6757123743914707979}
   - component: {fileID: 6028072568068512894}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tile4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5465292439880641913}
   - component: {fileID: 6360039106732071387}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tile2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1384382176331400893}
   - component: {fileID: 32934647103517582}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tile3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

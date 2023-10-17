@@ -17,6 +17,7 @@ TagManager:
   - Madeira
   - Gelo
   - "Corrup\xE7\xE3o"
+  - PlayerSola
   layers:
   - Default
   - TransparentFX
