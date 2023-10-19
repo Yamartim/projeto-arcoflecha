@@ -87,10 +87,6 @@ public class Reset : MonoBehaviour
             rend.color = CorDano4;
         }
 
-       // if(player.vidaAtual <= 60) {
-       //     //rend.color = CorDano1;
-       //     rend.color = Color.red;
-       // }        
     }
     
 
