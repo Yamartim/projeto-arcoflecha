@@ -26,18 +26,20 @@ public class Anel : MonoBehaviour
     }
 
     private void LiberarFlecha(tipoFlecha tipo){
-        switch(tipo)
-        {
-        case tipoFlecha.Gelo:
-            Status.status.flechasLiberadas[1] = true;
-        break;
-        case tipoFlecha.Fogo:
-            Status.status.flechasLiberadas[2] = true;
-        break;
-        case tipoFlecha.Luz:
-            Status.status.flechasLiberadas[3] = true;
-        break;
-        }
+        // switch(tipo)
+        // {
+        // case tipoFlecha.Gelo:
+        //     Status.status.flechasLiberadas[1] = true;
+        // break;
+        // case tipoFlecha.Fogo:
+        //     Status.status.flechasLiberadas[2] = true;
+        // break;
+        // case tipoFlecha.Luz:
+        //     Status.status.flechasLiberadas[3] = true;
+        // break;
+        // }
 
+        Status.status.flechasLiberadas[(int)tipo] = true;
+        Debug.Log("Flecha Liberada = "+tipo);
     } 
 }

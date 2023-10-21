@@ -734,8 +734,8 @@ MonoBehaviour:
   FirePoint: {fileID: 8459264526450406955}
   FlechaPreFab:
   - {fileID: 3582102895121398435, guid: 06b45f0516f31314bb1c23b3860d5a5e, type: 3}
-  - {fileID: 3582102895121398435, guid: 19b5f71f9cd120f4ea23faee0b8533a7, type: 3}
   - {fileID: 3582102895121398435, guid: e9cb4f277f0c58d4da1b6b70046eb0d1, type: 3}
+  - {fileID: 3582102895121398435, guid: 19b5f71f9cd120f4ea23faee0b8533a7, type: 3}
   - {fileID: 3582102895121398435, guid: d4cf759ffc40ffb43af17cc089e03d37, type: 3}
   elementoAtual: 0
   FlechasAtual: 0
