@@ -1106,21 +1106,21 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0.7567583
-          inSlope: -0.736695
-          outSlope: -0.736695
+          value: 1
+          inSlope: -0.97757435
+          outSlope: -0.97757435
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.2568093
+          outWeight: 0.33707866
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: -0.59878814
-          outSlope: -0.59878814
+          inSlope: -0.99771166
+          outSlope: -0.99771166
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.225681
+          inWeight: 1
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -4933,7 +4933,7 @@ ParticleSystemRenderer:
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}

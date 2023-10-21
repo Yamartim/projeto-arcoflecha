@@ -438,7 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaMaxima: 100
   vidaAtual: 0
-  flechasLiberadas: 
+  flechasLiberadas: 01000000
 --- !u!114 &1648519778
 MonoBehaviour:
   m_ObjectHideFlags: 0

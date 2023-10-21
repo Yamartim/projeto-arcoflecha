@@ -127,7 +127,7 @@ MonoBehaviour:
   coll: {fileID: 0}
   arcoref: {fileID: 0}
   retornando: 0
-  tipo: 1
+  tipo: 2
 --- !u!61 &729146276368012224
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -344,7 +344,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.30309153, b: 0, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1105,22 +1105,22 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
-          inSlope: -0.97757435
-          outSlope: -0.97757435
-          tangentMode: 0
+          value: 0.5270275
+          inSlope: -0.5270275
+          outSlope: -0.5270275
+          tangentMode: 34
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33707866
+          inWeight: 0
+          outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: -0.99771166
-          outSlope: -0.99771166
-          tangentMode: 0
+          inSlope: -0.5270275
+          outSlope: -0.5270275
+          tangentMode: 34
           weightedMode: 0
-          inWeight: 1
-          outWeight: 0.33333334
+          inWeight: 0.33333334
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -1484,8 +1484,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     timeMode: 0
     fps: 30
     frameOverTime:
@@ -1543,8 +1543,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startFrame:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 0.8
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1599,11 +1599,15 @@ ParticleSystem:
     tilesY: 1
     animationType: 0
     rowIndex: 0
-    cycles: 1
+    cycles: 3
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: -508555444, guid: 158e5ba95e6cf5b41b83d77c9fbf9674, type: 3}
+    - sprite: {fileID: 1646904845, guid: 158e5ba95e6cf5b41b83d77c9fbf9674, type: 3}
+    - sprite: {fileID: 2125395346, guid: 158e5ba95e6cf5b41b83d77c9fbf9674, type: 3}
+    - sprite: {fileID: 985202410, guid: 158e5ba95e6cf5b41b83d77c9fbf9674, type: 3}
+    - sprite: {fileID: 338462874, guid: 158e5ba95e6cf5b41b83d77c9fbf9674, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:

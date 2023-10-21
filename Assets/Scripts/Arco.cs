@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +22,7 @@ public class Arco : MonoBehaviour
 
 
 
-    private List<tipoFlecha> flechasDisponiveis = new List<tipoFlecha>();
+    // private List<tipoFlecha> flechasDisponiveis = new List<tipoFlecha>();
 
     // serve pra saber todas as flechas q o player atirou pra ativar a função de puxar elas
     private List<GameObject> flechasAtiradas = new List<GameObject>();
@@ -30,7 +31,7 @@ public class Arco : MonoBehaviour
     void Start(){
         FlechasAtual = TotalFlecha;
         playercoll = GetComponentInParent<Collider2D>();
-        flechasDisponiveis.Add(tipoFlecha.Corda);
+        // flechasDisponiveis.Add(tipoFlecha.Corda);
 
         elementoAtual = 0;
 
@@ -67,16 +68,13 @@ public class Arco : MonoBehaviour
 
             if(elementoAtual < 3){
                 if(Status.status.flechasLiberadas[elementoAtual + 1] == true)
-                elementoAtual++;
-            }
+                    elementoAtual++;
+                else elementoAtual = 0;
+            } else elementoAtual = 0;
         }
         if(Input.GetKeyDown(KeyCode.Q)){
-
-            if(elementoAtual > 0){
-                elementoAtual--;
-            }else if((elementoAtual == 0) && Status.status.flechasLiberadas[3] == true){
-                elementoAtual = 3;
-            }
+            if(elementoAtual > 0) elementoAtual--;
+            else elementoAtual = Array.LastIndexOf(Status.status.flechasLiberadas, true);
         }
 
         // botao de recarregar q puxa todas as flechas na cena
@@ -115,9 +113,9 @@ public class Arco : MonoBehaviour
         TotalFlecha++;
     }
 
-    public void addTipoFlecha(tipoFlecha tipo) {
-        flechasDisponiveis.Add(tipo);
-    }
+    // public void addTipoFlecha(tipoFlecha tipo) {
+    //     flechasDisponiveis.Add(tipo);
+    // }
 
     public void RecuperarFlecha(Flecha flechaAtirada)
     {

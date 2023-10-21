@@ -16,8 +16,6 @@ public class MovPlatPensa : MonoBehaviour
         y0 = gameObject.transform.position.y;
         yMax = y0 + dist/2;
         yMin = yMax - dist;
-        Debug.Log("alto = " + (yMax ) + "; baixo = " + (yMin ));
-        Debug.Log("alto = " + (yMax - tolerancia*dist) + "; baixo = " + (yMin + tolerancia*dist));
     }
 
     void Update()

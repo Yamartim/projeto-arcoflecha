@@ -15,8 +15,8 @@ public class Anel : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Player")){
-            other.gameObject.GetComponentInChildren<Arco>().addTipoFlecha(tipo);
-            liberarFlecha(tipo);
+            // other.gameObject.GetComponentInChildren<Arco>().addTipoFlecha(tipo);
+            LiberarFlecha(tipo);
             //other.gameObject.GetComponent<EfeitosSonoros>().playColetarAnel();
             gameObject.GetComponent<AudioSource>().Play();
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -25,7 +25,7 @@ public class Anel : MonoBehaviour
         }
     }
 
-    private void liberarFlecha(tipoFlecha tipo){
+    private void LiberarFlecha(tipoFlecha tipo){
         switch(tipo)
         {
         case tipoFlecha.Gelo:
