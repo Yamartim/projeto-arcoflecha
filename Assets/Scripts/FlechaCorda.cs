@@ -11,13 +11,17 @@ public class FlechaCorda : Flecha
 
     private void OnCollisionEnter2D(Collision2D other) {
         // só solta uma corda se colidir com a coisa certa
-            // por enquanto a coisa certa é qualquer coisa q n seja o jogador
-        if (!cordaAtiva && !other.gameObject.CompareTag("Player"))
+            // por enquanto a coisa certa é qualquer coisa q n seja o jogador e outra corda
+        if (!cordaAtiva && !other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("corda"))
         {
-            // congela a fisica da flecha e instancia a corda
+            // congela a fisica da flecha
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             rb.isKinematic = false;
             coll.enabled = false;
+            // faz a flecha grudar em plataformas móveis
+            if(other.gameObject.CompareTag("Plataforma"))
+                transform.parent = other.transform;
+            // instancia a corda
             instancia = Instantiate(corda, transform.position, transform.rotation, parent: transform);
             instancia.SetActive(true);
             cordaAtiva = true;

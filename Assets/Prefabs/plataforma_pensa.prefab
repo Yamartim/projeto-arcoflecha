@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5591869685581877100}
   m_Layer: 6
   m_Name: plataforma_pensa
-  m_TagString: Untagged
+  m_TagString: Plataforma
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
