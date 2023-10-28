@@ -9,12 +9,14 @@ public class MovPlatMovel : MonoBehaviour
     public int pontoInicial;    // posição inicial da plataforma
     public Transform[] pontos;  // posições que a plataforma toma
     private int i;
+    private float y;
     void Start()
     {
         transform.position = pontos[pontoInicial].position;
     }
     void Update()
     {
+        y = gameObject.transform.position.y;
         // se plataforma tiver muito perto do ponto onde tem que ir ...
         if(Vector2.Distance(transform.position, pontos[i].position) < 0.02f) {
             // passe para o próximo ou comece do 0
@@ -26,12 +28,16 @@ public class MovPlatMovel : MonoBehaviour
         // move a plataforma para o próximo ponto da array
         transform.position = Vector2.MoveTowards(transform.position, pontos[i].position, velocidade*Time.deltaTime);
     }
-
-    private void OnCollisionEnter2D(Collision2D col) {
-        col.transform.SetParent(transform);
+    // quando player sobe na plataforma, gruda nele fazendo-o filho
+    void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("Player") && other.gameObject.transform.position.y > y + 0.5) {
+            other.transform.SetParent(transform);
+        }
     }
-
-    private void OnCollisionExit2D(Collision2D col) {
-        col.transform.SetParent(null);
+    // quando player sai da plataforma, desgruda
+    void OnTriggerExit2D(Collider2D other) {
+        if(other.gameObject.CompareTag("Player")) {
+            other.transform.SetParent(null);
+        }
     }
 }
