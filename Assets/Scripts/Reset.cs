@@ -30,7 +30,7 @@ public class Reset : MonoBehaviour
     
 
     
-    // Start is called before the first frame update
+    // Start is called before the first frame update.
     void Start()
     {
         player = GetComponent<Status>();
@@ -44,9 +44,10 @@ public class Reset : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.vidaAtual > 0 && isDead == false){
-            
-        }
+        // conferindo se o personagem morreu, caso sim, retornar a posição inicial.
+//        if(player.vidaAtual > 0 && isDead == false){
+//           
+//        } 
 
         if ( player.vidaAtual <= 0 && !isDead)
         {
@@ -56,12 +57,40 @@ public class Reset : MonoBehaviour
             player.vidaAtual = player.vidaMaxima;
             //Debug.Log(vidaAtual);
         }
-        
+
+        // se a vida dele não está cheia e ela, deve ganhar vida com o tempo.
+        if (player.vidaAtual<player.vidaMaxima && player.vidaAtual != player.vidaMaxima){
+            GanharVida();
+            //Debug.Log("Gachou vida");
+        }
+        if (player.vidaAtual>player.vidaMaxima){
+            player.vidaAtual = player.vidaMaxima;
+        }
+
+        //variar a cor do personagem, conforme a vida atual dele, para indicar a situação da vida do personagem ao jogador.
+        if(player.vidaAtual>920){
+            rend.color = Color.white;
+        }
+        if(player.vidaAtual <= 900) {
+            rend.color = CorDano1;
+        }
+
+        if(player.vidaAtual <= 750){
+            rend.color = CorDano2;
+        }
+
+        if(player.vidaAtual <= 500){
+            rend.color = CorDano3;
+        }
+
+        if(player.vidaAtual <= 250){
+            rend.color = CorDano4;
+        }
     }
 
     void ResetPosition()
     {
-        // Redefina a posição para a posição inicial
+        // Redefina a posição para a posição inicial.
         transform.position = startPosition;
         //rend.color = CorPadrao;
         rend.color = Color.white;
@@ -69,38 +98,26 @@ public class Reset : MonoBehaviour
 
     public void PerderVida()
     {
-        player.vidaAtual = (player.vidaAtual - 1);
-
-        if(player.vidaAtual <= 180) {
-            rend.color = CorDano1;
-        }
-
-        if(player.vidaAtual <= 120){
-            rend.color = CorDano2;
-        }
-
-        if(player.vidaAtual <= 90){
-            rend.color = CorDano3;
-        }
-
-        if(player.vidaAtual <= 50){
-            rend.color = CorDano4;
-        }
-
+        player.vidaAtual = (player.vidaAtual - 4);
     }
+
+    public void GanharVida(){
+        player.vidaAtual = (player.vidaAtual + 1);
+    }
+
     
 
-    //salvar os status do player
+    //salvar os status do player.
      private void SavePlayerState(GameObject Player)
      {
         
         PlayerPrefs.SetFloat("PlayerPosX", Player.transform.position.x);
         PlayerPrefs.SetFloat("PlayerPosY", Player.transform.position.y);
-        //PlayerPrefs.SetFloat("PlayerPosZ", Player.transform.position.z);
         PlayerPrefs.Save();
 
     }
 
+    // caso o player colida com o checkpoint a posição inicial será redefinida para que renaça no checkpoint quando morrer.
     private void OnTriggerEnter2D(Collider2D collision) {
     
         if(collision.gameObject.tag == "CheckPoint"){
@@ -109,14 +126,14 @@ public class Reset : MonoBehaviour
         }
     }
 
+    // enquanto estiver em contato com o objeto que dará dano, ele perde vida.
     private void OnTriggerStay2D(Collider2D collision) {
 
         if(collision.gameObject.tag == "espinho"){
             
             PerderVida();
-            //Debug.Log("perdeu 15 de vida");
+            Debug.Log("perdeu vida");
         }
-
         
     }
 
