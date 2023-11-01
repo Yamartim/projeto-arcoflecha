@@ -17,7 +17,12 @@ TagManager:
   - Madeira
   - Gelo
   - "Corrup\xE7\xE3o"
+<<<<<<< Updated upstream
   - Plataforma
+=======
+  - PlayerSola
+  - paginasDiario
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
