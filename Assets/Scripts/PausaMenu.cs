@@ -19,23 +19,23 @@ public class PausaMenu : MonoBehaviour
         {
             if(Pausa)
             {
-                Play();
+                Jogar();
             }
             else
             {
-                Stop();
+                Parar();
             }
         }
     }
 
-    void Stop()
+    void Parar()
     {
         PausaMenuCanvas.SetActive(true);
         Time.timeScale = 0f;
         Pausa = true;
     }
 
-    public void Play()
+    public void Jogar()
     {
         PausaMenuCanvas.SetActive(false);
         Time.timeScale = 1f;
