@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class DiarioManager : MonoBehaviour
 {
     public static bool Diario = false;
-    public GameObject DiarioCanvas;
+    public GameObject DiarioManagerCanvas;
 
-    void Comecar()
+    void Start()
     {
         Time.timeScale = 1f;
     }
@@ -19,25 +19,25 @@ public class DiarioManager : MonoBehaviour
         {
             if(Diario)
             {
-                Voltar();
+                Play();
             }
             else
             {
-                Parar();
+                Stop();
             }
         }
     }
 
-    void Parar()
+    void Stop()
     {
-        DiarioCanvas.SetActive(true);
-        Time.timeScale = 1f;
+        DiarioManagerCanvas.SetActive(true);
+        Time.timeScale = 0f;
         Diario = true;
     }
 
-    public void Voltar()
+    public void Play()
     {
-        DiarioCanvas.SetActive(false);
+        DiarioManagerCanvas.SetActive(false);
         Time.timeScale = 1f;
         Diario = false;
     }
