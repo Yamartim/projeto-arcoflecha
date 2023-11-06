@@ -34,11 +34,11 @@ public class Reset : MonoBehaviour
     void Start()
     {
         player = GetComponent<Status>();
-       startPosition = transform.position;
-       player.vidaAtual = player.vidaMaxima;
+        startPosition = transform.position;
+        player.vidaAtual = player.vidaMaxima;
 
-       rend = GetComponent<SpriteRenderer>();
-       rend.color = rend.color;
+        rend = GetComponent<SpriteRenderer>();
+        rend.color = rend.color;
     }
 
     // Update is called once per frame
@@ -108,8 +108,8 @@ public class Reset : MonoBehaviour
     
 
     //salvar os status do player.
-     private void SavePlayerState(GameObject Player)
-     {
+    private void SavePlayerState(GameObject Player)
+    {
         
         PlayerPrefs.SetFloat("PlayerPosX", Player.transform.position.x);
         PlayerPrefs.SetFloat("PlayerPosY", Player.transform.position.y);
