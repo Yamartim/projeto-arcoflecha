@@ -30,7 +30,7 @@ public class Movimento : MonoBehaviour
         hj = GetComponent<HingeJoint2D>();
 
         mat = new PhysicsMaterial2D("Material");
-        mat.friction = 0.4f;
+        mat.friction = 1f;
         col.sharedMaterial = mat;
     }
 
@@ -62,7 +62,7 @@ public class Movimento : MonoBehaviour
         else if (inputHorizontal == 0)
         {
             // Se não estiver andando, adicionar atrito
-            mat.friction = 0.4f;
+            mat.friction = 1f;
             col.sharedMaterial = mat;
         }
     }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a176050cc09e82147bbc9ea400312d09
+guid: 9854627bd30653b41881dc84620babb6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -44,15 +44,15 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 160
+  spriteMeshType: 1
+  alignment: 2
+  spritePivot: {x: 0.5, y: 1}
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -105,38 +105,46 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Agua_tiles_0
+      name: cipo_corda_0
       rect:
         serializedVersion: 2
-        x: 45
-        y: 45
-        width: 165
-        height: 165
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 36, y: 36, z: 36, w: 36}
+        x: 10
+        y: 0
+        width: 11
+        height: 32
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2620558e84a1854ca2abaca692fb989
-      internalID: -1356044195
+      spriteID: 8b5f6070040fa8841b53f0d6a23b6aad
+      internalID: -1199683233
       vertices: []
       indices: 
       edges: []
       weights: []
-    outline: []
-    physicsShape: []
+    outline:
+    - - {x: -6, y: 16}
+      - {x: -6, y: -16}
+      - {x: 5, y: -16}
+      - {x: 5, y: 16}
+    physicsShape:
+    - - {x: -6, y: 16}
+      - {x: -6, y: -16}
+      - {x: 5, y: -16}
+      - {x: 5, y: 16}
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Agua_tiles_0: -1356044195
+      cipo_corda_0: -1199683233
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
