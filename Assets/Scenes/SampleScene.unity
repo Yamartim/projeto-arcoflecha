@@ -44497,7 +44497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1648519779, guid: 6dc7b34b0b4cfda44a36fea0b43fe140, type: 3}
       propertyPath: vidaMaxima
-      value: 220
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1648519779, guid: 6dc7b34b0b4cfda44a36fea0b43fe140, type: 3}
       propertyPath: flechasLiberadas.Array.size
