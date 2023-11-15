@@ -6,12 +6,47 @@ using Unity.VisualScripting;
 
 public class AnimacaoPlayer : MonoBehaviour
 {
-    public Animator animator;
+    Animator animator;
+    SpriteRenderer sprite;
+    Movimento movim;
+
+    bool olhandoEsquerda = false;
+    bool andarFrente;
+
+    private void Start() {
+        animator = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
+        movim = GetComponent<Movimento>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        animator.SetFloat("velocidade", Mathf.Abs(gameObject.GetComponent<Movimento>().inputHorizontal));
         
+        animator.SetFloat("MOV_HORIZONTAL", Mathf.Abs(movim.inputHorizontal));
+        animator.SetBool("GROUNDED", movim.grounded);
+
+        // se ta andando na mesma direção que ta olhando, anda de frente, senao de costas
+        andarFrente = !(movim.inputHorizontal > 0f ^ !olhandoEsquerda);
+        animator.SetBool("ANDAR_FRENTE", andarFrente);
+
     }
+
+    public void VirarPlayer(bool esquerda)
+    {
+        olhandoEsquerda = esquerda;
+        sprite.flipX = esquerda;
+        //animator.SetBool("OLHA_ESQUERDA", olhandoEsquerda);
+    }
+
+    public void AnimPular()
+    {
+        animator.SetTrigger("PULAR");
+    }
+
+    public void AnimSegCorda(bool segurou)
+    {
+        animator.SetBool("SEGURANDO_CORDA", segurou);
+    }
+
 }
