@@ -24,6 +24,7 @@ public class AnimacaoPlayer : MonoBehaviour
     {
         
         animator.SetFloat("MOV_HORIZONTAL", Mathf.Abs(movim.inputHorizontal));
+        animator.SetFloat("MOV_VERTICAL", movim.inputVertical);
         animator.SetBool("GROUNDED", movim.grounded);
 
         // se ta andando na mesma direção que ta olhando, anda de frente, senao de costas
@@ -49,4 +50,13 @@ public class AnimacaoPlayer : MonoBehaviour
         animator.SetBool("SEGURANDO_CORDA", segurou);
     }
 
+    public void PausarAnim()
+    {
+        animator.speed = 0f;
+    }
+
+    public void ContinuarAnim()
+    {
+        animator.speed = 1f;
+    }
 }

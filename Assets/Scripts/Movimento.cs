@@ -109,9 +109,8 @@ public class Movimento : MonoBehaviour
 
             //rb.velocity = new Vector2(rb.velocity.x, inputVertical * velMax);
 
-            tetoEncima = Physics2D.OverlapCapsule(tetoCheck.position,
-                    new Vector2(0, 0.3f), CapsuleDirection2D.Horizontal,
-                    0, groundLayer);
+            tetoEncima = TemTeto();
+            
             // se o teto não estiver impedindo o movimento ...
             if((inputVertical < 1) || ((inputVertical == 1) && !tetoEncima)) {
                 // ao inves de se mover com fisica, vamos alterar nossa posição relativa a corda
@@ -187,6 +186,13 @@ public class Movimento : MonoBehaviour
     bool IsGrounded()
     {
         return Physics2D.OverlapCapsule(groundCheck.position,
+                    new Vector2(0, 0.3f), CapsuleDirection2D.Horizontal,
+                    0, groundLayer); //tirar a groundlayer pra nao precisar ficar se preocupando com considerar tudo ground? -martim
+    }
+
+    bool TemTeto()
+    {
+        return Physics2D.OverlapCapsule(tetoCheck.position,
                     new Vector2(0, 0.3f), CapsuleDirection2D.Horizontal,
                     0, groundLayer);
     }
