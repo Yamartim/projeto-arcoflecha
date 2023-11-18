@@ -204,7 +204,7 @@ public class Movimento : MonoBehaviour
         {
             // cordaProxima = true;
             // cordaProxRB = other.gameObject.GetComponent<Rigidbody2D>();
-            Rigidbody2D segmento = other.gameObject.GetComponent<Rigidbody2D>();
+            Rigidbody2D segmento = other.gameObject.GetComponentInParent<Rigidbody2D>();
             if(!cordasProxRB.Contains(segmento)) {
                 cordasProxRB.Add(segmento);
             }
@@ -218,7 +218,7 @@ public class Movimento : MonoBehaviour
         {
             // cordaProxima = true;
             // cordaProxRB = other.gameObject.GetComponent<Rigidbody2D>();
-            Rigidbody2D segmento = other.gameObject.GetComponent<Rigidbody2D>();
+            Rigidbody2D segmento = other.gameObject.GetComponentInParent<Rigidbody2D>();
             if(!cordasProxRB.Contains(segmento)) {
                 cordasProxRB.Add(segmento);
             }
@@ -231,7 +231,7 @@ public class Movimento : MonoBehaviour
         if(other.CompareTag("corda"))
         {
             // cordaProxRB = null;
-            cordasProxRB.Remove(other.gameObject.GetComponent<Rigidbody2D>());
+            cordasProxRB.Remove(other.gameObject.GetComponentInParent<Rigidbody2D>());
         }
     }
 
