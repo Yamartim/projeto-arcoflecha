@@ -55,6 +55,9 @@ TagManager:
   - name: Rascunho
     uniqueID: 1429192825
     locked: 0
+  - name: FundoCaverna
+    uniqueID: 1300517015
+    locked: 0
   - name: Fundo
     uniqueID: 296456699
     locked: 0

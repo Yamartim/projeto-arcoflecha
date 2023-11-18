@@ -20,6 +20,7 @@ public class Arco : MonoBehaviour
     public Text FlechaHUD;
     static public Arco arco;
 
+    public AnimacaoPlayer anim;
 
 
     // private List<tipoFlecha> flechasDisponiveis = new List<tipoFlecha>();
@@ -47,9 +48,9 @@ public class Arco : MonoBehaviour
         transform.right = direcao;
 
         if(Input.mousePosition.x < Screen.width/2)
-            transform.parent.localScale = new Vector3 (-5, 5, 1);
+            anim.VirarPlayer(true);
         else
-            transform.parent.localScale = new Vector3 (5, 5, 1);
+            anim.VirarPlayer(false);
 
         FlechaHUD.text = FlechasAtual.ToString();
         if(IsReloading){
@@ -78,7 +79,7 @@ public class Arco : MonoBehaviour
         }
 
         // botao de recarregar q puxa todas as flechas na cena
-        if(Input.GetKeyDown(KeyCode.R) && gameObject.GetComponentInParent<Movimento>().isGrounded)
+        if(Input.GetKeyDown(KeyCode.R) && gameObject.GetComponentInParent<Movimento>().grounded)
         {
             IsReloading = true;
             foreach (GameObject flecha in flechasAtiradas)

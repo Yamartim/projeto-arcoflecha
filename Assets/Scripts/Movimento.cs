@@ -9,14 +9,15 @@ public class Movimento : MonoBehaviour
     Rigidbody2D rb;
     CapsuleCollider2D col;
     PhysicsMaterial2D mat;
+    AnimacaoPlayer anim;
     public Transform groundCheck, tetoCheck;
     public LayerMask groundLayer;
     public float aceleracao;
     public int forcaPulo;
     public float velMax;
-    public bool isGrounded;
     public float inputHorizontal, inputVertical;
     bool cordaProxima, escalando, tetoEncima;
+    public bool grounded;
     public float velEscalada = 1f;    
     HingeJoint2D hj;
     // Rigidbody2D cordaProxRB;
@@ -28,9 +29,10 @@ public class Movimento : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
         hj = GetComponent<HingeJoint2D>();
+        anim = GetComponent<AnimacaoPlayer>();
 
         mat = new PhysicsMaterial2D("Material");
-        mat.friction = 0.4f;
+        mat.friction = 1f;
         col.sharedMaterial = mat;
     }
 
@@ -38,6 +40,7 @@ public class Movimento : MonoBehaviour
     {
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
+        grounded = IsGrounded();
 
         // Andar
         InputAndar();
@@ -62,20 +65,18 @@ public class Movimento : MonoBehaviour
         else if (inputHorizontal == 0)
         {
             // Se não estiver andando, adicionar atrito
-            mat.friction = 0.4f;
+            mat.friction = 1f;
             col.sharedMaterial = mat;
         }
     }
 
     private void InputPulo()
     {
-        isGrounded = Physics2D.OverlapCapsule(groundCheck.position,
-                    new Vector2(0, 0.3f), CapsuleDirection2D.Horizontal,
-                    0, groundLayer);
-        if (Input.GetButtonDown("Jump") && (isGrounded || escalando))
+        if (Input.GetButtonDown("Jump") && (grounded || escalando))
         {
             rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
             SoltarCorda();
+            anim.AnimPular();
         }
     }
 
@@ -108,9 +109,8 @@ public class Movimento : MonoBehaviour
 
             //rb.velocity = new Vector2(rb.velocity.x, inputVertical * velMax);
 
-            tetoEncima = Physics2D.OverlapCapsule(tetoCheck.position,
-                    new Vector2(0, 0.3f), CapsuleDirection2D.Horizontal,
-                    0, groundLayer);
+            tetoEncima = TemTeto();
+            
             // se o teto não estiver impedindo o movimento ...
             if((inputVertical < 1) || ((inputVertical == 1) && !tetoEncima)) {
                 // ao inves de se mover com fisica, vamos alterar nossa posição relativa a corda
@@ -118,7 +118,7 @@ public class Movimento : MonoBehaviour
             }
 
             // se tocarmos no chão enquanto escalamos...
-            if(isGrounded && (inputVertical <= 0)) {
+            if(grounded && (inputVertical <= 0)) {
                 SoltarCorda();
             }
 
@@ -139,7 +139,7 @@ public class Movimento : MonoBehaviour
             // se chegamos no fim de um segmento de cords descendo...
             if (hj.connectedAnchor.y < -1f){
                 // se n tiver mais corda embaixo soltamos
-                if (seg.EhSegmentoFinal() || isGrounded){
+                if (seg.EhSegmentoFinal() || grounded){
                     SoltarCorda();
                 } else { // senao conectamos no proximo segmento posicionando relativamente
                     //Debug.Log("desce um segmento...");
@@ -168,6 +168,7 @@ public class Movimento : MonoBehaviour
             //Debug.Log("Segurei corda! " + hj.connectedAnchor);
         }
             
+        anim.AnimSegCorda(true);
     }
 
     // desativa tudo pra fisica voltar a atuar no player
@@ -178,6 +179,22 @@ public class Movimento : MonoBehaviour
         hj.enabled = false;
         hj.connectedBody = null;
         cordaAtual = null;
+
+        anim.AnimSegCorda(false);
+    }
+
+    bool IsGrounded()
+    {
+        return Physics2D.OverlapCapsule(groundCheck.position,
+                    new Vector2(0, 0.3f), CapsuleDirection2D.Horizontal,
+                    0, groundLayer); //tirar a groundlayer pra nao precisar ficar se preocupando com considerar tudo ground? -martim
+    }
+
+    bool TemTeto()
+    {
+        return Physics2D.OverlapCapsule(tetoCheck.position,
+                    new Vector2(0, 0.3f), CapsuleDirection2D.Horizontal,
+                    0, groundLayer);
     }
 
     // detectando se chegamos perto ou longe de uma corda

@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8459264527622026271}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1740132686
 SpriteRenderer:
@@ -127,7 +127,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8459264527622026271}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &5912105116815444635
 CapsuleCollider2D:
@@ -175,7 +175,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8459264527622026271}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &5221652663122007960
 AudioSource:
@@ -302,7 +302,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8459264527622026271}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8459264527126884840
 GameObject:
@@ -364,13 +364,13 @@ GameObject:
   - component: {fileID: 8459264527622026244}
   - component: {fileID: 1648519779}
   - component: {fileID: 1648519778}
+  - component: {fileID: 5648544945432265745}
   - component: {fileID: 8459264527622026269}
   - component: {fileID: 8459264527622026241}
   - component: {fileID: 4363154787172695981}
   - component: {fileID: 1648519766}
   - component: {fileID: 1648519772}
   - component: {fileID: 1446511133265008021}
-  - component: {fileID: 5648544945432265745}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -391,11 +391,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8459264527126884841}
+  - {fileID: 5614513793105814664}
   - {fileID: 8459264526450406955}
   - {fileID: 8459264528187647743}
   - {fileID: 1740132684}
   - {fileID: 4350883154392373411}
-  - {fileID: 5614513793105814664}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -419,10 +419,10 @@ MonoBehaviour:
   aceleracao: 30
   forcaPulo: 12
   velMax: 4.5
-  isGrounded: 0
   inputHorizontal: 0
   inputVertical: 0
-  velEscalada: 20
+  grounded: 0
+  velEscalada: 1
   cordasProxRB: []
 --- !u!114 &1648519779
 MonoBehaviour:
@@ -436,7 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee1e7306b276d0498dafff1e3299fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaMaxima: 100
+  vidaMaxima: 1000
   vidaAtual: 0
   flechasLiberadas: 01000000
 --- !u!114 &1648519778
@@ -452,12 +452,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPosition: {x: 0, y: 0}
-  vidaMaxima: 100
+  vidaMaxima: 0
   vidaAtual: 0
-  CorDano1: {r: 0, g: 0, b: 0, a: 0}
-  CorDano2: {r: 0, g: 0, b: 0, a: 0}
-  CorDano3: {r: 0, g: 0, b: 0, a: 0}
-  CorDano4: {r: 0, g: 0, b: 0, a: 0}
+  CorDano1: {r: 1, g: 0.48550782, b: 0.45660377, a: 1}
+  CorDano2: {r: 1, g: 0.22075468, b: 0.22075468, a: 1}
+  CorDano3: {r: 0.8679245, g: 0, b: 0, a: 1}
+  CorDano4: {r: 0.7176471, g: 0, b: 0, a: 1}
+--- !u!114 &5648544945432265745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8459264527622026268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d601aba643cefcf42a003712e281407f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &8459264527622026269
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -499,12 +511,12 @@ SpriteRenderer:
   m_SortingLayerID: 18117447
   m_SortingLayer: -1
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: b88972d4554fde94db5b03cf4cf83c97, type: 3}
+  m_Sprite: {fileID: 2114061901, guid: b88972d4554fde94db5b03cf4cf83c97, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.17, y: 0.22}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -522,7 +534,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
@@ -544,7 +556,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.004, y: -0.01}
+  m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.13, y: 0.22}
   m_Direction: 0
 --- !u!233 &1648519766
@@ -562,7 +574,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 2.3087, y: 1.99}
+  m_ConnectedAnchor: {x: 0, y: 0}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -671,19 +683,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5648544945432265745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8459264527622026268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d601aba643cefcf42a003712e281407f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1446511133265008021}
 --- !u!1 &8459264528187647742
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,7 +714,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8459264527622026271}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8459264528187647712
 MonoBehaviour:
@@ -741,6 +740,7 @@ MonoBehaviour:
   FlechasAtual: 0
   TempoRecarga: 1
   FlechaHUD: {fileID: 0}
+  anim: {fileID: 5648544945432265745}
 --- !u!82 &3274208012008538439
 AudioSource:
   m_ObjectHideFlags: 0
