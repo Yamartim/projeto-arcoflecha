@@ -436,7 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee1e7306b276d0498dafff1e3299fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaMaxima: 1000
+  vidaMaxima: 100
   vidaAtual: 0
   flechasLiberadas: 01000000
 --- !u!114 &1648519778
@@ -452,8 +452,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPosition: {x: 0, y: 0}
-  vidaMaxima: 0
-  vidaAtual: 0
+  taxaPerda: 53
+  taxaGanho: 20
   CorDano1: {r: 1, g: 0.48550782, b: 0.45660377, a: 1}
   CorDano2: {r: 1, g: 0.22075468, b: 0.22075468, a: 1}
   CorDano3: {r: 0.8679245, g: 0, b: 0, a: 1}

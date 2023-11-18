@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Status : MonoBehaviour
 {
-    public int vidaMaxima = 220; // Valor máximo de vida
-    public int vidaAtual; // Valor atual de vida
+    public float vidaMaxima; // Valor máximo de vida
+    public float vidaAtual; // Valor atual de vida
     public bool[] flechasLiberadas;
     public static Status status;
     
