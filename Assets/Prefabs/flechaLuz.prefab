@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3169556858751179259}
   - component: {fileID: 4898384708446283751}
   - component: {fileID: -3122473594871367157}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flechaLuz
   m_TagString: flechaLuz
   m_Icon: {fileID: 0}

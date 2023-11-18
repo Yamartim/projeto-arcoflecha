@@ -12,7 +12,7 @@ public class FlechaCorda : Flecha
     private void OnCollisionEnter2D(Collision2D other) {
         // só solta uma corda se colidir com a coisa certa
             // por enquanto a coisa certa é qualquer coisa q n seja o jogador e outra corda
-        if (!cordaAtiva && !other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("corda"))
+        if (!cordaAtiva && !other.gameObject.CompareTag("Player"))
         {
             // congela a fisica da flecha
             rb.constraints = RigidbodyConstraints2D.FreezeAll;

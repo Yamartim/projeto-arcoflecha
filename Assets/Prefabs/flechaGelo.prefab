@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8809639353479457737}
   - component: {fileID: 3458053646293467268}
   - component: {fileID: -8963020688160889318}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flechaGelo
   m_TagString: flechaGelo
   m_Icon: {fileID: 0}

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 729146276368012224}
   - component: {fileID: 3955763926409358891}
   - component: {fileID: 1804698479661568411}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flechaFogo
   m_TagString: flechaFogo
   m_Icon: {fileID: 0}
