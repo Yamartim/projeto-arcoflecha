@@ -57,11 +57,14 @@ public class Reset : MonoBehaviour
             //Debug.Log(vidaAtual);
         }
 
-        // se a vida dele não está cheia e ela, deve ganhar vida com o tempo.
+        // se a vida não está cheia...
         if (player.vidaAtual<player.vidaMaxima && player.vidaAtual != player.vidaMaxima){
-            GanharVida();
-            //Debug.Log("Gachou vida");
+            // e Player está no chão, regenerar
+            if(gameObject.GetComponent<Movimento>().grounded) {
+                GanharVida();
+            }
         }
+        // para não ultrapassar a vida máxima
         if (player.vidaAtual>player.vidaMaxima){
             player.vidaAtual = player.vidaMaxima;
         }
