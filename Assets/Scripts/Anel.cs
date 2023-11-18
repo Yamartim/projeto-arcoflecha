@@ -40,6 +40,6 @@ public class Anel : MonoBehaviour
         // }
 
         Status.status.flechasLiberadas[(int)tipo] = true;
-        Debug.Log("Flecha Liberada = "+tipo);
+        Debug.Log("Flecha Liberada = "+((int)tipo)+"("+tipo+")");
     } 
 }

@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amp: 0.2
   freq: 1
-  tipo: 2
+  tipo: 1
 --- !u!61 &5373833918585229926
 BoxCollider2D:
   m_ObjectHideFlags: 0

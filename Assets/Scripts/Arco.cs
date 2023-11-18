@@ -41,6 +41,7 @@ public class Arco : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(elementoAtual);
         //calculo da direção da flecha;
         Vector2 posicaoArco = transform.position;
         Vector2 posicaoMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
