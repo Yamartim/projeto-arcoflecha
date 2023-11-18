@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1740132684}
   - component: {fileID: 1740132686}
   - component: {fileID: 1740132685}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Mira
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5614513793105814664}
   - component: {fileID: 5912105116815444635}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tetoCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4350883154392373411}
   - component: {fileID: 5221652663122007960}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Som
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8459264526450406955}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: firepoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8459264527126884841}
   - component: {fileID: 8459264527126884842}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 1648519766}
   - component: {fileID: 1648519772}
   - component: {fileID: 1446511133265008021}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -694,7 +694,7 @@ GameObject:
   - component: {fileID: 8459264528187647743}
   - component: {fileID: 8459264528187647712}
   - component: {fileID: 3274208012008538439}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Arco
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -739,7 +739,6 @@ MonoBehaviour:
   elementoAtual: 0
   FlechasAtual: 0
   TempoRecarga: 1
-  FlechaHUD: {fileID: 0}
   anim: {fileID: 5648544945432265745}
 --- !u!82 &3274208012008538439
 AudioSource:
