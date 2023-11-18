@@ -7,8 +7,7 @@ public class Reset : MonoBehaviour
     public Vector2 startPosition;
     Status player;
 
-    public int vidaMaxima; // Valor máximo de vida
-    public int vidaAtual; // Valor atual de vida
+    public float taxaPerda, taxaGanho;
 
     private Movimento Movimento;
 
@@ -68,22 +67,15 @@ public class Reset : MonoBehaviour
         }
 
         //variar a cor do personagem, conforme a vida atual dele, para indicar a situação da vida do personagem ao jogador.
-        if(player.vidaAtual>920){
+        if(player.vidaAtual > 0.8*player.vidaMaxima){
             rend.color = Color.white;
-        }
-        if(player.vidaAtual <= 900) {
+        } else if(player.vidaAtual > 0.6*player.vidaMaxima) {
             rend.color = CorDano1;
-        }
-
-        if(player.vidaAtual <= 750){
+        } else if(player.vidaAtual > 0.4*player.vidaMaxima){
             rend.color = CorDano2;
-        }
-
-        if(player.vidaAtual <= 500){
+        } else if(player.vidaAtual > 0.2*player.vidaMaxima){
             rend.color = CorDano3;
-        }
-
-        if(player.vidaAtual <= 250){
+        } else {
             rend.color = CorDano4;
         }
     }
@@ -98,11 +90,11 @@ public class Reset : MonoBehaviour
 
     public void PerderVida()
     {
-        player.vidaAtual = (player.vidaAtual - 4);
+        player.vidaAtual -= taxaPerda * Time.deltaTime;
     }
 
     public void GanharVida(){
-        player.vidaAtual = (player.vidaAtual + 1);
+        player.vidaAtual += taxaGanho * Time.deltaTime;
     }
 
     
@@ -129,8 +121,7 @@ public class Reset : MonoBehaviour
     // enquanto estiver em contato com o objeto que dará dano, ele perde vida.
     private void OnTriggerStay2D(Collider2D collision) {
 
-        if(collision.gameObject.tag == "espinho"){
-            
+        if(collision.gameObject.tag == "Corrupcao"){
             PerderVida();
             Debug.Log("perdeu vida");
         }
