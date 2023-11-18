@@ -12,12 +12,15 @@ public class Arco : MonoBehaviour
 
     public Collider2D playercoll;
     public Transform  FirePoint;
+    float fp_x = 0.12f;
     public GameObject[] FlechaPreFab;
     public int elementoAtual;
     public int FlechasAtual;
     public float TempoRecarga = 1f;
     private bool IsReloading = false;
-    public Text FlechaHUD;
+    
+    //codigo da ui velha
+    //public Text FlechaHUD;
     static public Arco arco;
 
     public AnimacaoPlayer anim;
@@ -49,11 +52,17 @@ public class Arco : MonoBehaviour
         transform.right = direcao;
 
         if(Input.mousePosition.x < Screen.width/2)
+        {
             anim.VirarPlayer(true);
-        else
+            FirePoint.localPosition = new Vector3(-fp_x, 0f, 0f);
+        } else
+        {
             anim.VirarPlayer(false);
+            FirePoint.localPosition = new Vector3(fp_x, 0f, 0f);
+        }
 
-        FlechaHUD.text = FlechasAtual.ToString();
+        //codigo da ui velha
+        //FlechaHUD.text = FlechasAtual.ToString();
         if(IsReloading){
             return;
         }
