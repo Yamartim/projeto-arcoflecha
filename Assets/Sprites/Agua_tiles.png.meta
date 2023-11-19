@@ -108,8 +108,8 @@ TextureImporter:
       name: Agua_tiles_0
       rect:
         serializedVersion: 2
-        x: 45
-        y: 45
+        x: 43
+        y: 44
         width: 165
         height: 165
       alignment: 0
