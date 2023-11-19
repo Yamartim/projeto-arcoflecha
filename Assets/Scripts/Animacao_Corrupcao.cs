@@ -9,9 +9,9 @@ public class Animacao_Corrupcao : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int num = Random.Range(1,201);
-        if(num == 100) {
-            gameObject.transform.Rotate(0.0f, 0.0f, 90.0f);
-        }
+        // rotaciona um bloco de corrupção aleatoriamente por frame
+        int indAleatorio = Random.Range(0, gameObject.transform.childCount);
+        Transform filhoAleatorio = gameObject.transform.GetChild(indAleatorio);
+        filhoAleatorio.transform.Rotate(0.0f, 0.0f, 90.0f);
     }
 }

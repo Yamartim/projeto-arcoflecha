@@ -417,7 +417,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   aceleracao: 30
-  forcaPulo: 12
+  forcaPulo: 15
   velMax: 4.5
   inputHorizontal: 0
   inputVertical: 0
@@ -452,8 +452,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPosition: {x: 0, y: 0}
-  taxaPerda: 70
-  taxaGanho: 20
+  taxaPerda: 110
+  taxaGanho: 10
   CorDano1: {r: 1, g: 0.48550782, b: 0.45660377, a: 1}
   CorDano2: {r: 1, g: 0.22075468, b: 0.22075468, a: 1}
   CorDano3: {r: 0.8679245, g: 0, b: 0, a: 1}
@@ -534,8 +534,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
-  m_LinearDrag: 0
+  m_Mass: 1
+  m_LinearDrag: 1.2
   m_AngularDrag: 0.05
   m_GravityScale: 3
   m_Material: {fileID: 0}
