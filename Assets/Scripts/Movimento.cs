@@ -12,6 +12,7 @@ public class Movimento : MonoBehaviour
     AnimacaoPlayer anim;
     public Transform groundCheck, tetoCheck;
     public LayerMask groundLayer;
+    bool movimentoPerimitido;
     public float aceleracao;
     public int forcaPulo;
     public float velMax;
@@ -42,13 +43,19 @@ public class Movimento : MonoBehaviour
         inputVertical = Input.GetAxisRaw("Vertical");
         grounded = IsGrounded();
 
-        // Andar
-        InputAndar();
+        if (movimentoPerimitido)
+        {
 
-        // Pular
-        InputPulo();
+            // Andar
+            InputAndar();
 
-        InputEscalada();
+            // Pular
+            InputPulo();
+
+            InputEscalada();
+
+        }
+
     }
 
     private void InputAndar()
@@ -233,6 +240,12 @@ public class Movimento : MonoBehaviour
             // cordaProxRB = null;
             cordasProxRB.Remove(other.gameObject.GetComponentInParent<Rigidbody2D>());
         }
+    }
+
+    public void ToggleMovimento(bool ativo)
+    {
+        movimentoPerimitido = ativo;
+        gameObject.GetComponentInChildren<Arco>().SetCanShoot(ativo);
     }
 
 }
