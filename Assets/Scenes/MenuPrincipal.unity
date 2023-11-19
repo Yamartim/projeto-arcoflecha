@@ -946,7 +946,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -585.22, y: 145.49}
+  m_AnchoredPosition: {x: -585.22, y: 42}
   m_SizeDelta: {x: 673.72, y: 686.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1878714051
@@ -1022,8 +1022,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -700.28, y: -352.57}
-  m_SizeDelta: {x: 443.59, y: 255.13}
+  m_AnchoredPosition: {x: -550.14, y: -481}
+  m_SizeDelta: {x: 743.87, y: 77.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2097075167
 MonoBehaviour:
@@ -1045,7 +1045,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Um jogo por:\nCassati\nCaos\nJo\xE3o\nMartim\nMary\nNoni\nPedro\nYara\n"
+  m_text: "Um jogo por:\nCassati, Caos, Jo\xE3o, Martim, Mary, Noni, Pedro, Yara\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
