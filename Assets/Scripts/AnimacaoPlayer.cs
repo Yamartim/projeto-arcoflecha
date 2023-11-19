@@ -64,4 +64,10 @@ public class AnimacaoPlayer : MonoBehaviour
     {
         animator.speed = 1f;
     }
+
+    public void ResetAnim()
+    {
+        animator.Rebind();
+        animator.Update(0f);
+    }
 }
