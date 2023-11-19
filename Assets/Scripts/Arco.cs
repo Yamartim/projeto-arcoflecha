@@ -25,6 +25,9 @@ public class Arco : MonoBehaviour
 
     public AnimacaoPlayer anim;
 
+    //bool para menupausa
+    private bool canShoot = true;
+
 
     // private List<tipoFlecha> flechasDisponiveis = new List<tipoFlecha>();
 
@@ -67,8 +70,9 @@ public class Arco : MonoBehaviour
             return;
         }
 
-        if(Input.GetButtonDown("Fire1")){
-
+        //pode atirar
+        if (canShoot && Input.GetButtonDown("Fire1"))
+        {
             Shoot();
         }
 
@@ -135,5 +139,10 @@ public class Arco : MonoBehaviour
             FlechasAtual++;
         }
         flechasAtiradas.Remove(flechaAtirada.gameObject);
+    }
+
+    public void SetCanShoot(bool value)
+    {
+        canShoot = value;
     }
 }

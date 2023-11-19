@@ -28,7 +28,7 @@ public class AnelScroll : MonoBehaviour
 
             UpdateImageAndText();
         }
-        else if (Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKeyDown(KeyCode.E))
         {
             currentIndex++;
             if (currentIndex >= images.Length)

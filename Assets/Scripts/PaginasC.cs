@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class PaginasC : MonoBehaviour
 {
-    private bool coletado = false;
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !coletado)
+        if (other.gameObject.CompareTag("Player"))
         {
-            coletado = true;
 
-            Diario diario = other.GetComponent<Diario>();
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+            // Acessa diretamente a instância estática do Diario usando FindObjectOfType
+            Diario diario = FindObjectOfType<Diario>();
+            
             if (diario != null)
             {
                 diario.ColetarPagina();
+                Debug.Log("ColetarPagina chamada");
             }
 
             gameObject.SetActive(false);
