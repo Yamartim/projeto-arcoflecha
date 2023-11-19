@@ -44,6 +44,11 @@ public class AnimacaoPlayer : MonoBehaviour
     {
         animator.SetTrigger("PULAR");
     }
+    
+    public void AnimMorrer()
+    {
+        animator.SetTrigger("MORRER");
+    }
 
     public void AnimSegCorda(bool segurou)
     {
