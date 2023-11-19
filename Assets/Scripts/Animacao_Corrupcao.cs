@@ -10,8 +10,10 @@ public class Animacao_Corrupcao : MonoBehaviour
     void Update()
     {
         // rotaciona um bloco de corrupção aleatoriamente por frame
-        int indAleatorio = Random.Range(0, gameObject.transform.childCount);
-        Transform filhoAleatorio = gameObject.transform.GetChild(indAleatorio);
-        filhoAleatorio.transform.Rotate(0.0f, 0.0f, 90.0f);
+        int indGrupo = Random.Range(0, gameObject.transform.childCount);
+        Transform grupo = gameObject.transform.GetChild(indGrupo);
+        int indAleatorio = Random.Range(0, grupo.transform.childCount);
+        Transform blocoAleatorio = grupo.transform.GetChild(indAleatorio);
+        blocoAleatorio.transform.Rotate(0.0f, 0.0f, 90.0f);
     }
 }
