@@ -10,6 +10,9 @@ public class FlechaGelo : Flecha
         if(other.gameObject.CompareTag("Agua")){   
             Vector2 position = other.gameObject.transform.position;
             Quaternion rotation = other.gameObject.transform.rotation;
+            
+            geloPreFab.transform.localScale = other.gameObject.transform.localScale;
+            
             Destroy(other.gameObject);
             Instantiate(geloPreFab, position, rotation);
         }

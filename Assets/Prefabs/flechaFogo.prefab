@@ -128,6 +128,7 @@ MonoBehaviour:
   arcoref: {fileID: 0}
   retornando: 0
   tipo: 2
+  aguaPreFab: {fileID: 9183273195096552914, guid: 15f1a531330088445bc3bdf3e3084e06, type: 3}
 --- !u!61 &729146276368012224
 BoxCollider2D:
   m_ObjectHideFlags: 0
