@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Reset : MonoBehaviour
 {
-    public Vector2 startPosition;
+    public Vector2 posRevive;
     Status player;
 
     public float taxaPerda, taxaGanho;
 
-    private Movimento Movimento;
+    private Movimento movim;
+    private AnimacaoPlayer anim;
 
-    bool isDead = false;
+    bool estaMorto = false;
 
     private SpriteRenderer rend;
 
@@ -24,6 +25,7 @@ public class Reset : MonoBehaviour
 
     GameObject ultimoCheckPoint = null;
 
+    [SerializeField] float delayRevive = 1.5f;
 
     
 
@@ -32,11 +34,14 @@ public class Reset : MonoBehaviour
     void Start()
     {
         player = GetComponent<Status>();
-        startPosition = transform.position;
+        posRevive = transform.position;
         player.vidaAtual = player.vidaMaxima;
 
         rend = GetComponent<SpriteRenderer>();
         rend.color = rend.color;
+
+        anim = GetComponent<AnimacaoPlayer>();
+        movim = GetComponent<Movimento>();
     }
 
     // Update is called once per frame
@@ -47,12 +52,10 @@ public class Reset : MonoBehaviour
 //           
 //        } 
 
-        if ( player.vidaAtual <= 0 && !isDead)
+        if ( player.vidaAtual <= 0 && !estaMorto)
         {
-            isDead = true;
-            ResetPosition();
-            isDead=false;
-            player.vidaAtual = player.vidaMaxima;
+            estaMorto = true;
+            StartCoroutine(SequenciaMorte());
             //Debug.Log(vidaAtual);
         }
 
@@ -85,7 +88,8 @@ public class Reset : MonoBehaviour
     void ResetPosition()
     {
         // Redefina a posição para a posição inicial.
-        transform.position = startPosition;
+        transform.position = posRevive;
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         //rend.color = CorPadrao;
         rend.color = Color.white;
     }
@@ -116,7 +120,7 @@ public class Reset : MonoBehaviour
     
         if(collision.gameObject.tag == "CheckPoint"){
             SavePlayerState(collision.gameObject);
-            startPosition = transform.position;
+            posRevive = transform.position;
 
             collision.gameObject.GetComponent<AnimCheckpoint>().AtivarCP(true);
             if(ultimoCheckPoint != null && ultimoCheckPoint != collision.gameObject)
@@ -137,6 +141,25 @@ public class Reset : MonoBehaviour
             Debug.Log("perdeu vida");
         }
         
+    }
+
+    
+    IEnumerator SequenciaMorte()
+    {
+        Debug.Log("entrou na sequencia");
+        movim.ToggleMovimento(false);
+        anim.ContinuarAnim();
+        anim.AnimMorrer();
+        yield return new WaitForSeconds(delayRevive);  // tempo para a animação rodar
+
+
+        ResetPosition();
+        anim.ResetAnim();
+        movim.ToggleMovimento(true);
+        
+        estaMorto=false;
+        player.vidaAtual = player.vidaMaxima;
+
     }
 
 }
