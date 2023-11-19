@@ -27,6 +27,8 @@ public class Movimento : MonoBehaviour
 
     void Start()
     {
+        movimentoPerimitido = true;
+
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
         hj = GetComponent<HingeJoint2D>();
@@ -246,6 +248,7 @@ public class Movimento : MonoBehaviour
     {
         movimentoPerimitido = ativo;
         gameObject.GetComponentInChildren<Arco>().SetCanShoot(ativo);
+        anim.PausarAnim();
     }
 
 }
