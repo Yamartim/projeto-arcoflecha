@@ -18,12 +18,11 @@ public class Reset : MonoBehaviour
     //public Color CorPadrao;
 
     public Color CorDano1;
-
     public Color CorDano2;
-
     public Color CorDano3;
-
     public Color CorDano4;
+
+    GameObject ultimoCheckPoint = null;
 
 
     
@@ -118,6 +117,15 @@ public class Reset : MonoBehaviour
         if(collision.gameObject.tag == "CheckPoint"){
             SavePlayerState(collision.gameObject);
             startPosition = transform.position;
+
+            collision.gameObject.GetComponent<AnimCheckpoint>().AtivarCP(true);
+            if(ultimoCheckPoint != null && ultimoCheckPoint != collision.gameObject)
+            {
+                Debug.Log("entrou no if");
+                ultimoCheckPoint.GetComponent<AnimCheckpoint>().AtivarCP(false);
+            }
+            ultimoCheckPoint = collision.gameObject;
+            
         }
     }
 
