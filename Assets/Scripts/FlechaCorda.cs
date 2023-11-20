@@ -8,6 +8,7 @@ public class FlechaCorda : Flecha
     bool cordaAtiva = false;
 
     GameObject instancia;
+    [SerializeField] Transform cordaSpawn;
 
     private void OnCollisionEnter2D(Collision2D other) {
         // só solta uma corda se colidir com a coisa certa
@@ -22,7 +23,8 @@ public class FlechaCorda : Flecha
             if(other.gameObject.CompareTag("Plataforma"))
                 transform.parent = other.transform;
             // instancia a corda
-            instancia = Instantiate(corda, transform.position, transform.rotation, parent: transform);
+            
+            instancia = Instantiate(corda, cordaSpawn.position, transform.rotation, parent: transform);
             instancia.SetActive(true);
             cordaAtiva = true;
         }
