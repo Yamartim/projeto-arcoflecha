@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class Reset : MonoBehaviour
 {
@@ -137,6 +138,13 @@ public class Reset : MonoBehaviour
         if(collision.gameObject.tag == "Corrupcao"){
             PerderVida();
             Debug.Log("perdeu vida");
+        }
+
+        if(collision.gameObject.tag == "Agua"){
+            taxaPerda = 35;
+            PerderVida();
+            Debug.Log("perdeu vida pela agua");
+            taxaPerda = 110;
         }
         
     }
