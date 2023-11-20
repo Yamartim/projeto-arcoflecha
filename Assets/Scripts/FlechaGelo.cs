@@ -23,4 +23,10 @@ public class FlechaGelo : Flecha
             JaColidiu = true;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D other){
+        if(!other.gameObject.CompareTag("Player")){
+            rb.velocity = Vector2.zero;
+        }
+    }
 }
