@@ -10,7 +10,6 @@ public class Reset : MonoBehaviour
     public float taxaPerda, taxaGanho;
 
     private Movimento movim;
-    private AnimacaoPlayer anim;
 
     bool estaMorto = false;
 
@@ -40,7 +39,6 @@ public class Reset : MonoBehaviour
         rend = GetComponent<SpriteRenderer>();
         rend.color = rend.color;
 
-        anim = GetComponent<AnimacaoPlayer>();
         movim = GetComponent<Movimento>();
     }
 
@@ -146,20 +144,18 @@ public class Reset : MonoBehaviour
     
     IEnumerator SequenciaMorte()
     {
-        Debug.Log("entrou na sequencia");
-        movim.ToggleMovimento(false);
-        anim.ContinuarAnim();
-        anim.AnimMorrer();
+        Debug.Log("entrou na sequencia de morte");
+        movim.EstadoMorte();
+        
         yield return new WaitForSeconds(delayRevive);  // tempo para a animação rodar
 
 
-        ResetPosition();
-        anim.ResetAnim();
-        movim.ToggleMovimento(true);
+        transform.position = posRevive;
+        movim.EstadoReviver();
         
         estaMorto=false;
         player.vidaAtual = player.vidaMaxima;
-
+        rend.color = Color.white;
     }
 
 }

@@ -251,4 +251,20 @@ public class Movimento : MonoBehaviour
         anim.PausarAnim();
     }
 
+    public void EstadoMorte()
+    {
+        ToggleMovimento(false);
+        SoltarCorda();
+        anim.ContinuarAnim();
+        anim.AnimMorrer();
+    }
+
+    public void EstadoReviver()
+    {
+        rb.velocity = Vector2.zero;
+        anim.ResetAnim();
+        ToggleMovimento(true);
+    }
+
+
 }
