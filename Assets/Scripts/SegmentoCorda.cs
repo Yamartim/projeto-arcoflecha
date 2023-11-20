@@ -6,6 +6,11 @@ public class SegmentoCorda : MonoBehaviour
 {
     public GameObject conectadoAcima, conectadoAbaixo;
     HingeJoint2D hj;
+    Rigidbody2D rb;
+
+    [SerializeField] float massaInicial = 0.1f;
+    [SerializeField] float massaQueda = 2f;
+    [SerializeField] float massaDelay = 0.2f;
 
 
     // Start is called before the first frame update
@@ -13,9 +18,14 @@ public class SegmentoCorda : MonoBehaviour
     {
         // quando é criado pega a referencia do que ta conectado a ele e se posiciona em baixo
         hj = GetComponent<HingeJoint2D>();
+        rb = GetComponent<Rigidbody2D>();
+        rb.mass = massaInicial;
+
         conectadoAcima = hj.connectedBody.gameObject;
         conectadoAbaixo = null;
         PosicionarSegmento();
+
+        Invoke("TransicaoMassa", massaDelay);
     }
 
     void PosicionarSegmento()
@@ -43,5 +53,10 @@ public class SegmentoCorda : MonoBehaviour
     public bool EhSegmentoFinal()
     {
         return conectadoAbaixo == null;
+    }
+
+    void TransicaoMassa()
+    {
+        rb.mass = massaQueda;
     }
 }
