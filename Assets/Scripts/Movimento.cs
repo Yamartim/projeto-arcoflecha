@@ -219,6 +219,12 @@ public class Movimento : MonoBehaviour
             }
         }
 
+        if(other.CompareTag("Agua"))
+        {
+            rb.drag = 15;
+        }
+        
+
     }
 
     private void OnTriggerStay2D(Collider2D other) 
@@ -241,6 +247,10 @@ public class Movimento : MonoBehaviour
         {
             // cordaProxRB = null;
             cordasProxRB.Remove(other.gameObject.GetComponentInParent<Rigidbody2D>());
+        }
+        
+        if (other.CompareTag("Agua")){
+            rb.drag = 1.2f;
         }
     }
 

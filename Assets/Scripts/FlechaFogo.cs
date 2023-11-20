@@ -26,6 +26,9 @@ public class FlechaFogo : Flecha
 
             JaColidiu = true;
         }
+        if(!other.gameObject.CompareTag("Player")){
+            rb.velocity = Vector2.zero;
+        }
     }
 }
 
