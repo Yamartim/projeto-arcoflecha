@@ -79,7 +79,7 @@ public class Arco : MonoBehaviour
 
         //mudança de flecha
 
-        if(Input.GetKeyDown(KeyCode.E)){
+        if(canShoot && Input.GetKeyDown(KeyCode.E)){
 
             if(elementoAtual < 3){
                 if(Status.status.flechasLiberadas[elementoAtual + 1] == true)
@@ -87,13 +87,13 @@ public class Arco : MonoBehaviour
                 else elementoAtual = 0;
             } else elementoAtual = 0;
         }
-        if(Input.GetKeyDown(KeyCode.Q)){
+        if(canShoot && Input.GetKeyDown(KeyCode.Q)){
             if(elementoAtual > 0) elementoAtual--;
             else elementoAtual = Array.LastIndexOf(Status.status.flechasLiberadas, true);
         }
 
         // botao de recarregar q puxa todas as flechas na cena
-        if(Input.GetKeyDown(KeyCode.R) && gameObject.GetComponentInParent<Movimento>().grounded)
+        if(canShoot && Input.GetKeyDown(KeyCode.R) && gameObject.GetComponentInParent<Movimento>().grounded)
         {
             IsReloading = true;
             foreach (GameObject flecha in flechasAtiradas)
