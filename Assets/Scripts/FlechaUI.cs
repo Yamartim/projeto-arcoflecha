@@ -5,32 +5,47 @@ using UnityEngine.UI;
 
 public class FlechaUI : MonoBehaviour
 {
-    public Image[] FlechaHUDImages;
+    List<Image> FlechaHUDImages;
     public Arco arco;
 
-    public Image Flecha1; 
-    public Image Flecha2;
-    public Image Flecha3;
-    public Image Flecha4;
-    public Image Flecha5;
+    public GameObject flechaIMG;
 
     private void Start()
     {
+        
         if (arco == null)
         {
             Debug.LogError("Arco não está atribuído ao UIFlechaManager.");
         }
-    }
 
+        FlechaHUDImages = new List<Image>();
+        for(int i = 0; i < arco.TotalFlecha; i++)
+        {
+            FlechaHUDImages.Add(Instantiate(flechaIMG, this.transform).GetComponent<Image>());
+        }
+
+        UpdateFlechaUI();
+
+    }
 
     public void UpdateFlechaUI()
     {
-        int flechasDisponiveis = arco.FlechasAtual;
+        
+        for(int i = 0; i < arco.TotalFlecha; i++)
+        {
+            if(i < arco.FlechasAtual)
+            {
+                FlechaHUDImages[i].enabled = true;
+            } else
+            {
+                FlechaHUDImages[i].enabled = false;
+            }
+        }
+    }
 
-        Flecha1.enabled = (flechasDisponiveis >= 1);
-        Flecha2.enabled = (flechasDisponiveis >= 2);
-        Flecha3.enabled = (flechasDisponiveis >= 3);
-        Flecha4.enabled = (flechasDisponiveis >= 4);
-        Flecha5.enabled = (flechasDisponiveis >= 5);
+    public void AddIMG()
+    {
+        FlechaHUDImages.Add(Instantiate(flechaIMG, this.transform).GetComponent<Image>());
+        UpdateFlechaUI();
     }
 }

@@ -46,6 +46,9 @@ public class Arco : MonoBehaviour
         elementoAtual = 0;
 
         arco = this;
+        
+        uiFlecha.UpdateFlechaUI();
+
     }
 
     void Update()
@@ -148,6 +151,7 @@ public class Arco : MonoBehaviour
     public void AumentarFlechas()
     {
         TotalFlecha++;
+        uiFlecha.AddIMG();
     }
 
     // public void addTipoFlecha(tipoFlecha tipo) {
