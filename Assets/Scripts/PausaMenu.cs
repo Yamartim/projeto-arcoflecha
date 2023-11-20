@@ -62,7 +62,7 @@ public class PausaMenu : MonoBehaviour
 
         if (mira != null)
         {
-            mira.SetActive(false); 
+            mira.SetActive(true); 
         }
     }
 
