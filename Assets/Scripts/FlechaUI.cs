@@ -22,12 +22,8 @@ public class FlechaUI : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        UpdateFlechaUI();
-    }
 
-    private void UpdateFlechaUI()
+    public void UpdateFlechaUI()
     {
         int flechasDisponiveis = arco.FlechasAtual;
 

@@ -34,6 +34,9 @@ public class Arco : MonoBehaviour
     // serve pra saber todas as flechas q o player atirou pra ativar a função de puxar elas
     private List<GameObject> flechasAtiradas = new List<GameObject>();
 
+    [SerializeField] AnelScroll uiAnel;
+    [SerializeField] FlechaUI uiFlecha;
+
     // Update is called once per frame
     void Start(){
         FlechasAtual = TotalFlecha;
@@ -74,6 +77,7 @@ public class Arco : MonoBehaviour
         if (canShoot && Input.GetButtonDown("Fire1"))
         {
             Shoot();
+            uiFlecha.UpdateFlechaUI();
         }
 
 
@@ -83,14 +87,31 @@ public class Arco : MonoBehaviour
 
             if(elementoAtual < 3){
                 if(Status.status.flechasLiberadas[elementoAtual + 1] == true)
+                {
                     elementoAtual++;
-                else elementoAtual = 0;
-            } else elementoAtual = 0;
+                }
+                else {
+                    elementoAtual = 0;
+                }
+            } else {
+                elementoAtual = 0;
+            }
+            uiAnel.SetAnel(elementoAtual);
         }
+
+
         if(canShoot && Input.GetKeyDown(KeyCode.Q)){
-            if(elementoAtual > 0) elementoAtual--;
-            else elementoAtual = Array.LastIndexOf(Status.status.flechasLiberadas, true);
+            if(elementoAtual > 0) 
+            {
+                elementoAtual--;
+                uiAnel.SetAnel(elementoAtual);;
+            }
+            else {
+                elementoAtual = Array.LastIndexOf(Status.status.flechasLiberadas, true);
+            }
+            uiAnel.SetAnel(elementoAtual);
         }
+        
 
         // botao de recarregar q puxa todas as flechas na cena
         if(canShoot && Input.GetKeyDown(KeyCode.R) && gameObject.GetComponentInParent<Movimento>().grounded)
@@ -100,6 +121,7 @@ public class Arco : MonoBehaviour
             {
                 flecha.GetComponent<Flecha>().RetornarPlayer();
                 FlechasAtual = TotalFlecha;
+                uiFlecha.UpdateFlechaUI();
             }
             IsReloading = false;
         }

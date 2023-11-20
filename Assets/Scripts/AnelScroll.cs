@@ -18,26 +18,6 @@ public class AnelScroll : MonoBehaviour
         UpdateImageAndText();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            currentIndex--;
-            if (currentIndex < 0)
-                currentIndex = images.Length - 1;
-
-            UpdateImageAndText();
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            currentIndex++;
-            if (currentIndex >= images.Length)
-                currentIndex = 0;
-
-            UpdateImageAndText();
-        }
-    }
-
     private void UpdateImageAndText()
     {
         scrollRect.content.localPosition = new Vector2(-currentIndex * scrollRect.viewport.rect.width, 0);
@@ -56,5 +36,29 @@ public class AnelScroll : MonoBehaviour
     private void HideText()
     {
         textoDisplay.gameObject.SetActive(false);
+    }
+
+    public void AnelProximo()
+    {
+        currentIndex++;
+        if (currentIndex >= images.Length)
+            currentIndex = 0;
+
+        UpdateImageAndText();
+    }
+
+    public void AnelAnterior()
+    {
+        currentIndex--;
+        if (currentIndex < 0)
+            currentIndex = images.Length - 1;
+
+        UpdateImageAndText();
+    }
+
+    public void SetAnel(int anel)
+    {
+        currentIndex = anel;
+        UpdateImageAndText();
     }
 }
