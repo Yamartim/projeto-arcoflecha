@@ -24,6 +24,7 @@ public class Mira : MonoBehaviour
 
     public void SetActive(bool value)
     {
+        Cursor.visible = !value;
         isActive = value;
         gameObject.SetActive(value);
     }
