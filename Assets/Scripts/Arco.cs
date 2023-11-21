@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Arco : MonoBehaviour
@@ -36,6 +37,7 @@ public class Arco : MonoBehaviour
 
     [SerializeField] AnelScroll uiAnel;
     [SerializeField] FlechaUI uiFlecha;
+    [SerializeField] EventSystem eventSystem;
 
     // Update is called once per frame
     void Start(){
@@ -77,7 +79,7 @@ public class Arco : MonoBehaviour
         }
 
         //pode atirar
-        if (canShoot && Input.GetButtonDown("Fire1"))
+        if (canShoot && Input.GetButtonDown("Fire1") && !eventSystem.IsPointerOverGameObject())
         {
             Shoot();
             uiFlecha.UpdateFlechaUI();
