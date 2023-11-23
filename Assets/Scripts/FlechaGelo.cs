@@ -13,7 +13,8 @@ public class FlechaGelo : Flecha
             Vector2 position = other.gameObject.transform.position;
             Quaternion rotation = other.gameObject.transform.rotation;
             
-            geloPreFab.transform.localScale = other.gameObject.transform.localScale;
+            //geloPreFab.transform.localScale = other.gameObject.transform.localScale;
+            geloPreFab.GetComponent<SpriteRenderer>().size = other.gameObject.GetComponent<SpriteRenderer>().size;
             
             Destroy(other.gameObject);
             Instantiate(geloPreFab, position, rotation);

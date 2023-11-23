@@ -19,7 +19,8 @@ public class FlechaFogo : Flecha
             Vector2 position = other.gameObject.transform.position;
             Quaternion rotation = other.gameObject.transform.rotation;
             
-            aguaPreFab.transform.localScale = other.gameObject.transform.localScale;
+            //aguaPreFab.transform.localScale = other.gameObject.transform.localScale;
+            aguaPreFab.GetComponent<SpriteRenderer>().size = other.gameObject.GetComponent<SpriteRenderer>().size;
             
             Destroy(other.gameObject);
             Instantiate(aguaPreFab, position, rotation);
