@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 1884465163981452573}
   - component: {fileID: 7054429295464727002}
   - component: {fileID: -242059506596160127}
+  - component: {fileID: -823082993696507823}
   m_Layer: 0
   m_Name: agua
   m_TagString: Agua
@@ -196,3 +197,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-823082993696507823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9183273195096552914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496948ceb5be1324998e247a9cc318ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprtAgua: {fileID: 5279577055399044458}
