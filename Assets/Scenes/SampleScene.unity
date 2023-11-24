@@ -1137,6 +1137,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 50503469672297169, guid: 7a391d5e6094b5a46b81b0c297168fe9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1710428011, guid: 15e326bd0002e4d4e82f8c656b242cbd, type: 3}
     - target: {fileID: 6497394450689224970, guid: 7a391d5e6094b5a46b81b0c297168fe9, type: 3}
       propertyPath: arco
       value: 
@@ -1323,6 +1327,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6497394451518586363, guid: 7a391d5e6094b5a46b81b0c297168fe9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497394451851346721, guid: 7a391d5e6094b5a46b81b0c297168fe9, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6497394452038301261, guid: 7a391d5e6094b5a46b81b0c297168fe9, type: 3}
@@ -120843,6 +120851,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 488660562}
     m_Modifications:
+    - target: {fileID: -9165620217695616232, guid: 6a2c1d93676210e4eb45314530c1cfd1, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 4.233124
+      objectReference: {fileID: 0}
+    - target: {fileID: -9165620217695616232, guid: 6a2c1d93676210e4eb45314530c1cfd1, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.42144054
+      objectReference: {fileID: 0}
     - target: {fileID: 766170793690711131, guid: 6a2c1d93676210e4eb45314530c1cfd1, type: 3}
       propertyPath: m_RootOrder
       value: 14
