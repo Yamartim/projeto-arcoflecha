@@ -25,6 +25,7 @@ public class Arco : MonoBehaviour
     static public Arco arco;
 
     public AnimacaoPlayer anim;
+    public Mira mira;
 
     //bool para menupausa
     private bool canShoot = true;
@@ -62,7 +63,7 @@ public class Arco : MonoBehaviour
         Vector2 direcao = posicaoMouse - posicaoArco;
         transform.right = direcao;
 
-        if(Input.mousePosition.x < Screen.width/2)
+        if(mira.transform.position.x < gameObject.transform.position.x)
         {
             anim.VirarPlayer(true);
             FirePoint.localPosition = new Vector3(-fp_x, 0f, 0f);

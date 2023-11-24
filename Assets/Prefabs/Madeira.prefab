@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6398179862837349459}
   - component: {fileID: 6398179862837349456}
   - component: {fileID: 6398179862837349457}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Madeira
   m_TagString: Madeira
   m_Icon: {fileID: 0}
