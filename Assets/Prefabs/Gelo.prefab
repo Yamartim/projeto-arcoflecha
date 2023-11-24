@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8010633751311038125}
   - component: {fileID: -9165620217695616232}
   - component: {fileID: 6122384114658521978}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gelo
   m_TagString: Gelo
   m_Icon: {fileID: 0}
@@ -73,15 +73,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingLayerID: 18117447
+  m_SortingLayer: -1
+  m_SortingOrder: 20
   m_Sprite: {fileID: 1300436358, guid: 4811e384e9a02b04182759841061c03b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 5, y: 3}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -105,7 +105,7 @@ BoxCollider2D:
     border: {x: 0.24, y: 0.24, z: 0.24, w: 0.24}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.03, y: 1.04}
-    newSize: {x: 5, y: 3}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 1
     adaptiveTiling: 0
@@ -198,7 +198,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 18117447
   m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: -1356044195, guid: a176050cc09e82147bbc9ea400312d09, type: 3}
   m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
   m_FlipX: 0
