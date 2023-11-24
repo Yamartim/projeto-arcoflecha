@@ -159,6 +159,11 @@ public class Movimento : MonoBehaviour
             
         }else{ // se n estamos escalando fisica fica normal
             rb.gravityScale = 3f;
+            if (grounded)
+            {
+                // TESTE se sob hipotese alguma vc ta próximo de uma corda a lista tem q estar vazia
+                cordasProxRB.Clear();
+            }
 
         }
     }
