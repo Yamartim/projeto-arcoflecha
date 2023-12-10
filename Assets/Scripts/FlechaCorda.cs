@@ -25,6 +25,7 @@ public class FlechaCorda : Flecha
             // instancia a corda
             
             instancia = Instantiate(corda, cordaSpawn.position, transform.rotation, parent: transform);
+            ScreenShake.shakeAtivo.Shake(1, 0.2f);
             instancia.SetActive(true);
             cordaAtiva = true;
         }
