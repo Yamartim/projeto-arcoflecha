@@ -92,7 +92,7 @@ public class Arco : MonoBehaviour
         if(canShoot && Input.GetKeyDown(KeyCode.E)){
 
             if(elementoAtual < 3){
-                if(Status.status.flechasLiberadas[elementoAtual + 1] == true)
+                if(Status.instancia.flechasLiberadas[elementoAtual + 1] == true)
                 {
                     elementoAtual++;
                 }
@@ -113,7 +113,7 @@ public class Arco : MonoBehaviour
                 uiAnel.SetAnel(elementoAtual);;
             }
             else {
-                elementoAtual = Array.LastIndexOf(Status.status.flechasLiberadas, true);
+                elementoAtual = Array.LastIndexOf(Status.instancia.flechasLiberadas, true);
             }
             uiAnel.SetAnel(elementoAtual);
         }
