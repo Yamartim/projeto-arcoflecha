@@ -60,6 +60,7 @@ public class Movimento : MonoBehaviour
 
     }
 
+#region logica de andar
     private void InputAndar()
     {
         bool podeAndarDir = inputHorizontal == 1 && rb.velocity.x < velMax;
@@ -78,7 +79,9 @@ public class Movimento : MonoBehaviour
             col.sharedMaterial = mat;
         }
     }
+#endregion
 
+#region logica de pular
     private void InputPulo()
     {
         if (Input.GetButtonDown("Jump") && (grounded || escalando))
@@ -88,8 +91,10 @@ public class Movimento : MonoBehaviour
             anim.AnimPular();
         }
     }
+#endregion
 
     
+#region logica de escalar
     void InputEscalada()
     {
         if(cordasProxRB.Count == 0) {
@@ -167,7 +172,9 @@ public class Movimento : MonoBehaviour
 
         }
     }
+#endregion
 
+#region logica da corda
     // ativa o bool escalando e td q é necessario pro componente hingejoint
     void AgarrarCorda(Rigidbody2D corda)
     {
@@ -196,7 +203,9 @@ public class Movimento : MonoBehaviour
 
         anim.AnimSegCorda(false);
     }
+#endregion
 
+#region funções de ground e teto
     bool IsGrounded()
     {
         return Physics2D.OverlapCapsule(groundCheck.position,
@@ -210,7 +219,9 @@ public class Movimento : MonoBehaviour
                     new Vector2(0, 0.3f), CapsuleDirection2D.Horizontal,
                     0, groundLayer);
     }
+#endregion
 
+#region  processando triggers de fisica
     // detectando se chegamos perto ou longe de uma corda
     private void OnTriggerEnter2D(Collider2D other) 
     {
@@ -258,14 +269,18 @@ public class Movimento : MonoBehaviour
             rb.drag = 1.2f;
         }
     }
+#endregion
 
+#region restrições no script
     public void ToggleMovimento(bool ativo)
     {
         movimentoPerimitido = ativo;
         gameObject.GetComponentInChildren<Arco>().SetCanShoot(ativo);
         anim.PausarAnim();
     }
+#endregion
 
+#region morte e reviver
     public void EstadoMorte()
     {
         ToggleMovimento(false);
@@ -280,6 +295,6 @@ public class Movimento : MonoBehaviour
         anim.ResetAnim();
         ToggleMovimento(true);
     }
-
+#endregion
 
 }

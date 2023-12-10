@@ -12,6 +12,8 @@ public class FlechaFogo : Flecha
     private void OnCollisionEnter2D(Collision2D other){
         if(other.gameObject.CompareTag("Madeira") && JaColidiu == false){   
             Destroy(other.gameObject);
+            //TESTE DE SCREENSHAKE PRA DPS
+            //ScreenShake.shakeAtivo.Shake(1f, 0.2f);
             JaColidiu = true;
         }
 

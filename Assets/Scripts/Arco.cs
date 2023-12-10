@@ -8,15 +8,16 @@ using UnityEngine.UI;
 
 public class Arco : MonoBehaviour
 {
-    //esse total de flechas dps tem q ir pra classe de stats do jogador
-    public int TotalFlecha = 5;
+
+    Status player;
+    int TotalFlecha;
 
     public Collider2D playercoll;
     public Transform  FirePoint;
     float fp_x = 0.12f;
     public GameObject[] FlechaPreFab;
-    public int elementoAtual;
-    public int FlechasAtual;
+    public int anelAtual;
+    public int flechasAtual;
     public float TempoRecarga = 1f;
     private bool IsReloading = false;
     
@@ -42,20 +43,24 @@ public class Arco : MonoBehaviour
 
     // Update is called once per frame
     void Start(){
-        FlechasAtual = TotalFlecha;
+        player = GetComponentInParent<Status>();
+
+        TotalFlecha = player.totalFlechas;
+        flechasAtual = TotalFlecha;
         playercoll = GetComponentInParent<Collider2D>();
         // flechasDisponiveis.Add(tipoFlecha.Corda);
 
-        elementoAtual = 0;
+        anelAtual = 0;
 
         arco = this;
         
-        uiFlecha.UpdateFlechaUI();
+        uiFlecha.UpdateFlechaUI(flechasAtual);
 
     }
 
     void Update()
     {
+
         //Debug.Log(elementoAtual);
         //calculo da direção da flecha;
         Vector2 posicaoArco = transform.position;
@@ -73,51 +78,54 @@ public class Arco : MonoBehaviour
             FirePoint.localPosition = new Vector3(fp_x, 0f, 0f);
         }
 
-        //codigo da ui velha
-        //FlechaHUD.text = FlechasAtual.ToString();
         if(IsReloading){
             return;
         }
 
+#region input de atirar
         //pode atirar
         if (canShoot && Input.GetButtonDown("Fire1") && !eventSystem.IsPointerOverGameObject())
         {
             Shoot();
-            uiFlecha.UpdateFlechaUI();
+            uiFlecha.UpdateFlechaUI(flechasAtual);
         }
 
+#endregion
 
-        //mudança de flecha
+#region input de trocar de flecha
 
         if(canShoot && Input.GetKeyDown(KeyCode.E)){
 
-            if(elementoAtual < 3){
-                if(Status.instancia.flechasLiberadas[elementoAtual + 1] == true)
+            if(anelAtual < 3){
+                if(player.aneisLiberados[anelAtual + 1] == true)
                 {
-                    elementoAtual++;
+                    anelAtual++;
                 }
                 else {
-                    elementoAtual = 0;
+                    anelAtual = 0;
                 }
             } else {
-                elementoAtual = 0;
+                anelAtual = 0;
             }
-            uiAnel.SetAnel(elementoAtual);
+            uiAnel.SetAnel(anelAtual);
         }
 
 
         if(canShoot && Input.GetKeyDown(KeyCode.Q)){
-            if(elementoAtual > 0) 
+            if(anelAtual > 0) 
             {
-                elementoAtual--;
-                uiAnel.SetAnel(elementoAtual);;
+                anelAtual--;
+                uiAnel.SetAnel(anelAtual);;
             }
             else {
-                elementoAtual = Array.LastIndexOf(Status.instancia.flechasLiberadas, true);
+                anelAtual = Array.LastIndexOf(player.aneisLiberados, true);
             }
-            uiAnel.SetAnel(elementoAtual);
+            uiAnel.SetAnel(anelAtual);
         }
-        
+
+#endregion
+
+#region input de recarregar
 
         // botao de recarregar q puxa todas as flechas na cena
         if(canShoot && Input.GetKeyDown(KeyCode.R) && gameObject.GetComponentInParent<Movimento>().grounded)
@@ -126,21 +134,23 @@ public class Arco : MonoBehaviour
             foreach (GameObject flecha in flechasAtiradas)
             {
                 flecha.GetComponent<Flecha>().RetornarPlayer();
-                FlechasAtual = TotalFlecha;
-                uiFlecha.UpdateFlechaUI();
+                flechasAtual = TotalFlecha;
+                uiFlecha.UpdateFlechaUI(flechasAtual);
             }
             IsReloading = false;
         }
+
+#endregion
 
     }
 
     void Shoot(){
         //logica do tiro
 
-        if(FlechasAtual > 0){
+        if(flechasAtual > 0){
             gameObject.GetComponent<AudioSource>().Play();
-            FlechasAtual--;
-            GameObject novaFlecha = Instantiate(FlechaPreFab[elementoAtual], FirePoint.position, transform.rotation);
+            flechasAtual--;
+            GameObject novaFlecha = Instantiate(FlechaPreFab[anelAtual], FirePoint.position, transform.rotation);
 
             flechasAtiradas.Add(novaFlecha);
             // qnd a flecha é atirada guardamos a referencia na lista pra puxar dps
@@ -153,19 +163,17 @@ public class Arco : MonoBehaviour
 
     public void AumentarFlechas()
     {
-        TotalFlecha++;
-        uiFlecha.AddIMG();
+        player.AumentarTotalFlechas();
+        TotalFlecha = player.totalFlechas;
+        flechasAtual++;
+        uiFlecha.AddIMG(flechasAtual);
     }
-
-    // public void addTipoFlecha(tipoFlecha tipo) {
-    //     flechasDisponiveis.Add(tipo);
-    // }
 
     public void RecuperarFlecha(Flecha flechaAtirada)
     {
-        if (FlechasAtual < TotalFlecha)
+        if (flechasAtual < TotalFlecha)
         {
-            FlechasAtual++;
+            flechasAtual++;
         }
         flechasAtiradas.Remove(flechaAtirada.gameObject);
     }
