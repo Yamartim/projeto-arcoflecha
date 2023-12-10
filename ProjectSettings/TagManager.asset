@@ -18,6 +18,7 @@ TagManager:
   - Gelo
   - Plataforma
   - Corrupcao
+  - Camera
   layers:
   - Default
   - TransparentFX
