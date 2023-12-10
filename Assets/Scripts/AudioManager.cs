@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instancia;
+    AudioSource asource;
     
     void Awake() 
     {
@@ -14,6 +15,16 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         
+    }
+
+    void Start()
+    {
+        asource = GetComponent<AudioSource>();
+    }
+
+    public void SwitchMute()
+    {
+        asource.mute = !asource.mute;
     }
 
 }
