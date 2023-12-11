@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6728380508627211776}
-  - component: {fileID: 1175290708953604535}
+  - component: {fileID: 1366065743}
   m_Layer: 0
   m_Name: totem_tutorial
   m_TagString: Untagged
@@ -34,7 +34,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1175290708953604535
+--- !u!95 &1366065743
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -44,7 +44,7 @@ Animator:
   m_GameObject: {fileID: 6728380508627211782}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 77f6fa99018bbf84295835658553fd1f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 96d0a7fc5d45209489211b463fccd9ef, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -92,8 +92,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0}
-  m_SizeDelta: {x: 19.579956, y: 435.00696}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -372.538, y: 883.23}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6728380508660142446
 CanvasRenderer:
@@ -303,10 +303,10 @@ RectTransform:
   m_Father: {fileID: 6728380508660142444}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 364, y: 398}
-  m_SizeDelta: {x: 80, y: 80}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -114.372, y: -107.372}
+  m_SizeDelta: {x: 114.744, y: 114.744}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6728380509070453581
 CanvasRenderer:
@@ -403,8 +403,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Mira, Assembly-CSharp
-        m_MethodName: SetActive
+        m_TargetAssemblyTypeName: Arco, Assembly-CSharp
+        m_MethodName: SetCanShoot
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -415,8 +415,8 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Arco, Assembly-CSharp
-        m_MethodName: SetCanShoot
+        m_TargetAssemblyTypeName: Mira, Assembly-CSharp
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -561,8 +561,8 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Mira, Assembly-CSharp
-        m_MethodName: SetActive
+        m_TargetAssemblyTypeName: Arco, Assembly-CSharp
+        m_MethodName: SetCanShoot
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -573,8 +573,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Arco, Assembly-CSharp
-        m_MethodName: SetCanShoot
+        m_TargetAssemblyTypeName: Mira, Assembly-CSharp
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -677,12 +677,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
+  m_fontSize: 101.11
   m_fontSizeBase: 60
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 101.11
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -853,10 +853,10 @@ RectTransform:
   m_Father: {fileID: 6728380508660142444}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 639.175, y: 823.937}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -87}
+  m_SizeDelta: {x: -200, y: -311.208}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6728380509990382164
 CanvasRenderer:
@@ -888,7 +888,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 900e9d946a7fa6147b1f3b9d29434914, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -969,10 +969,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
