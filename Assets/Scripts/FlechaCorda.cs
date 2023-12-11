@@ -15,6 +15,7 @@ public class FlechaCorda : Flecha
             // por enquanto a coisa certa é qualquer coisa q n seja o jogador e outra corda
         if (!cordaAtiva && !other.gameObject.CompareTag("Player"))
         {
+            EfeitoColisao();
             // congela a fisica da flecha
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             rb.isKinematic = false;
@@ -25,7 +26,6 @@ public class FlechaCorda : Flecha
             // instancia a corda
             
             instancia = Instantiate(corda, cordaSpawn.position, transform.rotation, parent: transform);
-            ScreenShake.shakeAtivo.Shake(1, 0.2f);
             instancia.SetActive(true);
             cordaAtiva = true;
         }

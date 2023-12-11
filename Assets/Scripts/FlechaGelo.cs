@@ -9,7 +9,8 @@ public class FlechaGelo : Flecha
     private bool JaColidiu = false;
     
     private void OnTriggerEnter2D(Collider2D other){
-        if(other.gameObject.CompareTag("Agua") && JaColidiu == false){   
+        if(other.gameObject.CompareTag("Agua") && JaColidiu == false){
+            EfeitoColisao();
             Vector2 position = other.gameObject.transform.position;
             Quaternion rotation = other.gameObject.transform.rotation;
             

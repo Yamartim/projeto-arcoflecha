@@ -9,6 +9,8 @@ public enum tipoFlecha {
     Luz
 }
 
+[RequireComponent(typeof(FrameFreeze))]
+[RequireComponent(typeof(EfeitoFlash))]
 public class Flecha : MonoBehaviour
 {
     //[SerializeField] GameObject prefabCorda;
@@ -68,6 +70,14 @@ public class Flecha : MonoBehaviour
             Destroy(gameObject);
             //da push numa pilha de flechas?
         }
+    }
+
+    //efeitos pra chamar quando a flecha acerta algo
+    protected void EfeitoColisao()
+    {
+        GetComponent<EfeitoFlash>().Flash();
+        GetComponent<FrameFreeze>().Congelar();
+        ScreenShake.shakeAtivo.Shake(1f, .2f);
     }
 
 
