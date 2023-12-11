@@ -10,7 +10,8 @@ public class FlechaFogo : Flecha
         private bool JaColidiu = false;
 
     private void OnCollisionEnter2D(Collision2D other){
-        if(other.gameObject.CompareTag("Madeira") && JaColidiu == false){   
+        if(other.gameObject.CompareTag("Madeira") && JaColidiu == false){
+            EfeitoColisao();
             Destroy(other.gameObject);
             //TESTE DE SCREENSHAKE PRA DPS
             //ScreenShake.shakeAtivo.Shake(1f, 0.2f);
@@ -18,6 +19,7 @@ public class FlechaFogo : Flecha
         }
 
         if(other.gameObject.CompareTag("Gelo") && JaColidiu == false){   
+            EfeitoColisao();
             Vector2 position = other.gameObject.transform.position;
             Quaternion rotation = other.gameObject.transform.rotation;
             

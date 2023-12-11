@@ -5,7 +5,7 @@ using UnityEngine;
 public class FrameFreeze : MonoBehaviour
 {
     [SerializeField] [Range(0f, .5f)]
-    float duracao;
+    float duracao = .1f;
     static bool jogoCongelado = false;
     float timescaleInicial;
 

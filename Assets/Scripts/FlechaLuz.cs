@@ -5,7 +5,8 @@ using UnityEngine;
 public class FlechaLuz : Flecha
 {
     private void OnTriggerStay2D(Collider2D other){
-        if(other.gameObject.CompareTag("Corrupcao")){   
+        if(other.gameObject.CompareTag("Corrupcao")){
+            EfeitoColisao();
             Destroy(other.gameObject);
         }
     }
