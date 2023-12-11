@@ -120911,6 +120911,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: totem_tutorial
       objectReference: {fileID: 0}
+    - target: {fileID: 6728380508660142444, guid: f682ced237151624aa90a1efbaa36e30, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6728380509070453571, guid: f682ced237151624aa90a1efbaa36e30, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -120970,6 +120974,22 @@ PrefabInstance:
     - target: {fileID: 6728380509197299075, guid: f682ced237151624aa90a1efbaa36e30, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6728380510303985764, guid: f682ced237151624aa90a1efbaa36e30, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6728380510303985767, guid: f682ced237151624aa90a1efbaa36e30, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6728380510303985767, guid: f682ced237151624aa90a1efbaa36e30, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 6728380510303985767, guid: f682ced237151624aa90a1efbaa36e30, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1175290708953604535, guid: f682ced237151624aa90a1efbaa36e30, type: 3}
