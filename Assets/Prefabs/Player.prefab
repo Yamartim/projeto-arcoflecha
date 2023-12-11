@@ -422,7 +422,7 @@ MonoBehaviour:
   inputHorizontal: 0
   inputVertical: 0
   grounded: 0
-  velEscalada: 1
+  velEscalada: 3
   cordasProxRB: []
 --- !u!114 &1648519779
 MonoBehaviour:
@@ -438,7 +438,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaMaxima: 100
   vidaAtual: 0
-  flechasLiberadas: 01000000
+  aneisLiberados: 01000000
+  totalFlechas: 5
 --- !u!114 &1648519778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,13 +452,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e8bf4108aa64e47b385a1a2ed038be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {x: 0, y: 0}
+  posRevive: {x: 0, y: 0}
   taxaPerda: 110
   taxaGanho: 10
   CorDano1: {r: 1, g: 0.48550782, b: 0.45660377, a: 1}
   CorDano2: {r: 1, g: 0.22075468, b: 0.22075468, a: 1}
   CorDano3: {r: 0.8679245, g: 0, b: 0, a: 1}
   CorDano4: {r: 0.7176471, g: 0, b: 0, a: 1}
+  delayRevive: 1.5
 --- !u!114 &5648544945432265745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,7 +730,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d017cce38bdfb4c8fe7377439ebfc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TotalFlecha: 5
   playercoll: {fileID: 4363154787172695981}
   FirePoint: {fileID: 8459264526450406955}
   FlechaPreFab:
@@ -736,10 +737,14 @@ MonoBehaviour:
   - {fileID: 3582102895121398435, guid: 19b5f71f9cd120f4ea23faee0b8533a7, type: 3}
   - {fileID: 3582102895121398435, guid: e9cb4f277f0c58d4da1b6b70046eb0d1, type: 3}
   - {fileID: 3582102895121398435, guid: d4cf759ffc40ffb43af17cc089e03d37, type: 3}
-  elementoAtual: 0
-  FlechasAtual: 0
+  anelAtual: 0
+  flechasAtual: 0
   TempoRecarga: 1
   anim: {fileID: 5648544945432265745}
+  mira: {fileID: 1740132685}
+  uiAnel: {fileID: 0}
+  uiFlecha: {fileID: 0}
+  eventSystem: {fileID: 0}
 --- !u!82 &3274208012008538439
 AudioSource:
   m_ObjectHideFlags: 0
