@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PausaMenu : MonoBehaviour
 {
-    public static bool Pausa = false;
+    public static bool jogoPausado = false;
     public GameObject PausaMenuCanvas;
     private Arco arco;
     private Mira mira;
@@ -13,7 +13,7 @@ public class PausaMenu : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1f;
-        arco = FindObjectOfType<Arco>();
+        arco = Status.instancia.GetComponent<Arco>();
         mira = FindObjectOfType<Mira>();
     }
     
@@ -21,7 +21,7 @@ public class PausaMenu : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if(Pausa)
+            if(jogoPausado)
             {
                 Jogar();
             }
@@ -36,7 +36,7 @@ public class PausaMenu : MonoBehaviour
     {
         PausaMenuCanvas.SetActive(true);
         Time.timeScale = 0f;
-        Pausa = true;
+        jogoPausado = true;
 
         if (arco != null)
         {
@@ -53,7 +53,7 @@ public class PausaMenu : MonoBehaviour
     {
         PausaMenuCanvas.SetActive(false);
         Time.timeScale = 1f;
-        Pausa = false;
+        jogoPausado = false;
 
         if (arco != null)
         {
