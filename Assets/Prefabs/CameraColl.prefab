@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 827308748156780830}
   - component: {fileID: 827308748156780824}
   m_Layer: 2
-  m_Name: Camera1
+  m_Name: CameraColl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,7 +133,7 @@ Transform:
   m_GameObject: {fileID: 827308748156780831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -50.23, y: -7.34, z: -10.468654}
-  m_LocalScale: {x: 1.1058553, y: 1.4306775, z: 1.1679}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 827308748856654827}
@@ -165,10 +165,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -9.4360075, y: -9.56878}
-      - {x: 13.868148, y: -9.620774}
-      - {x: 13.965062, y: 0.17271161}
-      - {x: -9.403708, y: 0.20562732}
+    - - {x: -10, y: -10}
+      - {x: -10, y: 10}
+      - {x: 10, y: 10}
+      - {x: 10, y: -10}
 --- !u!114 &827308748156780824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,8 +209,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827308748856654825}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3899994, y: -0.8000002, z: -4.486047}
-  m_LocalScale: {x: 0.87626, y: 0.87626, z: 0.87626}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 827308748052251086}
