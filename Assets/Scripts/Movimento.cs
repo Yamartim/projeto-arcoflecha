@@ -141,7 +141,7 @@ public class Movimento : MonoBehaviour
             {
                 // se n tiver mais corda em cima soltamos
                 if (seg.EhSegmentoInicial()){
-                    SoltarCorda();
+                    hj.connectedAnchor = Vector2.zero;
                 }
                 else { // senao conectamos no proximo segmento posicionando relativamente
                     //Debug.Log("sobe um segmento...");
