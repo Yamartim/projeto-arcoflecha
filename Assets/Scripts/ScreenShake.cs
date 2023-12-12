@@ -35,9 +35,10 @@ public class ScreenShake : MonoBehaviour
         }
     }
 
-    public void Shake(float intensidade, float tempo)
+    public void Shake(float intensidade, float frequencia, float tempo)
     {
         noise.m_AmplitudeGain = intensidade;
+        noise.m_FrequencyGain = frequencia;
         initIntense = intensidade;
         timer = tempo;
         timeratual = tempo;
