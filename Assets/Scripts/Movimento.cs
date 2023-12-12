@@ -25,6 +25,9 @@ public class Movimento : MonoBehaviour
     public List<Rigidbody2D> cordasProxRB = new();
     GameObject cordaAtual = null;
 
+    [SerializeField] float coyoteTime = 0.2f;
+    float ctcounter;
+
     void Start()
     {
         movimentoPerimitido = true;
@@ -56,6 +59,14 @@ public class Movimento : MonoBehaviour
 
             InputEscalada();
 
+            //contador coyote time, se ta no chao reinicia, senão subtrai
+            if(grounded)
+            {
+                ctcounter = coyoteTime;
+            } else
+            {
+                ctcounter -= Time.deltaTime;
+            }
         }
 
     }
@@ -84,7 +95,7 @@ public class Movimento : MonoBehaviour
 #region logica de pular
     private void InputPulo()
     {
-        if (Input.GetButtonDown("Jump") && (grounded || escalando))
+        if (Input.GetButtonDown("Jump") && ((grounded || escalando) || ctcounter > 0))
         {
             rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
             SoltarCorda();
@@ -141,7 +152,7 @@ public class Movimento : MonoBehaviour
             {
                 // se n tiver mais corda em cima soltamos
                 if (seg.EhSegmentoInicial()){
-                    SoltarCorda();
+                    hj.connectedAnchor = Vector2.zero;
                 }
                 else { // senao conectamos no proximo segmento posicionando relativamente
                     //Debug.Log("sobe um segmento...");
@@ -190,6 +201,7 @@ public class Movimento : MonoBehaviour
         }
             
         anim.AnimSegCorda(true);
+        ctcounter = 0f;
     }
 
     // desativa tudo pra fisica voltar a atuar no player

@@ -77,7 +77,7 @@ public class Flecha : MonoBehaviour
     {
         GetComponent<EfeitoFlash>().Flash();
         GetComponent<FrameFreeze>().Congelar();
-        ScreenShake.shakeAtivo.Shake(1f, .2f);
+        ScreenShake.shakeAtivo.Shake(2f, 5f, .1f);
     }
 
 
