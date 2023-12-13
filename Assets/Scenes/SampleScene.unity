@@ -9093,7 +9093,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7914445, y: 5.321159, z: -15}
+  m_LocalPosition: {x: -2.1755269, y: 5.3234386, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -122725,11 +122725,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8459264527622026271, guid: 6dc7b34b0b4cfda44a36fea0b43fe140, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3
+      value: -2.2
       objectReference: {fileID: 0}
     - target: {fileID: 8459264527622026271, guid: 6dc7b34b0b4cfda44a36fea0b43fe140, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 8459264527622026271, guid: 6dc7b34b0b4cfda44a36fea0b43fe140, type: 3}
       propertyPath: m_LocalPosition.z
@@ -122800,6 +122800,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1268678799965576373, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_TrackedObjectOffset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1268678799965576373, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_TrackedObjectOffset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1268678800234931860, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
       propertyPath: m_Follow
       value: 
@@ -122808,18 +122816,118 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1648519759}
+    - target: {fileID: 2910485779979532131, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_TrackedObjectOffset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910485779979532131, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_TrackedObjectOffset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987198956977176, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_BiasX
+      value: 0.000000094236064
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987198956977176, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_BiasY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987198956977176, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_DeadZoneWidth
+      value: 0.63657385
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987198956977176, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_SoftZoneWidth
+      value: 0.9938212
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987198956977176, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_DeadZoneHeight
+      value: 0.7723205
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987198956977176, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_SoftZoneHeight
+      value: 0.9075963
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987198956977176, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_TrackedObjectOffset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987198956977176, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_TrackedObjectOffset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8283987199056721746, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1648519759}
+    - target: {fileID: 8283987199326588275, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_TrackedObjectOffset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987199326588275, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_TrackedObjectOffset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987199760827960, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8283987199760827961, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1648519759}
+    - target: {fileID: 8283987199760827961, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 1648519759}
+    - target: {fileID: 8283987199760827962, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.6978598
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987199760827962, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.553482
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987199966332839, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_TrackedObjectOffset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987199966332839, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_TrackedObjectOffset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987200175251933, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 25.266495
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987200175251933, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.199387
+      objectReference: {fileID: 0}
     - target: {fileID: 8283987200175251934, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1648519759}
+    - target: {fileID: 8283987200175251935, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987200219469370, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_TrackedObjectOffset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987200219469370, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_TrackedObjectOffset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987200442506239, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_TrackedObjectOffset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283987200442506239, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
+      propertyPath: m_TrackedObjectOffset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8283987200486468635, guid: 545192a4a9ca7104f855a65505ee27c9, type: 3}
       propertyPath: m_Follow
       value: 
