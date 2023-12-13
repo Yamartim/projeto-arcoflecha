@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Anel : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class Anel : MonoBehaviour
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             gameObject.GetComponent<ParticleSystem>().Stop();
+            if(gameObject.TryGetComponent<Light2D>(out Light2D luz))
+            {
+                luz.enabled = false;
+            }
             Destroy(gameObject, 4.0f);
         }
     }
