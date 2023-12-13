@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
 
 public class Status : MonoBehaviour
 {
@@ -10,6 +9,8 @@ public class Status : MonoBehaviour
     public bool[] aneisLiberados;
     public int totalFlechas = 5;
     public static Status instancia;
+
+    [SerializeField] GameObject textoTrocaAnel;
 
 
     void Awake()
@@ -33,6 +34,7 @@ public class Status : MonoBehaviour
         // break;
         // }
 
+        textoTrocaAnel.SetActive(true);
         aneisLiberados[(int)tipo] = true;
         Debug.Log("Flecha Liberada = "+((int)tipo)+"("+tipo+")");
     } 
