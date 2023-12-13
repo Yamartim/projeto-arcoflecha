@@ -75,9 +75,12 @@ public class Flecha : MonoBehaviour
     //efeitos pra chamar quando a flecha acerta algo
     protected void EfeitoColisao()
     {
-        GetComponent<EfeitoFlash>().Flash();
-        GetComponent<FrameFreeze>().Congelar();
-        ScreenShake.shakeAtivo.Shake(2f, 5f, .1f);
+        if (gameObject.GetComponent<Renderer>().isVisible)
+        {
+            GetComponent<EfeitoFlash>().Flash();
+            GetComponent<FrameFreeze>().Congelar();
+            ScreenShake.shakeAtivo.Shake(2f, 5f, .1f);
+        }
     }
 
 
