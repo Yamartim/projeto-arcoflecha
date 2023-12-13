@@ -23,7 +23,6 @@ public class Arco : MonoBehaviour
     
     //codigo da ui velha
     //public Text FlechaHUD;
-    static public Arco arco;
 
     public AnimacaoPlayer anim;
     public Mira mira;
@@ -51,8 +50,6 @@ public class Arco : MonoBehaviour
         // flechasDisponiveis.Add(tipoFlecha.Corda);
 
         anelAtual = 0;
-
-        arco = this;
         
         uiFlecha.UpdateFlechaUI(flechasAtual);
 
@@ -68,80 +65,41 @@ public class Arco : MonoBehaviour
         Vector2 direcao = posicaoMouse - posicaoArco;
         transform.right = direcao;
 
-        if(mira.transform.position.x < gameObject.transform.position.x)
+        if (mira.transform.position.x < gameObject.transform.position.x)
         {
             anim.VirarPlayer(true);
             FirePoint.localPosition = new Vector3(-fp_x, 0f, 0f);
-        } else
+        }
+        else
         {
             anim.VirarPlayer(false);
             FirePoint.localPosition = new Vector3(fp_x, 0f, 0f);
         }
 
-        if(IsReloading){
+        if (IsReloading)
+        {
             return;
         }
 
+        InputTiro();
+
+        InputTrocaAnel();
+
+        InputReload();
+
+
+
+    }
+
 #region input de atirar
+    private void InputTiro()
+    {
         //pode atirar
         if (canShoot && Input.GetButtonDown("Fire1") && !eventSystem.IsPointerOverGameObject())
         {
             Shoot();
             uiFlecha.UpdateFlechaUI(flechasAtual);
         }
-
-#endregion
-
-#region input de trocar de flecha
-
-        if(canShoot && Input.GetKeyDown(KeyCode.E)){
-
-            if(anelAtual < 3){
-                if(player.aneisLiberados[anelAtual + 1] == true)
-                {
-                    anelAtual++;
-                }
-                else {
-                    anelAtual = 0;
-                }
-            } else {
-                anelAtual = 0;
-            }
-            uiAnel.SetAnel(anelAtual);
-        }
-
-
-        if(canShoot && Input.GetKeyDown(KeyCode.Q)){
-            if(anelAtual > 0) 
-            {
-                anelAtual--;
-                uiAnel.SetAnel(anelAtual);;
-            }
-            else {
-                anelAtual = Array.LastIndexOf(player.aneisLiberados, true);
-            }
-            uiAnel.SetAnel(anelAtual);
-        }
-
-#endregion
-
-#region input de recarregar
-
-        // botao de recarregar q puxa todas as flechas na cena
-        if(canShoot && Input.GetKeyDown(KeyCode.R) && gameObject.GetComponentInParent<Movimento>().grounded)
-        {
-            IsReloading = true;
-            foreach (GameObject flecha in flechasAtiradas)
-            {
-                flecha.GetComponent<Flecha>().RetornarPlayer();
-                flechasAtual = TotalFlecha;
-                uiFlecha.UpdateFlechaUI(flechasAtual);
-            }
-            IsReloading = false;
-        }
-
-#endregion
-
     }
 
     void Shoot(){
@@ -157,9 +115,74 @@ public class Arco : MonoBehaviour
             novaFlecha.GetComponent<Flecha>().arcoref = this;
             // da a referencia desse arco pra flecha pra ela saber pra onde voltar ao ser puxada
         }
+    }
+#endregion
 
+#region input de trocar de flecha
+    private void InputTrocaAnel()
+    {
+
+        if (canShoot && Input.GetKeyDown(KeyCode.E))
+        {
+
+            if (anelAtual < 3)
+            {
+                if (player.aneisLiberados[anelAtual + 1] == true)
+                {
+                    anelAtual++;
+                }
+                else
+                {
+                    anelAtual = 0;
+                }
+            }
+            else
+            {
+                anelAtual = 0;
+            }
+            uiAnel.SetAnel(anelAtual);
+        }
+
+
+        if (canShoot && Input.GetKeyDown(KeyCode.Q))
+        {
+            if (anelAtual > 0)
+            {
+                anelAtual--;
+                uiAnel.SetAnel(anelAtual); ;
+            }
+            else
+            {
+                anelAtual = Array.LastIndexOf(player.aneisLiberados, true);
+            }
+            uiAnel.SetAnel(anelAtual);
+        }
 
     }
+#endregion
+
+#region input de recarregar
+    private void InputReload()
+    {
+        // botao de recarregar q puxa todas as flechas na cena
+        if (canShoot && Input.GetKeyDown(KeyCode.R) && gameObject.GetComponentInParent<Movimento>().grounded)
+        {
+            Reload();
+        }
+    }
+
+    public void Reload()
+    {
+        IsReloading = true;
+        foreach (GameObject flecha in flechasAtiradas)
+        {
+            flecha.GetComponent<Flecha>().RetornarPlayer();
+            flechasAtual = TotalFlecha;
+            uiFlecha.UpdateFlechaUI(flechasAtual);
+        }
+        IsReloading = false;
+    }
+#endregion
 
     public void AumentarFlechas()
     {
