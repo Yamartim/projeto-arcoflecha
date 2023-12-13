@@ -95,7 +95,7 @@ public class Movimento : MonoBehaviour
 #region logica de pular
     private void InputPulo()
     {
-        if (Input.GetButtonDown("Jump") && ((grounded || escalando) || ctcounter > 0))
+        if (Input.GetButtonDown("Jump") && ((grounded || escalando) || (ctcounter > 0 && !(rb.velocity.y>0))))
         {
             rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
             SoltarCorda();
