@@ -11,6 +11,7 @@ public class Reset : MonoBehaviour
     public float taxaPerda, taxaGanho;
 
     private Movimento movim;
+    private Arco arco;
 
     bool estaMorto = false;
 
@@ -41,6 +42,7 @@ public class Reset : MonoBehaviour
         rend.color = rend.color;
 
         movim = GetComponent<Movimento>();
+        arco = GetComponentInChildren<Arco>();
     }
 
     // Update is called once per frame
@@ -154,12 +156,17 @@ public class Reset : MonoBehaviour
     {
         Debug.Log("entrou na sequencia de morte");
         movim.EstadoMorte();
-        
-        yield return new WaitForSeconds(delayRevive);  // tempo para a animação rodar
 
+
+        arco.SetCanShoot(false);
+        
+        arco.Reload();
+
+        yield return new WaitForSeconds(delayRevive);  // tempo para a animação rodar
 
         transform.position = posRevive;
         movim.EstadoReviver();
+        arco.SetCanShoot(true);
         
         estaMorto=false;
         player.vidaAtual = player.vidaMaxima;
