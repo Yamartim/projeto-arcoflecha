@@ -10,17 +10,18 @@ public class Anel : MonoBehaviour
    
     void Update()
     {
+        // Movimenta para cima e para baixo
         transform.position += Vector3.up * amp * freq * Mathf.Cos(freq * Time.time) * Time.deltaTime; 
     }
 
     void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Player")){
-            // other.gameObject.GetComponentInChildren<Arco>().addTipoFlecha(tipo);
+            // Desativa todos os componentes e espera o efeito sonoro tocar para destruir objeto
             Status.instancia.LiberarFlecha(tipo);
-            //other.gameObject.GetComponent<EfeitosSonoros>().playColetarAnel();
             gameObject.GetComponent<AudioSource>().Play();
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<ParticleSystem>().Stop();
             Destroy(gameObject, 4.0f);
         }
     }
