@@ -8,7 +8,8 @@ public class FlechaGelo : Flecha
 
     private bool JaColidiu = false;
     
-    private void OnTriggerEnter2D(Collider2D other){
+    override protected void OnTriggerEnter2D(Collider2D other){
+        base.OnTriggerEnter2D(other);
         if(other.gameObject.CompareTag("Agua") && JaColidiu == false && !retornando){
             EfeitoColisao();
             Vector2 position = other.gameObject.transform.position;

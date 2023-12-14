@@ -28,7 +28,7 @@ public class Flecha : MonoBehaviour
         rb.AddForce(transform.right * forca);
     }
 
-    private  void FixedUpdate() {
+    private void FixedUpdate() {
         // quando a flecha esta no modo "retorno" ela volta pro jogador, esse modo é ativado no arco
         if(retornando)
         {
@@ -62,7 +62,7 @@ public class Flecha : MonoBehaviour
 
 
     // se a flecha ta no modo retorno e volta pro player ela se torna colecionavel e volta pro inventario
-    private void OnTriggerEnter2D(Collider2D other) {
+    virtual protected void OnTriggerEnter2D(Collider2D other) {
         if(retornando && other.CompareTag("Player"))
         {
             other.gameObject.GetComponentInChildren<Arco>().RecuperarFlecha(this);
