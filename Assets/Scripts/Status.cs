@@ -44,6 +44,12 @@ public class Status : MonoBehaviour
         totalFlechas++;
     }
 
+    public void ToggleMovMira(bool toggle)
+    {
+        GetComponent<Movimento>().ToggleMovimento(toggle);
+        GetComponentInChildren<Mira>().MiraAtiva(toggle);
+    }
+
 //logica apenas para debug no editor
 #if UNITY_EDITOR
     void Update()

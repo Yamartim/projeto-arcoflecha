@@ -124,21 +124,10 @@ public class Arco : MonoBehaviour
 
         if (canShoot && Input.GetKeyDown(KeyCode.E))
         {
-
-            if (anelAtual < 3)
+            anelAtual = (anelAtual+1) %player.aneisLiberados.Length;
+            while (player.aneisLiberados[anelAtual] == false)
             {
-                if (player.aneisLiberados[anelAtual + 1] == true)
-                {
-                    anelAtual++;
-                }
-                else
-                {
-                    anelAtual = 0;
-                }
-            }
-            else
-            {
-                anelAtual = 0;
+                anelAtual = (anelAtual+1) %player.aneisLiberados.Length;
             }
             uiAnel.SetAnel(anelAtual);
         }
@@ -146,14 +135,10 @@ public class Arco : MonoBehaviour
 
         if (canShoot && Input.GetKeyDown(KeyCode.Q))
         {
-            if (anelAtual > 0)
+            anelAtual = (anelAtual-1) %player.aneisLiberados.Length;
+            while (player.aneisLiberados[anelAtual] == false)
             {
-                anelAtual--;
-                uiAnel.SetAnel(anelAtual); ;
-            }
-            else
-            {
-                anelAtual = Array.LastIndexOf(player.aneisLiberados, true);
+                anelAtual = (anelAtual-1) %player.aneisLiberados.Length;
             }
             uiAnel.SetAnel(anelAtual);
         }

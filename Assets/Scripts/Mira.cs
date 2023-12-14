@@ -7,10 +7,12 @@ public class Mira : MonoBehaviour
 {
     //bool para menupausa
     private bool isActive = true;
+    SpriteRenderer spriteRenderer;
 
     void Start()
     {
         Cursor.visible = false;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -22,11 +24,11 @@ public class Mira : MonoBehaviour
         }
     }
 
-    public void SetActive(bool value)
+    public void MiraAtiva(bool value)
     {
         Cursor.visible = !value;
         isActive = value;
-        gameObject.SetActive(value);
+        spriteRenderer.enabled = value;
     }
 }
 

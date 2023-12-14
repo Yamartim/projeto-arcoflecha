@@ -6,20 +6,19 @@ using UnityEngine.SceneManagement;
 public class PausaMenu : MonoBehaviour
 {
     public static bool jogoPausado = false;
+    public static bool podePausar = true;
     public GameObject PausaMenuCanvas;
-    private Arco arco;
-    private Mira mira;
+    private Status player;
 
     void Start()
     {
         Time.timeScale = 1f;
-        arco = Status.instancia.GetComponent<Arco>();
-        mira = FindObjectOfType<Mira>();
+        player = Status.instancia;
     }
     
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) && podePausar)
         {
             if(jogoPausado)
             {
@@ -38,15 +37,7 @@ public class PausaMenu : MonoBehaviour
         Time.timeScale = 0f;
         jogoPausado = true;
 
-        if (arco != null)
-        {
-            arco.SetCanShoot(false);
-        }
-
-        if (mira != null)
-        {
-            mira.SetActive(false);
-        }
+        player.ToggleMovMira(false);
     }
 
     public void Jogar()
@@ -55,19 +46,13 @@ public class PausaMenu : MonoBehaviour
         Time.timeScale = 1f;
         jogoPausado = false;
 
-        if (arco != null)
-        {
-            arco.SetCanShoot(true);
-        }
-
-        if (mira != null)
-        {
-            mira.SetActive(true); 
-        }
+        player.ToggleMovMira(true);
     }
 
     public void MenuPrincipal()
     {
+        //TODO quando botar a cena do video antes da do jogo talvez tenha q mudar aq
+        //SceneManager.LoadScene(0);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
     }
  
