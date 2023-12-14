@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
         if (instancia == null)
         {
             instancia = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         
     }
