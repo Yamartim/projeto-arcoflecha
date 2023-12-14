@@ -124,22 +124,22 @@ public class Arco : MonoBehaviour
 
         if (canShoot && Input.GetKeyDown(KeyCode.E))
         {
-            anelAtual = (anelAtual+1) %player.aneisLiberados.Length;
-            while (player.aneisLiberados[anelAtual] == false)
-            {
+            do {
                 anelAtual = (anelAtual+1) %player.aneisLiberados.Length;
-            }
+            } while (player.aneisLiberados[anelAtual] == false);
             uiAnel.SetAnel(anelAtual);
         }
 
 
         if (canShoot && Input.GetKeyDown(KeyCode.Q))
         {
-            anelAtual = (anelAtual-1) %player.aneisLiberados.Length;
-            while (player.aneisLiberados[anelAtual] == false)
-            {
+            do {
                 anelAtual = (anelAtual-1) %player.aneisLiberados.Length;
-            }
+                if(anelAtual < 0)
+                {
+                    anelAtual = player.aneisLiberados.Length-1;
+                }
+            }while (player.aneisLiberados[anelAtual] == false);
             uiAnel.SetAnel(anelAtual);
         }
 
