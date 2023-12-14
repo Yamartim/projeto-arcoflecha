@@ -27,6 +27,7 @@ public class FinalManager : MonoBehaviour
     IEnumerator MudarCena()
     {
         yield return new WaitForSeconds(duracaoFinal);  // tempo para o vídeo rodar
+        Status.instancia.GetComponentInChildren<Mira>().MiraAtiva(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
