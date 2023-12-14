@@ -45,7 +45,22 @@ public class GeraCorda : MonoBehaviour
     bool PertoDoChao(int distancia)
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, (float)distancia + 0.5f);
+        //TODO filtrar layers do collider aqui pro player ou flechas n interromperem a geração
         return hit.collider != null;
+    }
+
+    
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        for(int i = 0; i < numSegmentos; i++)
+        {
+            //TODO checar se esse gizmo n ta zuado
+            Gizmos.DrawWireCube(new Vector3(transform.position.x, 
+                                            transform.position.y-0.5f-i,
+                                            0f),
+                                new Vector3(.15f, .5f, 0f));
+        }
     }
 
 }
