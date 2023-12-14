@@ -40,4 +40,15 @@ public class MovPlatMovel : MonoBehaviour
             other.transform.SetParent(null);
         }
     }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        int i = pontoInicial;
+        do{
+            Gizmos.DrawLine(pontos[i].position, pontos[(i+1)%pontos.Length].position);
+            i = (i+1)%pontos.Length;
+
+        }while(i!=pontoInicial);
+    }
 }
