@@ -12,7 +12,7 @@ public class FlechaUI : MonoBehaviour
     [SerializeField]
     TMP_Text textoReload;
 
-    private void Awake()
+    private void Start()
     {
 
         FlechaHUDImages = new List<Image>();
@@ -28,13 +28,7 @@ public class FlechaUI : MonoBehaviour
         textoReload.enabled = flechasDisponiveis == 0;
         for(int i = 0; i < Status.instancia.totalFlechas; i++)
         {
-            if(i < flechasDisponiveis)
-            {
-                FlechaHUDImages[i].enabled = true;
-            } else
-            {
-                FlechaHUDImages[i].enabled = false;
-            }
+            FlechaHUDImages[i].enabled = i < flechasDisponiveis;
         }
     }
 
