@@ -5,19 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class Diario : MonoBehaviour
 {
-    public Diario Coleta;
     [SerializeField] float pageSpeed = 0.1f;
     [SerializeField] List<Transform> paginas;
     int index = -1;
     bool rotate = false;
     [SerializeField] GameObject AnteriorButton;
     [SerializeField] GameObject ProximoButton;
-    int paginasColetadas = 0; // Contagem de páginas coletad
+    int paginasColetadas = 0; 
 
-    private void Start()
+    public void Start()
     {
         InitialState();
         Time.timeScale = 1f;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Anterior();
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Proximo();
+        }
     }
 
     public void InitialState()
@@ -46,7 +58,7 @@ public class Diario : MonoBehaviour
         {
             AnteriorButton.SetActive(true);
         }
-        if (index == paginas.Count - 1 || index >= paginasColetadas)
+        if (index == paginas.Count - 1 || index > paginasColetadas)
         {
             ProximoButton.SetActive(false);
         }
@@ -73,6 +85,7 @@ public class Diario : MonoBehaviour
         }
     }
 
+    //rotacao da folha
     IEnumerator Rotate(float angle, bool Proximo)
     {
         float value = 0f;
@@ -96,20 +109,25 @@ public class Diario : MonoBehaviour
         }
     }
 
+    
     public void ColetarPagina()
     {
-        if (index >= 0 && index < paginas.Count)
+        if (index < paginas.Count && paginasColetadas < paginas.Count)
         {
             paginasColetadas++;
             Debug.Log("Pagina coletada. Total de paginas coletadas: " + paginasColetadas);
-            ProximoButton.SetActive(true);
+
+            if (paginasColetadas < paginas.Count)
+            {
+                ProximoButton.SetActive(true);
+                ProximoButtonActions();
+            }
+            else
+            {
+                ProximoButton.SetActive(false);
+            }
+        
         }
 
-        if (paginasColetadas < paginas.Count)
-        {
-            paginasColetadas++;
-            ProximoButton.SetActive(true);
-        }
     }
-
 }
