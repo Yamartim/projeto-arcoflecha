@@ -175,7 +175,7 @@ MonoBehaviour:
   conectadoAcima: {fileID: 0}
   conectadoAbaixo: {fileID: 0}
   massaInicial: 0.1
-  massaQueda: 2
+  massaQueda: 1
   massaDelay: 0.5
 --- !u!1 &6265164783693409731
 GameObject:
