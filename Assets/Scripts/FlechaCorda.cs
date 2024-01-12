@@ -16,6 +16,7 @@ public class FlechaCorda : Flecha
         if (!cordaAtiva && !other.gameObject.CompareTag("Player"))
         {
             EfeitoColisao();
+            GetComponent<AudioSource>().Play();
             // congela a fisica da flecha
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             rb.isKinematic = false;
@@ -24,7 +25,6 @@ public class FlechaCorda : Flecha
             if(other.gameObject.CompareTag("Plataforma"))
                 transform.parent = other.transform;
             // instancia a corda
-            
             instancia = Instantiate(corda, cordaSpawn.position, transform.rotation, parent: transform);
             instancia.SetActive(true);
             cordaAtiva = true;

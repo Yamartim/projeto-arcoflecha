@@ -6,12 +6,13 @@ using UnityEngine.Rendering;
 public class FlechaFogo : Flecha
 {
         [SerializeField] GameObject aguaPreFab;
-
+        public AudioSource SFX_madeira, SFX_gelo;
         private bool JaColidiu = false;
 
     private void OnCollisionEnter2D(Collision2D other){
         if(other.gameObject.CompareTag("Madeira") && JaColidiu == false){
             EfeitoColisao();
+            SFX_madeira.Play();
             Destroy(other.gameObject);
             //TESTE DE SCREENSHAKE PRA DPS
             //ScreenShake.shakeAtivo.Shake(1f, 0.2f);
@@ -20,6 +21,7 @@ public class FlechaFogo : Flecha
 
         if(other.gameObject.CompareTag("Gelo") && JaColidiu == false){   
             EfeitoColisao();
+            SFX_gelo.Play();
             Vector2 position = other.gameObject.transform.position;
             Quaternion rotation = other.gameObject.transform.rotation;
             
