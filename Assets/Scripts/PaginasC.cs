@@ -16,6 +16,7 @@ public class PaginasC : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            GetComponent<AudioSource>().Play();
             BoxCollider2D collider = GetComponent<BoxCollider2D>();
             if (collider != null)
             {
@@ -30,7 +31,9 @@ public class PaginasC : MonoBehaviour
                 Debug.Log("ColetarPagina chamada");
             }
 
-            gameObject.SetActive(false);
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            Destroy(gameObject, 1.0f);
+            // gameObject.SetActive(false);
         }
     }
 }
