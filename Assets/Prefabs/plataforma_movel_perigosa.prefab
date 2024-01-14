@@ -268,34 +268,34 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 2191364881201703413}
     m_ColliderPaths:
-    - - X: 10220399
+    - - X: 9310499
         Y: 5781893
-      - X: -195767
+      - X: 113968
         Y: 5781893
-      - X: -195767
+      - X: 113968
         Y: 2404188
-      - X: 10220399
+      - X: 9310499
         Y: 2404188
   - m_Collider: {fileID: 4958728683600681885}
     m_ColliderPaths:
-    - - X: -550705
+    - - X: -707840
         Y: 5771894
-      - X: -10424660
+      - X: -9786467
         Y: 5771894
-      - X: -10424660
+      - X: -9786467
         Y: 2394189
-      - X: -550705
+      - X: -707840
         Y: 2394189
   m_CompositePaths:
     m_Paths:
-    - - {x: 1.0220106, y: 0.2404188}
-      - {x: 1.0220106, y: 0.5781893}
-      - {x: -0.0195767, y: 0.57816}
-      - {x: -0.019547401, y: 0.2404188}
-    - - {x: -0.0550998, y: 0.23941891}
-      - {x: -0.0550998, y: 0.5771894}
-      - {x: -1.042466, y: 0.5771601}
-      - {x: -1.0424367, y: 0.23941891}
+    - - {x: 0.9310206, y: 0.2404188}
+      - {x: 0.9310206, y: 0.5781893}
+      - {x: 0.0113968, y: 0.57816}
+      - {x: 0.0114261005, y: 0.2404188}
+    - - {x: -0.0708133, y: 0.23941891}
+      - {x: -0.0708133, y: 0.5771894}
+      - {x: -0.9786467, y: 0.5771601}
+      - {x: -0.9786174, y: 0.23941891}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!1 &3673862748230372954
@@ -425,8 +425,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1154867085451815270, guid: 7f35c15f3b2960846ac4148b4d0f7c82, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.26780608
+      objectReference: {fileID: 0}
+    - target: {fileID: 1154867085451815270, guid: 7f35c15f3b2960846ac4148b4d0f7c82, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.954
+      value: -0.905
       objectReference: {fileID: 0}
     - target: {fileID: 1154867085451815270, guid: 7f35c15f3b2960846ac4148b4d0f7c82, type: 3}
       propertyPath: m_LocalPosition.y
@@ -492,8 +496,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1154867085451815270, guid: 7f35c15f3b2960846ac4148b4d0f7c82, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2712841
+      objectReference: {fileID: 0}
+    - target: {fileID: 1154867085451815270, guid: 7f35c15f3b2960846ac4148b4d0f7c82, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.095999956
+      value: 0.086
       objectReference: {fileID: 0}
     - target: {fileID: 1154867085451815270, guid: 7f35c15f3b2960846ac4148b4d0f7c82, type: 3}
       propertyPath: m_LocalPosition.y
