@@ -17,12 +17,10 @@ public class Reset : MonoBehaviour
 
     private SpriteRenderer rend;
 
-    //public Color CorPadrao;
-
-    public Color CorDano1;
-    public Color CorDano2;
-    public Color CorDano3;
-    public Color CorDano4;
+    public Color Cor_dano;
+    //public Color corvermelho;
+    public Color corazul;
+    public Color corverde;
 
     GameObject ultimoCheckPoint = null;
 
@@ -73,16 +71,15 @@ public class Reset : MonoBehaviour
         }
 
         //variar a cor do personagem, conforme a vida atual dele, para indicar a situação da vida do personagem ao jogador.
-        if(player.vidaAtual > 0.8*player.vidaMaxima){
+        float corazul = (player.vidaAtual/player.vidaMaxima);
+        float corverde = (player.vidaAtual/player.vidaMaxima);
+        Cor_dano =new Color(1, corazul, corverde, 1);
+
+        if(player.vidaAtual < player.vidaMaxima){
+            rend.color = Cor_dano;
+        }
+        else {
             rend.color = Color.white;
-        } else if(player.vidaAtual > 0.6*player.vidaMaxima) {
-            rend.color = CorDano1;
-        } else if(player.vidaAtual > 0.4*player.vidaMaxima){
-            rend.color = CorDano2;
-        } else if(player.vidaAtual > 0.2*player.vidaMaxima){
-            rend.color = CorDano3;
-        } else {
-            rend.color = CorDano4;
         }
     }
 
