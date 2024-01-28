@@ -36,7 +36,7 @@ public class Diario : MonoBehaviour
     {
         for (int i = 0; i < paginas.Count; i++)
         {
-            paginas[i].transform.localRotation = Quaternion.Euler(0, 0, 0);
+            paginas[i].transform.rotation = Quaternion.identity;
         }
         paginas[0].SetAsLastSibling();
         AnteriorButton.SetActive(false);
