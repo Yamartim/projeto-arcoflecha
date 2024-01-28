@@ -17,6 +17,8 @@ public class BotaoTutorial : MonoBehaviour
         painelTutorial.SetActive(toggle);
         player.ToggleMovMira(!toggle);
         PausaMenu.podePausar = !toggle;
+        gameObject.GetComponent<AudioSource>().Play();
+
     }
 
 }
