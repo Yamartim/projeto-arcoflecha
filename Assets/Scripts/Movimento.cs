@@ -28,6 +28,9 @@ public class Movimento : MonoBehaviour
     [SerializeField] float coyoteTime = 0.2f;
     float ctcounter;
 
+    float bufferTime = 0.2f;
+    float bufferCnter;
+
     void Start()
     {
         movimentoPerimitido = true;
@@ -50,15 +53,6 @@ public class Movimento : MonoBehaviour
 
         if (movimentoPerimitido)
         {
-
-            // Andar
-            InputAndar();
-
-            // Pular
-            InputPulo();
-
-            InputEscalada();
-
             //contador coyote time, se ta no chao reinicia, senão subtrai
             if(grounded)
             {
@@ -67,6 +61,20 @@ public class Movimento : MonoBehaviour
             {
                 ctcounter -= Time.deltaTime;
             }
+            // contagem do buffer começa quando botão de pulo é pressionado
+            if(Input.GetButtonDown("Jump")) {
+                bufferCnter = bufferTime;
+            } else {
+                bufferCnter -= Time.deltaTime;
+            }
+
+            // Andar
+            InputAndar();
+
+            // Pular
+            InputPulo();
+
+            InputEscalada();
         }
 
     }
@@ -95,9 +103,10 @@ public class Movimento : MonoBehaviour
 #region logica de pular
     private void InputPulo()
     {
-        if (Input.GetButtonDown("Jump") && ((grounded || escalando) || (ctcounter > 0 && !(rb.velocity.y>0))))
+        if ((bufferCnter > 0f) && ((grounded || escalando) || (ctcounter > 0 && !(rb.velocity.y>0))))
         {
             rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
+            bufferCnter = 0f;
             SoltarCorda();
             anim.AnimPular();
         }
