@@ -112,6 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8074527477257838980}
   - component: {fileID: 7552450661985619841}
+  - component: {fileID: 2358693919532481599}
   m_Layer: 6
   m_Name: tile1
   m_TagString: Untagged
@@ -186,3 +187,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2358693919532481599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3673862748230372954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 79c02f559750844dfb91ab114773140100000000310b1641a5698a11
+  m_ShapePath:
+  - {x: -0.48351052, y: -0.051325034, z: 0}
+  - {x: -0.4870671, y: 0.11673394, z: 0}
+  - {x: 0.4692844, y: 0.09711151, z: 0}
+  - {x: 0.46892846, y: -0.05941878, z: 0}
+  m_ShapePathHash: 1197250591
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -108320
+  m_LocalBounds:
+    m_Center: {x: -0.008891344, y: 0.028657582, z: 0}
+    m_Extent: {x: 0.47817576, y: 0.08807636, z: 0}
