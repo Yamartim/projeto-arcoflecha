@@ -123,7 +123,7 @@ public class Reset : MonoBehaviour
             collision.gameObject.GetComponent<AnimCheckpoint>().AtivarCP(true);
             if(ultimoCheckPoint != null && ultimoCheckPoint != collision.gameObject)
             {
-                Debug.Log("entrou no if");
+                Debug.Log("desativou ultimo checkpoint");
                 ultimoCheckPoint.GetComponent<AnimCheckpoint>().AtivarCP(false);
             }
             ultimoCheckPoint = collision.gameObject;
