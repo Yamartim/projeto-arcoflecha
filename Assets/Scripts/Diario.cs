@@ -11,7 +11,7 @@ public class Diario : MonoBehaviour
     bool rotate = false;
     [SerializeField] GameObject AnteriorButton;
     [SerializeField] GameObject ProximoButton;
-    int paginasColetadas = 0; 
+    int paginasColetadas = -1; 
 
     public void Start()
     {
