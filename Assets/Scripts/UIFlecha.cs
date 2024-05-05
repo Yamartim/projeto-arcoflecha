@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class FlechaUI : MonoBehaviour
+public class UIFlecha : MonoBehaviour
 {
     List<Image> FlechaHUDImages;
 
@@ -16,7 +16,7 @@ public class FlechaUI : MonoBehaviour
     {
 
         FlechaHUDImages = new List<Image>();
-        for(int i = 0; i < Status.instancia.totalFlechas; i++)
+        for(int i = 0; i < PlayerStatus.instancia.totalFlechas; i++)
         {
             FlechaHUDImages.Add(Instantiate(flechaIMG, this.transform).GetComponent<Image>());
         }
@@ -26,7 +26,7 @@ public class FlechaUI : MonoBehaviour
     public void UpdateFlechaUI(int flechasDisponiveis)
     {
         textoReload.enabled = flechasDisponiveis == 0;
-        for(int i = 0; i < Status.instancia.totalFlechas; i++)
+        for(int i = 0; i < PlayerStatus.instancia.totalFlechas; i++)
         {
             FlechaHUDImages[i].enabled = i < flechasDisponiveis;
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class Anel : MonoBehaviour
+public class PlayerAnel : MonoBehaviour
 {
     public float amp;
     public float freq;
@@ -18,7 +18,7 @@ public class Anel : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Player")){
             // Desativa todos os componentes e espera o efeito sonoro tocar para destruir objeto
-            Status.instancia.LiberarFlecha(tipo);
+            PlayerStatus.instancia.LiberarFlecha(tipo);
             gameObject.GetComponent<AudioSource>().Play();
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;

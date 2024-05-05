@@ -4,9 +4,9 @@ using Cinemachine;
 using UnityEngine;
 
 [RequireComponent(typeof(CinemachineVirtualCamera))]
-public class ScreenShake : MonoBehaviour
+public class EfeitoScreenShake : MonoBehaviour
 {
-    public static ScreenShake shakeAtivo;
+    public static EfeitoScreenShake shakeAtivo;
 
     CinemachineVirtualCamera cam;
     CinemachineBasicMultiChannelPerlin noise;

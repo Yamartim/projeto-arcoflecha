@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FrameFreeze : MonoBehaviour
+public class EfeitoFrameFreeze : MonoBehaviour
 {
     [SerializeField] [Range(0f, .5f)]
     float duracao = .1f;
@@ -11,7 +11,7 @@ public class FrameFreeze : MonoBehaviour
 
     public void Congelar()
     {
-        if(!jogoCongelado && !PausaMenu.jogoPausado)
+        if(!jogoCongelado && !MenoPausa.jogoPausado)
         {
             timescaleInicial = Time.timeScale;
             Time.timeScale = 0f;

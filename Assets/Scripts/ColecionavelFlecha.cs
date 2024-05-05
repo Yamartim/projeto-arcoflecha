@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AumentarFlechas : MonoBehaviour
+public class ColecionavelFlecha : MonoBehaviour
 {
     public float amp;
     public float freq;
@@ -14,7 +14,7 @@ public class AumentarFlechas : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
             if(other.gameObject.CompareTag("Player")){
-                other.gameObject.GetComponentInChildren<Arco>()?.AumentarFlechas();
+                other.gameObject.GetComponentInChildren<PlayerArco>()?.AumentarFlechas();
                 // other.gameObject.GetComponent<EfeitosSonoros>().playColetarFlecha();
                 gameObject.GetComponent<AudioSource>().Play();
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;

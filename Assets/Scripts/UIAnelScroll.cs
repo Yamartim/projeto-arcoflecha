@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AnelScroll : MonoBehaviour
+public class UIAnelScroll : MonoBehaviour
 {
     public ScrollRect scrollRect;
     public Image[] images;

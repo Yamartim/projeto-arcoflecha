@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PausaMenu : MonoBehaviour
+public class MenoPausa : MonoBehaviour
 {
     public static bool jogoPausado = false;
     public static bool podePausar = true;
     public GameObject PausaMenuCanvas;
-    private Status player;
+    private PlayerStatus player;
 
     void Start()
     {
         Time.timeScale = 1f;
-        player = Status.instancia;
+        player = PlayerStatus.instancia;
     }
     
     void Update()

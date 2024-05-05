@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Movimento : MonoBehaviour
+public class PlayerMovimento : MonoBehaviour
 {
     Rigidbody2D rb;
     CapsuleCollider2D col;
     PhysicsMaterial2D mat;
-    AnimacaoPlayer anim;
+    PlayerAnimacao anim;
     public Transform groundCheck, tetoCheck;
     public LayerMask groundLayer;
     bool movimentoPerimitido;
@@ -38,7 +38,7 @@ public class Movimento : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
         hj = GetComponent<HingeJoint2D>();
-        anim = GetComponent<AnimacaoPlayer>();
+        anim = GetComponent<PlayerAnimacao>();
 
         mat = new PhysicsMaterial2D("Material");
         mat.friction = 1f;
@@ -138,7 +138,7 @@ public class Movimento : MonoBehaviour
         if(escalando)
         {
             //referencia de qual ponta da corda nos estamos agarrando
-            SegmentoCorda seg = hj.connectedBody.GetComponent<SegmentoCorda>();
+            CordaSegmento seg = hj.connectedBody.GetComponent<CordaSegmento>();
             rb.gravityScale = 0f;
 
             //rb.velocity = new Vector2(rb.velocity.x, inputVertical * velMax);
@@ -296,7 +296,7 @@ public class Movimento : MonoBehaviour
     public void ToggleMovimento(bool ativo)
     {
         movimentoPerimitido = ativo;
-        gameObject.GetComponentInChildren<Arco>().SetCanShoot(ativo);
+        gameObject.GetComponentInChildren<PlayerArco>().SetCanShoot(ativo);
         anim.PausarAnim();
     }
 #endregion

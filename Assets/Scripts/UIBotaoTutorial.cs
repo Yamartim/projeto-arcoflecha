@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BotaoTutorial : MonoBehaviour
+public class UIBotaoTutorial : MonoBehaviour
 {
     [SerializeField] GameObject painelTutorial;
-    Status player;
+    PlayerStatus player;
 
     void Start()
     {
-        player = Status.instancia;
+        player = PlayerStatus.instancia;
     }
 
     public void ToggleTutorial(bool toggle)
     {
         painelTutorial.SetActive(toggle);
         player.ToggleMovMira(!toggle);
-        PausaMenu.podePausar = !toggle;
+        MenoPausa.podePausar = !toggle;
         gameObject.GetComponent<AudioSource>().Play();
 
     }

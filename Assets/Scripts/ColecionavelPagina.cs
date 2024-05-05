@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PaginasC : MonoBehaviour
+public class ColecionavelPagina : MonoBehaviour
 {
-    public Diario diario;
+    public ColecionavelDiario diario;
 
     void Start()
     {
-        diario = FindObjectOfType<Diario>();
+        diario = FindObjectOfType<ColecionavelDiario>();
 
     }
 

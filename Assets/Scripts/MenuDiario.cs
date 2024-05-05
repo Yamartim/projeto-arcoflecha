@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DiarioManager : MonoBehaviour
+public class MenuDiario : MonoBehaviour
 {
     public static bool Diario = false;
     public GameObject DiarioCanvas;

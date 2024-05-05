@@ -9,7 +9,7 @@ public enum tipoFlecha {
     Luz
 }
 
-[RequireComponent(typeof(FrameFreeze))]
+[RequireComponent(typeof(EfeitoFrameFreeze))]
 [RequireComponent(typeof(EfeitoFlash))]
 public class Flecha : MonoBehaviour
 {
@@ -17,7 +17,7 @@ public class Flecha : MonoBehaviour
     public float forca = 20f;
     public Rigidbody2D rb;
     public Collider2D coll;
-    public Arco arcoref;
+    public PlayerArco arcoref;
     public bool retornando;
     public tipoFlecha tipo;
 
@@ -65,7 +65,7 @@ public class Flecha : MonoBehaviour
     virtual protected void OnTriggerEnter2D(Collider2D other) {
         if(retornando && other.CompareTag("Player"))
         {
-            other.gameObject.GetComponentInChildren<Arco>().RecuperarFlecha(this);
+            other.gameObject.GetComponentInChildren<PlayerArco>().RecuperarFlecha(this);
             // other.gameObject.GetComponent<Movimento>().cordasProxRB.Clear();
             Destroy(gameObject);
             //da push numa pilha de flechas?
@@ -78,8 +78,8 @@ public class Flecha : MonoBehaviour
         if (gameObject.GetComponent<Renderer>().isVisible)
         {
             GetComponent<EfeitoFlash>().Flash();
-            GetComponent<FrameFreeze>().Congelar();
-            ScreenShake.shakeAtivo.Shake(2f, 5f, .1f);
+            GetComponent<EfeitoFrameFreeze>().Congelar();
+            EfeitoScreenShake.shakeAtivo.Shake(2f, 5f, .1f);
         }
     }
 

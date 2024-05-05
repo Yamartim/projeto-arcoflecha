@@ -4,11 +4,11 @@ using UnityEngine;
 //using UnityEditor.Animations;
 //using Unity.VisualScripting;
 
-public class AnimacaoPlayer : MonoBehaviour
+public class PlayerAnimacao : MonoBehaviour
 {
     Animator animator;
     SpriteRenderer sprite;
-    Movimento movim;
+    PlayerMovimento movim;
 
     bool olhandoEsquerda = false;
     bool andarFrente;
@@ -16,7 +16,7 @@ public class AnimacaoPlayer : MonoBehaviour
     private void Start() {
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
-        movim = GetComponent<Movimento>();
+        movim = GetComponent<PlayerMovimento>();
     }
 
     // Update is called once per frame

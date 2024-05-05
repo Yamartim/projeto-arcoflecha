@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeraCorda : MonoBehaviour
+public class CordaGen : MonoBehaviour
 {
 
     [SerializeField] Rigidbody2D topo;

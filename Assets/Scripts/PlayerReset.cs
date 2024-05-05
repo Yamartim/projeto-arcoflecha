@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class Reset : MonoBehaviour
+public class PlayerReset : MonoBehaviour
 {
     public Vector2 posRevive;
-    Status player;
+    PlayerStatus player;
 
     public float taxaPerda, taxaGanho;
 
-    private Movimento movim;
-    private Arco arco;
+    private PlayerMovimento movim;
+    private PlayerArco arco;
 
     bool estaMorto = false;
 
@@ -32,15 +32,15 @@ public class Reset : MonoBehaviour
     // Start is called before the first frame update.
     void Start()
     {
-        player = GetComponent<Status>();
+        player = GetComponent<PlayerStatus>();
         posRevive = transform.position;
         player.vidaAtual = player.vidaMaxima;
 
         rend = GetComponent<SpriteRenderer>();
         rend.color = rend.color;
 
-        movim = GetComponent<Movimento>();
-        arco = GetComponentInChildren<Arco>();
+        movim = GetComponent<PlayerMovimento>();
+        arco = GetComponentInChildren<PlayerArco>();
     }
 
     // Update is called once per frame
@@ -61,7 +61,7 @@ public class Reset : MonoBehaviour
         // se a vida não está cheia...
         if (player.vidaAtual<player.vidaMaxima && player.vidaAtual != player.vidaMaxima){
             // e Player está no chão, regenerar
-            if(gameObject.GetComponent<Movimento>().grounded) {
+            if(gameObject.GetComponent<PlayerMovimento>().grounded) {
                 GanharVida();
             }
         }

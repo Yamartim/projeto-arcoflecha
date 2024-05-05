@@ -6,10 +6,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Arco : MonoBehaviour
+public class PlayerArco : MonoBehaviour
 {
 
-    Status player;
+    PlayerStatus player;
     int TotalFlecha;
 
     public Collider2D playercoll;
@@ -24,8 +24,8 @@ public class Arco : MonoBehaviour
     //codigo da ui velha
     //public Text FlechaHUD;
 
-    public AnimacaoPlayer anim;
-    public Mira mira;
+    public PlayerAnimacao anim;
+    public PlayerMira mira;
 
     //bool para menupausa
     private bool canShoot = true;
@@ -36,13 +36,13 @@ public class Arco : MonoBehaviour
     // serve pra saber todas as flechas q o player atirou pra ativar a função de puxar elas
     private List<GameObject> flechasAtiradas = new List<GameObject>();
 
-    [SerializeField] AnelScroll uiAnel;
-    [SerializeField] FlechaUI uiFlecha;
+    [SerializeField] UIAnelScroll uiAnel;
+    [SerializeField] UIFlecha uiFlecha;
     [SerializeField] EventSystem eventSystem;
 
     // Update is called once per frame
     void Start(){
-        player = GetComponentInParent<Status>();
+        player = GetComponentInParent<PlayerStatus>();
 
         TotalFlecha = player.totalFlechas;
         flechasAtual = TotalFlecha;
@@ -150,7 +150,7 @@ public class Arco : MonoBehaviour
     private void InputReload()
     {
         // botao de recarregar q puxa todas as flechas na cena
-        if (canShoot && Input.GetKeyDown(KeyCode.R) && gameObject.GetComponentInParent<Movimento>().grounded)
+        if (canShoot && Input.GetKeyDown(KeyCode.R) && gameObject.GetComponentInParent<PlayerMovimento>().grounded)
         {
             Reload();
         }

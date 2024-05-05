@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Status : MonoBehaviour
+public class PlayerStatus : MonoBehaviour
 {
     public float vidaMaxima; // Valor máximo de vida
     public float vidaAtual; // Valor atual de vida
     public bool[] aneisLiberados;
     public int totalFlechas = 5;
-    public static Status instancia;
+    public static PlayerStatus instancia;
 
     [SerializeField] GameObject textoTrocaAnel;
 
@@ -46,8 +46,8 @@ public class Status : MonoBehaviour
 
     public void ToggleMovMira(bool toggle)
     {
-        GetComponent<Movimento>().ToggleMovimento(toggle);
-        GetComponentInChildren<Mira>().MiraAtiva(toggle);
+        GetComponent<PlayerMovimento>().ToggleMovimento(toggle);
+        GetComponentInChildren<PlayerMira>().MiraAtiva(toggle);
     }
 
 //logica apenas para debug no editor

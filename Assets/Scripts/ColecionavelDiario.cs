@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Diario : MonoBehaviour
+public class ColecionavelDiario : MonoBehaviour
 {
     [SerializeField] float pageSpeed = 0.1f;
     [SerializeField] List<Transform> paginas;

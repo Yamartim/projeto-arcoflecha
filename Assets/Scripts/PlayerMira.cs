@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Mira : MonoBehaviour
+public class PlayerMira : MonoBehaviour
 {
     //bool para menupausa
     private bool isActive = true;

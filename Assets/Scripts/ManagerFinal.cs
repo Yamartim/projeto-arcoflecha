@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class FinalManager : MonoBehaviour
+public class ManagerFinal : MonoBehaviour
 {
     [SerializeField] float duracaoFinal = 15f;
     Animator anim;
@@ -17,7 +17,7 @@ public class FinalManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Player"))
         {
-            other.GetComponent<Movimento>().ToggleMovimento(false);
+            other.GetComponent<PlayerMovimento>().ToggleMovimento(false);
             anim.SetTrigger("FINAL");
             StartCoroutine(MudarCena());
 
@@ -27,7 +27,7 @@ public class FinalManager : MonoBehaviour
     IEnumerator MudarCena()
     {
         yield return new WaitForSeconds(duracaoFinal);  // tempo para o vídeo rodar
-        Status.instancia.GetComponentInChildren<Mira>().MiraAtiva(false);
+        PlayerStatus.instancia.GetComponentInChildren<PlayerMira>().MiraAtiva(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 

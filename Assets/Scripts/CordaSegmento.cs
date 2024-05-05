@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SegmentoCorda : MonoBehaviour
+public class CordaSegmento : MonoBehaviour
 {
     public GameObject conectadoAcima, conectadoAbaixo;
     HingeJoint2D hj;
@@ -30,7 +30,7 @@ public class SegmentoCorda : MonoBehaviour
 
     void PosicionarSegmento()
     {
-        SegmentoCorda segAcima = conectadoAcima.GetComponent<SegmentoCorda>();
+        CordaSegmento segAcima = conectadoAcima.GetComponent<CordaSegmento>();
         // se não é o topo fala pro de cima que esse está embaixo e se posiciona diretamente abaixo dele
         if(segAcima != null)
         {
@@ -47,7 +47,7 @@ public class SegmentoCorda : MonoBehaviour
     //metodos pro player saber qnd ta escalando se esse é o começo ou fim da corda
     public bool EhSegmentoInicial()
     {
-        return conectadoAcima.GetComponent<SegmentoCorda>() == null;
+        return conectadoAcima.GetComponent<CordaSegmento>() == null;
     }
 
     public bool EhSegmentoFinal()
