@@ -16,7 +16,7 @@ public class UIBotaoTutorial : MonoBehaviour
     {
         painelTutorial.SetActive(toggle);
         player.ToggleMovMira(!toggle);
-        MenoPausa.podePausar = !toggle;
+        MenuPausa.podePausar = !toggle;
         gameObject.GetComponent<AudioSource>().Play();
 
     }

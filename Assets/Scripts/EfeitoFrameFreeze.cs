@@ -11,7 +11,7 @@ public class EfeitoFrameFreeze : MonoBehaviour
 
     public void Congelar()
     {
-        if(!jogoCongelado && !MenoPausa.jogoPausado)
+        if(!jogoCongelado && !MenuPausa.jogoPausado)
         {
             timescaleInicial = Time.timeScale;
             Time.timeScale = 0f;
