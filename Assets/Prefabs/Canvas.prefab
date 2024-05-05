@@ -1545,7 +1545,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6497394451801798142}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Diario, Assembly-CSharp
         m_MethodName: ProximoButtonActions
         m_Mode: 1
@@ -2403,7 +2403,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6497394451801798142}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Diario, Assembly-CSharp
         m_MethodName: AnteriorButtonActions
         m_Mode: 1
@@ -3797,7 +3797,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6497394451801798141}
-  - component: {fileID: 6497394451801798142}
   m_Layer: 5
   m_Name: paginas
   m_TagString: Untagged
@@ -3832,29 +3831,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6497394451801798142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6497394451801798140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2168960318e83204f903a04fe633db32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pageSpeed: 0.1
-  paginas:
-  - {fileID: 6497394451077177813}
-  - {fileID: 6497394451090326222}
-  - {fileID: 6497394450751405876}
-  - {fileID: 6497394451732150981}
-  - {fileID: 3404023437327105511}
-  - {fileID: 3089292255553215654}
-  - {fileID: 130498028336387949}
-  AnteriorButton: {fileID: 6006024473450713016}
-  ProximoButton: {fileID: 2604386357668386424}
 --- !u!1 &6497394451815146263
 GameObject:
   m_ObjectHideFlags: 0
@@ -4098,7 +4074,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6497394452206663406}
-  - component: {fileID: 6497394452206663407}
+  - component: {fileID: 709112238}
   m_Layer: 5
   m_Name: DiarioManager
   m_TagString: Untagged
@@ -4126,7 +4102,7 @@ RectTransform:
   m_AnchoredPosition: {x: -769.9486, y: -431.12485}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6497394452206663407
+--- !u!114 &709112238
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4135,10 +4111,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 6497394452206663405}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cc18c47318aced4782bd41974540d82, type: 3}
+  m_Script: {fileID: 11500000, guid: 2168960318e83204f903a04fe633db32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DiarioCanvas: {fileID: 6497394452376013801}
+  pageSpeed: 0.1
+  paginas:
+  - {fileID: 6497394451077177813}
+  - {fileID: 6497394451090326222}
+  - {fileID: 6497394450751405876}
+  - {fileID: 6497394451732150981}
+  - {fileID: 3404023437327105511}
+  - {fileID: 3089292255553215654}
+  - {fileID: 130498028336387949}
+  AnteriorButton: {fileID: 6006024473450713016}
+  ProximoButton: {fileID: 2604386357668386424}
 --- !u!1 &6497394452227266469
 GameObject:
   m_ObjectHideFlags: 0
@@ -4315,7 +4302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6497394452376013802
 RectTransform:
   m_ObjectHideFlags: 0

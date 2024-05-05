@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class PlayerAnel : MonoBehaviour
+public class ColecionavelAnel : MonoBehaviour
 {
     public float amp;
     public float freq;
