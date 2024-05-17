@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class PlayerArco : MonoBehaviour
 {
@@ -65,6 +63,8 @@ public class PlayerArco : MonoBehaviour
         Vector2 direcao = posicaoMouse - posicaoArco;
         transform.right = direcao;
 
+
+        // TODO posição do firepoint = distancia * diração do player ate a mira normaliada
         if (mira.transform.position.x < gameObject.transform.position.x)
         {
             anim.VirarPlayer(true);
@@ -189,5 +189,11 @@ public class PlayerArco : MonoBehaviour
     public void SetCanShoot(bool value)
     {
         canShoot = value;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawCube(FirePoint.position, new Vector3(0.7f, 0.1f, 0.1f));
     }
 }
