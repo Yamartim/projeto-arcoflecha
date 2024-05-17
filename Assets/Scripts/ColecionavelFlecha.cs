@@ -14,8 +14,11 @@ public class ColecionavelFlecha : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
             if(other.gameObject.CompareTag("Player")){
-                other.gameObject.GetComponentInChildren<PlayerArco>()?.AumentarFlechas();
+                PlayerStatus.instancia.AumentarTotalFlechas();
+
+                //other.gameObject.GetComponentInChildren<PlayerArco>()?.AumentarFlechas();
                 // other.gameObject.GetComponent<EfeitosSonoros>().playColetarFlecha();
+                
                 gameObject.GetComponent<AudioSource>().Play();
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 gameObject.GetComponent<SpriteRenderer>().enabled = false;
