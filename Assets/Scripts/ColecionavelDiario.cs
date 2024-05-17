@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class ColecionavelDiario : MonoBehaviour
 {
-    public MenuDiario diario;
 
-    void Start()
-    {
-        diario = FindObjectOfType<MenuDiario>();
-
-    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -22,14 +16,9 @@ public class ColecionavelDiario : MonoBehaviour
             {
                 collider.enabled = false;
             }
-
+            
+            PlayerStatus.instancia.LiberarPagina();
             Debug.Log("Objeto Coletado");
-
-            if (diario != null)
-            {
-                diario.ColetarPagina();
-                Debug.Log("ColetarPagina chamada");
-            }
 
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             Destroy(gameObject, 1.0f);

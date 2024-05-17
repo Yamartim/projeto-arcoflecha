@@ -24,7 +24,7 @@ public class MenuPausa : MonoBehaviour
             {
                 Jogar();
             }
-            else
+            else 
             {
                 Parar();
             }
@@ -35,18 +35,28 @@ public class MenuPausa : MonoBehaviour
     {
         PausaMenuCanvas.SetActive(true);
         Time.timeScale = 0f;
+        
         jogoPausado = true;
 
-        player.ToggleMovMira(false);
+        MenuDiario.podeUsarDiario = false;
+        if (MenuDiario.DiarioAberto)
+        {
+            player.ToggleMovMira(false);
+        }
     }
 
     public void Jogar()
     {
         PausaMenuCanvas.SetActive(false);
         Time.timeScale = 1f;
+
         jogoPausado = false;
 
-        player.ToggleMovMira(true);
+        MenuDiario.podeUsarDiario = true;
+        if (!MenuDiario.DiarioAberto)
+        {
+            player.ToggleMovMira(true);
+        }
     }
 
     public void MenuPrincipal()

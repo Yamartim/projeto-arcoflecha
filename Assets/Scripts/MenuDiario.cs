@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,83 +7,128 @@ using UnityEngine.SceneManagement;
 public class MenuDiario : MonoBehaviour
 {
     
-    public static bool PausaDiario = false;
-
-    [SerializeField] GameObject DiarioCanvas;
+    public static bool DiarioAberto = false;
+    public static bool podeUsarDiario = true;
+    int paginasMostraveis;
 
     [SerializeField] float pageSpeed = 0.1f;
+
     [SerializeField] List<Transform> paginas;
-    int index = -1;
-    bool rotate = false;
+    [SerializeField] GameObject DiarioCanvas;
+    int paginaEsquerda = -1;
+    int paginaDireita = 0;
+    bool paginaVirando = false;
     [SerializeField] GameObject AnteriorButton;
     [SerializeField] GameObject ProximoButton;
-    int paginasColetadas = -1; 
 
 
     public void Start()
     {
-        InitialState();
-        Time.timeScale = 1f;
+        //+3 pq a primeira, a capa e uma vazia não contam
+        paginasMostraveis = PlayerStatus.instancia.paginasColetadas+3;
+
+        Inicializar();
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if(podeUsarDiario)
         {
-            if(PausaDiario)
+            if(Input.GetKeyDown(KeyCode.Tab))
             {
-                Voltar();
+                if(DiarioAberto)
+                {
+                    FecharDiario();
+                }
+                else
+                {
+                    AbrirDiario();
+                }
             }
-            else
+
+            if (DiarioAberto && Input.GetKeyDown(KeyCode.Q))
             {
-                Parar();
+                PagVolta();
             }
-        }
 
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Anterior();
-        }
-
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            Proximo();
+            if (DiarioAberto && Input.GetKeyDown(KeyCode.E))
+            {
+                PagAvanca();
+            }
         }
     }
 
-    void Parar()
+    void AbrirDiario()
     {
         DiarioCanvas.SetActive(true);
-        Time.timeScale = 1f;
-        PausaDiario = true;
+        DiarioAberto = true;
+        PlayerStatus.instancia.ToggleMovMira(false);
     }
 
-    public void Voltar()
+    void FecharDiario()
     {
         DiarioCanvas.SetActive(false);
-        Time.timeScale = 1f;
-        PausaDiario = false;
+        DiarioAberto = false;
+        PlayerStatus.instancia.ToggleMovMira(true);
     }
 
-    
-    public void InitialState()
+
+    void Inicializar()
     {
+        //zera rotações das paginas, bota a primeira na grente e desativa o botão de voltar
         for (int i = 0; i < paginas.Count; i++)
         {
             paginas[i].transform.rotation = Quaternion.identity;
+        }
+        for (int i = 1; i < (paginas.Count-2); i++)
+        {
+            paginas[i].gameObject.SetActive(false);
         }
         paginas[0].SetAsLastSibling();
         AnteriorButton.SetActive(false);
     }
 
-    public void Proximo()
+    public void PagAvanca()
     {
-        if (rotate == true || paginasColetadas <= index) { return; }
-        index++;
-        float angle = -180;
+        if (paginaVirando || paginaDireita >= paginas.Count) { return; }
+
+
+        do{
+            paginas[paginaDireita].SetAsLastSibling();
+
+            StartCoroutine(Rotate(true));
+
+            paginaEsquerda++;
+            paginaDireita++;
+
+            if(paginaDireita >= paginas.Count)
+            {
+                break;
+            }
+        }while(paginas[paginaDireita].gameObject.activeInHierarchy == false);
+
         ProximoButtonActions();
-        paginas[index].SetAsLastSibling();
-        StartCoroutine(Rotate(angle, true));
+    }
+
+    public void PagVolta()
+    {
+        if (paginaVirando || paginaEsquerda < 0) { return; }
+
+        do{
+            paginas[paginaEsquerda].SetAsLastSibling();
+
+            StartCoroutine(Rotate(false));
+
+            paginaEsquerda--;
+            paginaDireita--;
+
+            if(paginaEsquerda < 0)
+            {
+                break;
+            }
+        }while(paginas[paginaEsquerda].gameObject.activeInHierarchy == false);
+
+        AnteriorButtonActions();
     }
 
     public void ProximoButtonActions()
@@ -91,19 +137,10 @@ public class MenuDiario : MonoBehaviour
         {
             AnteriorButton.SetActive(true);
         }
-        if (index == paginas.Count - 1 || index > paginasColetadas)
+        if (paginaDireita >= paginas.Count)
         {
             ProximoButton.SetActive(false);
         }
-    }
-
-    public void Anterior()
-    {
-        if (rotate == true) { return; }
-        float angle = 0;
-        paginas[index].SetAsLastSibling();
-        AnteriorButtonActions();
-        StartCoroutine(Rotate(angle, false));
     }
 
     public void AnteriorButtonActions()
@@ -112,55 +149,69 @@ public class MenuDiario : MonoBehaviour
         {
             ProximoButton.SetActive(true);
         }
-        if (index - 1 == -1)
+        if (paginaEsquerda < 0)
         {
             AnteriorButton.SetActive(false);
         }
     }
 
     //rotacao da folha
-    IEnumerator Rotate(float angle, bool Proximo)
+    IEnumerator Rotate(bool avancando)
     {
         float value = 0f;
-        while (true)
+        float angulo;
+        int paginaavirar;
+
+        if (avancando)
         {
-            rotate = true;
-            Quaternion targetRotation = Quaternion.Euler(0, angle, 0);
-            value += Time.deltaTime * pageSpeed;
-            paginas[index].localRotation = Quaternion.Slerp(paginas[index].localRotation, targetRotation, value);
-            float angle1 = Quaternion.Angle(paginas[index].localRotation, targetRotation);
-            if (angle1 < 0.1f)
+            paginaavirar = paginaDireita;
+            angulo = -180f;
+        }
+        else
+        {
+            paginaavirar = paginaEsquerda;
+            angulo = 0f;
+        }
+
+        //determina o angulo objetivo
+        Quaternion targetRotation = Quaternion.Euler(0, angulo, 0);
+
+        float auxAngle = Quaternion.Angle(paginas[paginaavirar].localRotation, targetRotation);
+
+        // se o objeto nao esta ativo giramos instantaneamente
+        if(paginas[paginaavirar].gameObject.activeInHierarchy)
+        {
+            paginaVirando = true;
+            while (auxAngle >= 0.1f)
             {
-                if (Proximo == false)
-                {
-                    index--;
-                }
-                rotate = false;
-                break;
+
+                //determina o quanto vai girar a cada iteração
+                value += Time.deltaTime * pageSpeed;
+
+                //gira a pagina com slerp
+                paginas[paginaavirar].localRotation = Quaternion.Slerp(paginas[paginaavirar].localRotation, targetRotation, value);
+
+                //se o angulo entre a rotação atual e a rotação objetivo for menor que 0.1, para a rotação
+                auxAngle = Quaternion.Angle(paginas[paginaavirar].localRotation, targetRotation);
+
+                yield return null;
             }
-            yield return null;
+            paginaVirando = false;
+        }
+        else
+        {
+            paginas[paginaavirar].localRotation = targetRotation;
         }
     }
 
-    
-    public void ColetarPagina()
-    {
-        if (index < paginas.Count && paginasColetadas < paginas.Count)
-        {
-            paginasColetadas++;
-            Debug.Log("Pagina coletada. Total de paginas coletadas: " + paginasColetadas);
 
-            if (paginasColetadas < paginas.Count)
-            {
-                ProximoButton.SetActive(true);
-                ProximoButtonActions();
-            }
-            else
-            {
-                ProximoButton.SetActive(false);
-            }
-        
-        }
+    public void AtualizarPaginas(int paginasColetadas)
+    {
+        paginasMostraveis++;
+
+        Debug.Log("Pagina coletada. Total de paginas coletadas: " + paginasColetadas);
+
+        paginas[paginasColetadas].gameObject.SetActive(true);
 
     }
 }
