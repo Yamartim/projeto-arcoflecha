@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
+    [Header("Vida")]
     public float vidaMaxima; // Valor máximo de vida
     public float vidaAtual; // Valor atual de vida
-    public bool[] aneisLiberados;
+    [Space]
+
+    [Header("Colecionaveis")]
     public int totalFlechas = 5;
+    public int paginasColetadas = 0;
+    //public bool[] paginasColetadas;
+    public bool[] aneisLiberados;
+
+    [Space]
+    [SerializeField] MenuDiario uiDiario;
+    [SerializeField] GameObject textoTrocaAnel;
     public static PlayerStatus instancia;
 
-    [SerializeField] GameObject textoTrocaAnel;
 
 
     void Awake()
@@ -38,6 +47,14 @@ public class PlayerStatus : MonoBehaviour
         aneisLiberados[(int)tipo] = true;
         Debug.Log("Flecha Liberada = "+((int)tipo)+"("+tipo+")");
     } 
+
+    public void LiberarPagina()
+    {
+        paginasColetadas++;
+        //paginasColetadas[index] = true;
+
+        uiDiario.AtualizarPaginas(paginasColetadas);
+    }
 
     public void AumentarTotalFlechas()
     {
