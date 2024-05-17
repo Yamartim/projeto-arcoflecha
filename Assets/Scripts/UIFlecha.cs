@@ -12,7 +12,8 @@ public class UIFlecha : MonoBehaviour
     [SerializeField]
     TMP_Text textoReload;
 
-    private void Start()
+    // rodando no awake pq se o start do arco for antes do start do flecha, as imagens n vao estar instanciadas na tentativa de rodar o updateglechaui
+    private void Awake()
     {
 
         FlechaHUDImages = new List<Image>();
