@@ -64,16 +64,19 @@ public class PlayerArco : MonoBehaviour
         transform.right = direcao;
 
 
-        // TODO posição do firepoint = distancia * diração do player ate a mira normaliada
+        // posição do firepoint = distancia * diração do player ate a mira normaliada
+        
+        FirePoint.localPosition = new Vector3(direcao.normalized.x * fp_x, direcao.normalized.y * fp_x, 0f);
+
         if (mira.transform.position.x < gameObject.transform.position.x)
         {
             anim.VirarPlayer(true);
-            FirePoint.localPosition = new Vector3(-fp_x, 0f, 0f);
+            //FirePoint.localPosition = new Vector3(-fp_x, 0f, 0f);
         }
         else
         {
             anim.VirarPlayer(false);
-            FirePoint.localPosition = new Vector3(fp_x, 0f, 0f);
+            //FirePoint.localPosition = new Vector3(fp_x, 0f, 0f);
         }
 
         if (IsReloading)
@@ -194,6 +197,6 @@ public class PlayerArco : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.magenta;
-        Gizmos.DrawCube(FirePoint.position, new Vector3(0.7f, 0.1f, 0.1f));
+        Gizmos.DrawLine(FirePoint.position, mira.transform.position);
     }
 }
