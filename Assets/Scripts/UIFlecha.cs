@@ -13,7 +13,7 @@ public class UIFlecha : MonoBehaviour
     TMP_Text textoReload;
 
     // rodando no awake pq se o start do arco for antes do start do flecha, as imagens n vao estar instanciadas na tentativa de rodar o updateglechaui
-    private void Awake()
+    private void Start()
     {
 
         FlechaHUDImages = new List<Image>();
@@ -22,6 +22,7 @@ public class UIFlecha : MonoBehaviour
             FlechaHUDImages.Add(Instantiate(flechaIMG, this.transform).GetComponent<Image>());
         }
         textoReload.enabled = false;
+        UpdateFlechaUI(PlayerStatus.instancia.totalFlechas);
     }
 
     public void UpdateFlechaUI(int flechasDisponiveis)

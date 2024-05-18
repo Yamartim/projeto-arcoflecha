@@ -49,7 +49,7 @@ public class PlayerArco : MonoBehaviour
 
         anelAtual = 0;
         
-        uiFlecha.UpdateFlechaUI(flechasAtual);
+        //uiFlecha.UpdateFlechaUI(flechasAtual);
 
     }
 

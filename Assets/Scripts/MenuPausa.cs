@@ -63,6 +63,7 @@ public class MenuPausa : MonoBehaviour
     {
         //TODO quando botar a cena do video antes da do jogo talvez tenha q mudar aq
         SceneManager.LoadScene(0);
+        Cursor.visible = true;
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
     }
  
