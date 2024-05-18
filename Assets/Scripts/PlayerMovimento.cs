@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -30,6 +31,10 @@ public class PlayerMovimento : MonoBehaviour
 
     float bufferTime = 0.2f;
     float bufferCnter;
+
+    float limVelStartEscal = 5f;
+    float boostPuloCorda = 2.7f;
+    float boostThreshold = 4.5f;
 
     void Start()
     {
@@ -103,10 +108,16 @@ public class PlayerMovimento : MonoBehaviour
 #region logica de pular
     private void InputPulo()
     {
-        if ((bufferCnter > 0f) && ((grounded || escalando) || (ctcounter > 0 && !(rb.velocity.y>0))))
+        if ((bufferCnter > 0f) && ((grounded || escalando || ctcounter > 0) && !(rb.velocity.y>0.1)))
         {
-            rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
+            //rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
+            rb.velocity += Vector2.up * forcaPulo;
+
             bufferCnter = 0f;
+
+            if(escalando && (math.abs(rb.velocity.x) >= boostThreshold)) {
+                rb.velocity = new Vector2(rb.velocity.x*boostPuloCorda, rb.velocity.y+boostPuloCorda);
+            }
             SoltarCorda();
             anim.AnimPular();
         }
@@ -124,7 +135,7 @@ public class PlayerMovimento : MonoBehaviour
         }
         // Debug.Log(cordasProxRB.Count);
         // se ta perto de uma corda e o player aperta pra cima ou pra beixo agarra
-        if(cordaProxima && (inputVertical > 0) && !escalando)
+        if(cordaProxima && (inputVertical > 0) && !escalando && (rb.velocity.y <= limVelStartEscal))
         {   
             // ordena lista de segmentos próximos da maior posição y para a menor
             if(cordasProxRB.Count > 1) {
