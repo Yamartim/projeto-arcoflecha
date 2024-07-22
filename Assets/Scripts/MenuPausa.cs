@@ -39,10 +39,9 @@ public class MenuPausa : MonoBehaviour
         jogoPausado = true;
 
         MenuDiario.podeUsarDiario = false;
-        if (MenuDiario.DiarioAberto)
-        {
-            player.ToggleMovMira(false);
-        }
+
+        player.ToggleMovMira(false);
+        
     }
 
     public void Jogar()
@@ -53,10 +52,12 @@ public class MenuPausa : MonoBehaviour
         jogoPausado = false;
 
         MenuDiario.podeUsarDiario = true;
+
         if (!MenuDiario.DiarioAberto)
         {
             player.ToggleMovMira(true);
         }
+        
     }
 
     public void MenuPrincipal()
