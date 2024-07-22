@@ -72,6 +72,15 @@ public class Flecha : MonoBehaviour
         }
     }
 
+    virtual protected void OnTriggerStay2D(Collider2D other) {
+        if(retornando && other.CompareTag("Player"))
+        {
+            other.gameObject.GetComponentInChildren<PlayerArco>().RecuperarFlecha(this);
+            // other.gameObject.GetComponent<Movimento>().cordasProxRB.Clear();
+            Destroy(gameObject);
+            //da push numa pilha de flechas?
+        }
+    }
     //efeitos pra chamar quando a flecha acerta algo
     protected void EfeitoColisao()
     {
