@@ -16,9 +16,11 @@ public class AnimCheckpoint : MonoBehaviour
     public void AtivarCP(bool state)
     {
         anim.SetBool("ATIVADO", state);
-        if(state) {
-            gameObject.GetComponent<AudioSource>().Play();
-        }
+    }
+
+    public void TocarSomCheckpoint()
+    {
+        gameObject.GetComponent<AudioSource>().Play();
     }
 
 }
