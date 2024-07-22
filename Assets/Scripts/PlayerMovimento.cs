@@ -36,6 +36,8 @@ public class PlayerMovimento : MonoBehaviour
     float boostPuloCorda = 2.7f;
     float boostThreshold = 4.5f;
 
+    [SerializeField] ParticleSystem partPulo, partAndar;
+
     void Start()
     {
         movimentoPerimitido = true;
@@ -95,12 +97,20 @@ public class PlayerMovimento : MonoBehaviour
             rb.velocity += Vector2.right * inputHorizontal * aceleracao * Time.deltaTime;
             mat.friction = 0f;
             col.sharedMaterial = mat;
+            if(grounded)
+            {
+                partAndar.Play();
+            }
         }
         else if (inputHorizontal == 0)
         {
             // Se não estiver andando, adicionar atrito
             mat.friction = 1f;
             col.sharedMaterial = mat;
+            if(grounded)
+            {
+                partAndar.Stop();
+            }
         }
     }
 #endregion
@@ -120,6 +130,8 @@ public class PlayerMovimento : MonoBehaviour
             }
             SoltarCorda();
             anim.AnimPular();
+            partAndar.Stop();
+            partPulo.Play();
         }
     }
 #endregion
@@ -220,6 +232,7 @@ public class PlayerMovimento : MonoBehaviour
             //Debug.Log("Segurei corda! " + hj.connectedAnchor);
         }
             
+        partAndar.Stop();
         anim.AnimSegCorda(true);
         ctcounter = 0f;
     }
