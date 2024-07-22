@@ -37,6 +37,7 @@ public class PlayerMovimento : MonoBehaviour
     float boostThreshold = 4.5f;
 
     [SerializeField] ParticleSystem partPulo, partAndar;
+    TrailRenderer trail;
 
     void Start()
     {
@@ -46,6 +47,7 @@ public class PlayerMovimento : MonoBehaviour
         col = GetComponent<CapsuleCollider2D>();
         hj = GetComponent<HingeJoint2D>();
         anim = GetComponent<PlayerAnimacao>();
+        trail = GetComponent<TrailRenderer>();
 
         mat = new PhysicsMaterial2D("Material");
         mat.friction = 1f;
@@ -125,13 +127,20 @@ public class PlayerMovimento : MonoBehaviour
 
             bufferCnter = 0f;
 
+            // add inersia se o player ta rapido na corda
             if(escalando && (math.abs(rb.velocity.x) >= boostThreshold)) {
                 rb.velocity = new Vector2(rb.velocity.x*boostPuloCorda, rb.velocity.y+boostPuloCorda);
+                trail.emitting = true;
             }
             SoltarCorda();
             anim.AnimPular();
             partAndar.Stop();
             partPulo.Play();
+        }
+
+        if (grounded)
+        {
+            trail.emitting = false;
         }
     }
 #endregion
@@ -234,6 +243,7 @@ public class PlayerMovimento : MonoBehaviour
             
         partAndar.Stop();
         anim.AnimSegCorda(true);
+        trail.emitting = false;
         ctcounter = 0f;
     }
 
