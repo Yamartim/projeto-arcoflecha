@@ -127,7 +127,7 @@ public class PlayerReset : MonoBehaviour
                 ultimoCheckPoint.GetComponent<AnimCheckpoint>().AtivarCP(false);
             } else if (ultimoCheckPoint != collision.gameObject)
             {
-                ultimoCheckPoint.GetComponent<AnimCheckpoint>().TocarSomCheckpoint();
+                collision.gameObject.GetComponent<AnimCheckpoint>().TocarSomCheckpoint();
             }
             ultimoCheckPoint = collision.gameObject;
             
