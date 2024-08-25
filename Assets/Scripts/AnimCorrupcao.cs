@@ -11,9 +11,9 @@ public class AnimCorrupcao : MonoBehaviour
     {
         // dar 1 chance em 100 de rotacionar num frame
         int numAleatorio = Random.Range(0, 100);
-        if(numAleatorio == 50 && gameObject.GetComponent<Renderer>().isVisible) {
+        if(numAleatorio < 2 && gameObject.GetComponent<Renderer>().isVisible) {
             // apenas rotaciona se estiver visível
-            gameObject.transform.Rotate(0.0f, 0.0f, 90.0f);
+            gameObject.transform.Rotate(0.0f, 0.0f, 90.0f+(numAleatorio*180.0f));
         }
     }
 }
