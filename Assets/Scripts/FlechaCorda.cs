@@ -6,9 +6,21 @@ public class FlechaCorda : Flecha
 {
     [SerializeField] GameObject corda;
     bool cordaAtiva = false;
+    Collider2D objetoColisao;
 
     GameObject instancia;
     [SerializeField] Transform cordaSpawn;
+
+    void Update()
+    {
+        if (cordaAtiva)
+        {
+            if (objetoColisao == null)
+            {
+                RetornarPlayer();
+            }
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D other) {
         // só solta uma corda se colidir com a coisa certa
@@ -28,6 +40,8 @@ public class FlechaCorda : Flecha
             instancia = Instantiate(corda, cordaSpawn.position, transform.rotation, parent: transform);
             instancia.SetActive(true);
             cordaAtiva = true;
+
+            objetoColisao = other.collider;
         }
     }
 
@@ -36,4 +50,7 @@ public class FlechaCorda : Flecha
         Destroy(instancia);
         base.RetornarPlayer();
     }
+
+
+
 }
