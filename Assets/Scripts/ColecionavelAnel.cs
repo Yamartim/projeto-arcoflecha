@@ -23,6 +23,7 @@ public class ColecionavelAnel : MonoBehaviour
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             gameObject.GetComponent<ParticleSystem>().Stop();
+
             if(gameObject.TryGetComponent<Light2D>(out Light2D luz))
             {
                 luz.enabled = false;
