@@ -35,6 +35,9 @@ public class PlayerMovimento : MonoBehaviour
     float limVelStartEscal = 5f;
     float boostPuloCorda = 2.7f;
     float boostThreshold = 4.5f;
+    
+    float timeTrilhaSwing = 0.3f;
+    float timeTrilhaBoost = 0.9f;
 
     [SerializeField] ParticleSystem partPulo, partAndar;
     TrailRenderer trail;
@@ -131,6 +134,7 @@ public class PlayerMovimento : MonoBehaviour
             if(escalando && (math.abs(rb.velocity.x) >= boostThreshold)) {
                 rb.velocity = new Vector2(rb.velocity.x*boostPuloCorda, rb.velocity.y+boostPuloCorda);
                 trail.emitting = true;
+                trail.time = timeTrilhaBoost;
             }
             SoltarCorda();
             anim.AnimPular();
@@ -212,6 +216,14 @@ public class PlayerMovimento : MonoBehaviour
                     hj.connectedAnchor = new Vector2(0, hj.connectedAnchor.y % -1);
                     hj.connectedBody = seg.conectadoAbaixo.GetComponent<Rigidbody2D>();
                 }
+            }
+
+            if (math.abs(rb.velocity.x) >= boostThreshold && !Input.GetButtonDown("Jump"))
+            {
+                trail.emitting = true;
+                trail.time = timeTrilhaSwing;
+            }else{
+                trail.emitting = false;
             }
             
         }else{ // se n estamos escalando fisica fica normal
