@@ -28,7 +28,7 @@ public class ManagerFinal : MonoBehaviour
     {
         yield return new WaitForSeconds(duracaoFinal);  // tempo para o vídeo rodar
         PlayerStatus.instancia.GetComponentInChildren<PlayerMira>().MiraAtiva(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
 
     void OnDrawGizmos()
