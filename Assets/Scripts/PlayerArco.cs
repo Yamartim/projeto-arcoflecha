@@ -128,7 +128,7 @@ public class PlayerArco : MonoBehaviour
         if (canShoot && Input.GetKeyDown(KeyCode.E))
         {
             do {
-                anelAtual = (anelAtual+1) %player.aneisLiberados.Length;
+                anelAtual = (anelAtual+1) % player.aneisLiberados.Length;
             } while (player.aneisLiberados[anelAtual] == false);
             uiAnel.SetAnel(anelAtual);
         }
@@ -137,7 +137,7 @@ public class PlayerArco : MonoBehaviour
         if (canShoot && Input.GetKeyDown(KeyCode.Q))
         {
             do {
-                anelAtual = (anelAtual-1) %player.aneisLiberados.Length;
+                anelAtual = (anelAtual-1) % player.aneisLiberados.Length;
                 if(anelAtual < 0)
                 {
                     anelAtual = player.aneisLiberados.Length-1;
@@ -192,6 +192,12 @@ public class PlayerArco : MonoBehaviour
     public void SetCanShoot(bool value)
     {
         canShoot = value;
+    }
+
+    public void SetTipoFlecha(tipoFlecha tipo)
+    {
+        anelAtual = (int)tipo;
+        uiAnel.SetAnel((int)tipo);
     }
 
     void OnDrawGizmos()

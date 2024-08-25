@@ -18,6 +18,7 @@ public class PlayerStatus : MonoBehaviour
     [Space]
     [SerializeField] MenuDiario uiDiario;
     [SerializeField] GameObject textoTrocaAnel;
+    [SerializeField] PopupManager popup;
     public static PlayerStatus instancia;
 
 
@@ -45,6 +46,7 @@ public class PlayerStatus : MonoBehaviour
 
         textoTrocaAnel.SetActive(true);
         aneisLiberados[(int)tipo] = true;
+        GetComponent<PlayerArco>().SetTipoFlecha(tipo);
         Debug.Log("Flecha Liberada = "+((int)tipo)+"("+tipo+")");
     } 
 
@@ -54,6 +56,8 @@ public class PlayerStatus : MonoBehaviour
         //paginasColetadas[index] = true;
 
         uiDiario.AtualizarPaginas(paginasColetadas);
+        popup.gameObject.SetActive(true);
+        popup.MostrarPopup(paginasColetadas+"/8");
     }
 
     public void AumentarTotalFlechas()
