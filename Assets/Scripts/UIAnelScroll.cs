@@ -15,7 +15,7 @@ public class UIAnelScroll : MonoBehaviour
 
     private void Start()
     {
-        UpdateImageAndText();
+        //UpdateImageAndText();
     }
 
     private void UpdateImageAndText()
