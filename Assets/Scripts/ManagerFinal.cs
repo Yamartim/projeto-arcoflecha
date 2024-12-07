@@ -17,6 +17,7 @@ public class ManagerFinal : MonoBehaviour
     [SerializeField] Slider timerSlider;
     [SerializeField] ImagemFinalSelector imgSel;
     [SerializeField] PlayableDirector cutscene;
+    [SerializeField] GameObject painelBotoesFinal;
 
 
 
@@ -36,16 +37,23 @@ public class ManagerFinal : MonoBehaviour
         if(timerAtivo)
         {
             tempo -= Time.deltaTime;
+            timerSlider.value = tempo;
         }
 
         if(tempo <= 0f)
         {
-            timerAtivo = false;
-            imgSel.SetImagemFinal(2);
-            anim.SetTrigger("FINAL");
-            StartCoroutine(MudarCena());
-
+            IniciarFinal(2);
         }
+    }
+
+    public void IniciarFinal(int img)
+    {
+        Debug.Log("final iniciado: " + img);
+        timerAtivo = false;
+        painelBotoesFinal.SetActive(false);
+        imgSel.SetImagemFinal(img);
+        anim.SetTrigger("FINAL");
+        StartCoroutine(MudarCena());
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
