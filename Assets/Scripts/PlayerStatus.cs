@@ -63,6 +63,7 @@ public class PlayerStatus : MonoBehaviour
     public void AumentarTotalFlechas()
     {
         totalFlechas++;
+        GetComponentInChildren<PlayerArco>().AumentarFlechas();
     }
 
     public void ToggleMovMira(bool toggle)

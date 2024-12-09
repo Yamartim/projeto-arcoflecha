@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -109,6 +108,7 @@ public class PlayerArco : MonoBehaviour
         //logica do tiro
 
         if(flechasAtual > 0){
+            gameObject.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             gameObject.GetComponent<AudioSource>().Play();
             flechasAtual--;
             GameObject novaFlecha = Instantiate(FlechaPreFab[anelAtual], FirePoint.position, transform.rotation);
@@ -174,7 +174,6 @@ public class PlayerArco : MonoBehaviour
 
     public void AumentarFlechas()
     {
-        player.AumentarTotalFlechas();
         TotalFlecha = player.totalFlechas;
         flechasAtual++;
         uiFlecha.AddIMG(flechasAtual);

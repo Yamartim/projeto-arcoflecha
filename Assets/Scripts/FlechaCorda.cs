@@ -28,6 +28,8 @@ public class FlechaCorda : Flecha
         if (!cordaAtiva && !other.gameObject.CompareTag("Player"))
         {
             EfeitoColisao();
+
+            GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             GetComponent<AudioSource>().Play();
             // congela a fisica da flecha
             rb.constraints = RigidbodyConstraints2D.FreezeAll;

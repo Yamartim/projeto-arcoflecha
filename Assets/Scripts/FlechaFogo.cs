@@ -12,6 +12,7 @@ public class FlechaFogo : Flecha
     private void OnCollisionEnter2D(Collision2D other){
         if(other.gameObject.CompareTag("Madeira") && JaColidiu == false){
             EfeitoColisao();
+            SFX_madeira.pitch = Random.Range(0.9f, 1.1f);
             SFX_madeira.Play();
             Destroy(other.gameObject);
             //TESTE DE SCREENSHAKE PRA DPS

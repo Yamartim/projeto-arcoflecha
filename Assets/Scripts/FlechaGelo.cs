@@ -12,6 +12,7 @@ public class FlechaGelo : Flecha
         base.OnTriggerEnter2D(other);
         if(other.gameObject.CompareTag("Agua") && JaColidiu == false && !retornando){
             EfeitoColisao();
+            GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             GetComponent<AudioSource>().Play();
             Vector2 position = other.gameObject.transform.position;
             Quaternion rotation = other.gameObject.transform.rotation;
