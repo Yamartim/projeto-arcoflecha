@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovimento : MonoBehaviour
@@ -343,7 +342,15 @@ public class PlayerMovimento : MonoBehaviour
     {
         movimentoPerimitido = ativo;
         gameObject.GetComponentInChildren<PlayerArco>().SetCanShoot(ativo);
-        anim.PausarAnim();
+        if (ativo)
+        {
+            anim.ContinuarAnim();
+        }else
+        {
+            anim.PausarAnim();
+            partAndar.Stop();
+        }
+
     }
 #endregion
 
