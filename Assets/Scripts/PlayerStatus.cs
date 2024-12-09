@@ -46,7 +46,7 @@ public class PlayerStatus : MonoBehaviour
 
         textoTrocaAnel.SetActive(true);
         aneisLiberados[(int)tipo] = true;
-        GetComponent<PlayerArco>().SetTipoFlecha(tipo);
+        GetComponentInChildren<PlayerArco>().SetTipoFlecha(tipo);
         Debug.Log("Flecha Liberada = "+((int)tipo)+"("+tipo+")");
     } 
 
