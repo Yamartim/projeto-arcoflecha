@@ -122,7 +122,7 @@ public class PlayerMovimento : MonoBehaviour
 #region logica de pular
     private void InputPulo()
     {
-        if ((bufferCnter > 0f) && ((grounded || escalando || ctcounter > 0) && !(rb.velocity.y>0.1)))
+        if ((bufferCnter > 0f) && (grounded || escalando || ctcounter > 0) && !(rb.velocity.y>0.2f))
         {
             //rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
             rb.velocity += Vector2.up * forcaPulo;
